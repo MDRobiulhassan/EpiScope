@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EpiScope | Public Health Surveillance</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      color: #172033;
+    }
+
+    header {
+      background: #142b4a;
+      color: white;
+      padding: 24px 5%;
+    }
+
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; color: #d7e3f2; }
+
+    .notice {
+      margin: 18px 5% 0;
+      padding: 12px 16px;
+      background: #fff4d6;
+      border-left: 4px solid #c28a13;
+      color: #654a0a;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 20px 5%;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    select {
+      min-width: 180px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: white;
+    }
+
+    main {
+      padding: 0 5% 36px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid #e0e6ee;
+      border-radius: 10px;
+      padding: 18px;
+      min-width: 0;
+      box-shadow: 0 2px 5px #142b4a0a;
+    }
+
+    .panel h2 { font-size: 17px; margin: 0 0 8px; }
+    .panel p { font-size: 13px; color: #64748b; }
+
+    .wide { grid-column: 1 / -1; }
+    svg { width: 100%; height: auto; display: block; }
+
+    .axis text { font-size: 11px; fill: #64748b; }
+    .axis path, .axis line { stroke: #d9e1eb; }
+    .grid line { stroke: #e9eef4; }
+    .grid path { display: none; }
+
+    .tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: #142b4a;
+      color: white;
+      padding: 8px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: none;
+      z-index: 10;
+    }
+
+    .table-wrap { overflow-x: auto; max-height: 350px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e8edf3; }
+    th { background: #f7f9fc; position: sticky; top: 0; }
+
+    #status { padding: 0 5% 20px; color: #64748b; }
+
+    @media (max-width: 760px) {
+      main { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EpiScope</h1>
+    <p>Public Health Surveillance and Preparedness Dashboard</p>
+  </header>
+
+  <div class="notice">
+    Research prototype: encounter data are synthetic. Forecasts and alerts
+    are experimental and must not be used for clinical or operational decisions.
+    Counts from 1 to 4 are suppressed in the public dataset.
+  </div>
+
+  <section class="controls">
+    <label>
+      District
+      <select id="district-filter">
+        <option value="ALL">All districts</option>
+      </select>
+    </label>
+
+    <label>
+      Disease
+      <select id="disease-filter">
+        <option value="ALL">All diseases</option>
+      </select>
+    </label>
+  </section>
+
+  <div id="status">Loading dashboard data...</div>
+
+  <main>
+    <section class="panel">
+      <h2>1. Case Trends</h2>
+      <p>Daily published case counts. Suppressed counts are excluded.</p>
+      <div id="trend-chart"></div>
+    </section>
+
+    <section class="panel">
+      <h2>2. District Comparison</h2>
+      <p>Published cases ranked by district for the selected filters.</p>
+      <div id="district-chart"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Outbreak Alerts</h2>
+      <p>Experimental alerts from the detection pipeline.</p>
+      <div class="table-wrap" id="alerts-table"></div>
+    </section>
+
+    <section class="panel">
+      <h2>4. Case Forecast</h2>
+      <p>Experimental predictions for the next 28 days.</p>
+      <div id="forecast-chart"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>5. Resource Allocation and Preparedness</h2>
+      <p>Allocation outputs and seasonal preparation recommendations.</p>
+      <div id="resource-chart"></div>
+      <div class="table-wrap" id="calendar-table"></div>
+    </section>
+  </main>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
