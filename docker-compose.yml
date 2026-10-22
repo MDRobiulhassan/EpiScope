@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  pipeline:
+    image: bitnami/spark:3.5.5
+    container_name: episcope-pipeline
+    volumes:
+      - .:/opt/bitnami/spark/project
+    working_dir: /opt/bitnami/spark/project
+    command: >
+      bash -c "pip install -r requirements.txt &&
+              python scripts/run_pipeline.py"
+    environment:
+      - SPARK_MODE=master
+
+  dashboard:
+    image: python:3.13-slim
+    container_name: episcope-dashboard
+    volumes:
+      - ./dashboard:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    command: python -m http.server 8000\n

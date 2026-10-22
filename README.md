@@ -1,3 +1,6 @@
+<!-- VIDEO_LINK: Replace with the final accessible video URL -->
+**Demo video:** TODO — add the final accessible video URL.
+
 # EpiScope
 
 EpiScope is a Big Data Analytics project for exploring disease-surveillance workflows using Apache Spark, Parquet, and a D3.js v7 dashboard.
@@ -89,3 +92,59 @@ These figures describe the recorded experiment, not a guarantee for every machin
 - Preserve benchmark logs and document the runtime environment.
 - Verify public-data suppression and dashboard loading.
 - Add the final academic report, policy brief, and demonstration link when ready.
+
+
+## Prerequisites
+
+- Python version: verify against the pinned dependencies before release.
+- Java version: verify compatibility with the installed PySpark version.
+- Git.
+- A machine with sufficient memory and disk space for the selected dataset scale.
+
+## Local run
+
+The clean-clone, one-command pipeline runner is not yet verified.
+Do not treat the following as the final ENG-1 command until it has
+been implemented and tested:
+
+```bash
+python scripts/run_pipeline.py
+```
+
+## Run the dashboard locally
+
+From the repository root, run:
+
+```bash
+python -m http.server 8000 --directory dashboard
+```
+
+Then open http://localhost:8000 in a browser. This serves the dashboard
+and its existing JSON files; it does not regenerate the data.
+
+## Hidden test drop
+
+1. Place instructor-provided test inputs in the location specified by
+   the instructor, without committing private test data.
+2. Use the documented pipeline runner with the instructor's input path.
+3. Check the generated quality report, quarantine output, analytics,
+   and dashboard exports.
+4. Record the command and results. Replace these generic steps with
+   the instructor's exact hidden-test interface when it is provided.
+
+## Requirement traceability
+
+| Requirement ID | Implementation location | Report section |
+|---|---|---|
+| ING-1 to ING-3 | `generator/`, `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold.py` | Data and architecture |
+| DQ-1 to DQ-3 | `pipeline/silver.py`, `data/silver/quality_report/` | Data quality |
+| AN-1 to AN-3 | `analytics/detection/` | Outbreak detection and evaluation |
+| AN-4 to AN-5 | `analytics/forecast/` | Forecasting and evaluation |
+| AN-6 to AN-8 | `analytics/optimise/` | Resource allocation |
+| AN-9 | `analytics/calendar/` | Preparedness calendar |
+| VIS-1 to VIS-4 | `dashboard/`, `serving/export_dashboard_data.py` | Dashboard |
+| ENG-1 | `scripts/run_pipeline.py` — verify or implement | Reproducibility |
+| ENG-2 to ENG-3 | `docs/EXPERIMENTS.md` and benchmark evidence | Performance evaluation |
+
+This is an initial mapping. Verify each ID against the official rubric
+and the final report before submission.
