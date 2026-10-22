@@ -1,0 +1,4630 @@
+{
+  "project_root": "/content/drive/MyDrive/University/8th Semester/BDA/episcope",
+  "audited_at": "2026-10-22T18:21:56",
+  "files_inventoried": 769,
+  "expected_results": {
+    "pipeline_timings.csv": "missing_or_empty",
+    "data_quality_metrics.json": "missing_or_empty",
+    "detection_metrics.json": "missing_or_empty",
+    "forecast_metrics.json": "missing_or_empty",
+    "optimization_benchmarks.csv": "missing_or_empty",
+    "scaling_results.csv": "missing_or_empty",
+    "experiment_summary.md": "missing_or_empty"
+  },
+  "files": [
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/entry_points.txt",
+      "bytes": 87,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/AUTHORS.txt",
+      "bytes": 11385,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/LICENSE.txt",
+      "bytes": 1093,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/cachecontrol/LICENSE.txt",
+      "bytes": 558,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/dependency_groups/LICENSE.txt",
+      "bytes": 1099,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/distlib/LICENSE.txt",
+      "bytes": 14531,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+      "bytes": 1541,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".md"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/urllib3/LICENSE.txt",
+      "bytes": 1115,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip-25.2.dist-info/top_level.txt",
+      "bytes": 4,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": ".venv/Lib/site-packages/pip/_vendor/vendor.txt",
+      "bytes": 343,
+      "modified": "2026-10-22T12:52:52",
+      "type": ".txt"
+    },
+    {
+      "path": "AI_USAGE.md",
+      "bytes": 1590,
+      "modified": "2026-10-22T18:09:22",
+      "type": ".md"
+    },
+    {
+      "path": "analytics/detection/detect_outbreaks.py",
+      "bytes": 5453,
+      "modified": "2026-10-22T13:24:04",
+      "type": ".py"
+    },
+    {
+      "path": "analytics/detection/evaluate_detection.py",
+      "bytes": 3596,
+      "modified": "2026-10-22T13:48:55",
+      "type": ".py"
+    },
+    {
+      "path": "analytics/forecast/evaluate_forecasts.py",
+      "bytes": 5357,
+      "modified": "2026-10-22T13:54:53",
+      "type": ".py"
+    },
+    {
+      "path": "analytics/forecast/forecast_cases.py",
+      "bytes": 5082,
+      "modified": "2026-10-22T13:28:06",
+      "type": ".py"
+    },
+    {
+      "path": "dashboard/data/alerts.json",
+      "bytes": 4766326,
+      "modified": "2026-10-22T15:44:41",
+      "type": ".json"
+    },
+    {
+      "path": "dashboard/data/calendar.json",
+      "bytes": 1320981,
+      "modified": "2026-10-22T15:44:52",
+      "type": ".json"
+    },
+    {
+      "path": "dashboard/data/cases.json",
+      "bytes": 58325555,
+      "modified": "2026-10-22T15:44:29",
+      "type": ".json"
+    },
+    {
+      "path": "dashboard/data/forecasts.json",
+      "bytes": 799821,
+      "modified": "2026-10-22T15:44:49",
+      "type": ".json"
+    },
+    {
+      "path": "dashboard/data/resources.json",
+      "bytes": 13095,
+      "modified": "2026-10-22T15:44:51",
+      "type": ".json"
+    },
+    {
+      "path": "data/bronze/encounters/encounters.csv",
+      "bytes": 227562391,
+      "modified": "2026-10-22T14:19:01",
+      "type": ".csv"
+    },
+    {
+      "path": "data/bronze/encounters_parquet/part-00000-2fefa881-378a-411b-9c46-5c32c68cc9b4-c000.snappy.parquet",
+      "bytes": 15325136,
+      "modified": "2026-10-22T14:20:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/bronze/encounters_parquet/part-00001-2fefa881-378a-411b-9c46-5c32c68cc9b4-c000.snappy.parquet",
+      "bytes": 14631366,
+      "modified": "2026-10-22T14:20:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Bagerhat/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2465,
+      "modified": "2026-10-22T15:39:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Bandarban/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2482,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Barguna/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2467,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Barishal/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2474,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Bhola/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2470,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Bogura/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2480,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Brahmanbaria/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2478,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Chandpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2485,
+      "modified": "2026-10-22T15:39:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Chapainawabganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Chattogram/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Chuadanga/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Cox%27s Bazar/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2480,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Cumilla/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2468,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Dhaka/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Dinajpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2474,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Faridpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2482,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Feni/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Gaibandha/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Gazipur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Gopalganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2482,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Habiganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Jamalpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2481,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Jashore/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2481,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Jhalokati/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2467,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Jhenaidah/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Joypurhat/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Khagrachhari/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2463,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Khulna/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2467,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Kishoreganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2479,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Kurigram/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Kushtia/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Lakshmipur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Lalmonirhat/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2468,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Madaripur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Magura/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Manikganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Meherpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2475,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Moulvibazar/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2480,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Munshiganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2474,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Mymensingh/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2476,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Naogaon/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Narail/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2485,
+      "modified": "2026-10-22T15:39:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Narayanganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2482,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Narsingdi/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Natore/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2465,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Netrokona/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2485,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Nilphamari/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2477,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Noakhali/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Pabna/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2473,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Panchagarh/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Patuakhali/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Pirojpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Rajbari/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2481,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Rajshahi/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2478,
+      "modified": "2026-10-22T15:39:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Rangamati/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Rangpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Satkhira/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2473,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Shariatpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Sherpur/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Sirajganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2484,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Sunamganj/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2479,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Sylhet/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2483,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Tangail/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2481,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/case_forecasts/district=Thakurgaon/part-00000-963ef0ea-850c-4f84-9310-fefbb1c2f2c4.c000.snappy.parquet",
+      "bytes": 2486,
+      "modified": "2026-10-22T15:39:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2021/part-00000-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 372795,
+      "modified": "2026-10-22T15:35:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2021/part-00001-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 375580,
+      "modified": "2026-10-22T15:35:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2022/part-00000-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 367382,
+      "modified": "2026-10-22T15:35:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2022/part-00001-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 374360,
+      "modified": "2026-10-22T15:35:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2023/part-00000-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 373240,
+      "modified": "2026-10-22T15:35:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2023/part-00001-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 374171,
+      "modified": "2026-10-22T15:35:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2024/part-00000-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 362044,
+      "modified": "2026-10-22T15:35:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2024/part-00001-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 366231,
+      "modified": "2026-10-22T15:35:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2025/part-00000-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 373025,
+      "modified": "2026-10-22T15:35:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/daily_cases/year=2025/part-00001-8fcf677f-95b0-4772-b1c9-ed40c8ffb705.c000.snappy.parquet",
+      "bytes": 375086,
+      "modified": "2026-10-22T15:35:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/detection_evaluation/part-00000-fa8aec75-d9a4-42dd-9387-dc4376fe8502-c000.json",
+      "bytes": 202,
+      "modified": "2026-10-22T13:53:21",
+      "type": ".json"
+    },
+    {
+      "path": "data/gold/district_summary/part-00000-c9fc1a07-f2f7-4cfc-93a8-ea94ebc2defc-c000.snappy.parquet",
+      "bytes": 9372,
+      "modified": "2026-10-22T15:35:50",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/forecast_evaluation/by_district_disease/part-00000-1360d9e8-b596-4890-b30f-b982f2c2804c-c000.snappy.parquet",
+      "bytes": 3119,
+      "modified": "2026-10-22T13:55:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/forecast_evaluation/overall/part-00000-9cc32d39-e98b-40ab-aac0-2f37f96e8404-c000.json",
+      "bytes": 169,
+      "modified": "2026-10-22T13:55:23",
+      "type": ".json"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Bagerhat/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12023,
+      "modified": "2026-10-22T15:37:57",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Bandarban/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12804,
+      "modified": "2026-10-22T15:37:57",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Barguna/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12332,
+      "modified": "2026-10-22T15:37:57",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Barishal/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12556,
+      "modified": "2026-10-22T15:37:57",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Bhola/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12113,
+      "modified": "2026-10-22T15:37:57",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Bogura/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12658,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Brahmanbaria/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12460,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Chandpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12294,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Chapainawabganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12487,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Chattogram/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12797,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Chuadanga/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12994,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Cox%27s Bazar/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12711,
+      "modified": "2026-10-22T15:37:58",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Cumilla/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12553,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Dhaka/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12504,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Dinajpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12759,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Faridpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12909,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Feni/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12686,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Gaibandha/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12176,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Gazipur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12580,
+      "modified": "2026-10-22T15:37:59",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Gopalganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12945,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Habiganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12368,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Jamalpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13047,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Jashore/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12286,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Jhalokati/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12421,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Jhenaidah/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13098,
+      "modified": "2026-10-22T15:38:00",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Joypurhat/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12408,
+      "modified": "2026-10-22T15:38:01",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Khagrachhari/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12012,
+      "modified": "2026-10-22T15:38:01",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Khulna/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13399,
+      "modified": "2026-10-22T15:38:01",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Kishoreganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12377,
+      "modified": "2026-10-22T15:38:01",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Kurigram/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12371,
+      "modified": "2026-10-22T15:38:01",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Kushtia/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12028,
+      "modified": "2026-10-22T15:38:02",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Lakshmipur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13263,
+      "modified": "2026-10-22T15:38:02",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Lalmonirhat/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12541,
+      "modified": "2026-10-22T15:38:02",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Madaripur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12747,
+      "modified": "2026-10-22T15:38:02",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Magura/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13235,
+      "modified": "2026-10-22T15:38:02",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Manikganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12349,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Meherpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12596,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Moulvibazar/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 11722,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Munshiganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12411,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Mymensingh/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12670,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Naogaon/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13014,
+      "modified": "2026-10-22T15:38:03",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Narail/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13268,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Narayanganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12018,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Narsingdi/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12659,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Natore/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12261,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Netrokona/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12915,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Nilphamari/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12759,
+      "modified": "2026-10-22T15:38:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Noakhali/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12308,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Pabna/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 13109,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Panchagarh/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12631,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Patuakhali/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12488,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Pirojpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12171,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Rajbari/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12907,
+      "modified": "2026-10-22T15:38:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Rajshahi/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12625,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Rangamati/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12278,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Rangpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 11649,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Satkhira/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12516,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Shariatpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12934,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Sherpur/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12842,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Sirajganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12799,
+      "modified": "2026-10-22T15:38:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Sunamganj/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12902,
+      "modified": "2026-10-22T15:38:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Sylhet/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12005,
+      "modified": "2026-10-22T15:38:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Tangail/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12294,
+      "modified": "2026-10-22T15:38:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_alerts/district=Thakurgaon/part-00000-f26496d7-f685-438c-bada-f8952c8de89e.c000.snappy.parquet",
+      "bytes": 12939,
+      "modified": "2026-10-22T15:38:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Bagerhat/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127929,
+      "modified": "2026-10-22T15:37:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Bandarban/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130160,
+      "modified": "2026-10-22T15:37:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Barguna/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131936,
+      "modified": "2026-10-22T15:37:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Barishal/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130750,
+      "modified": "2026-10-22T15:37:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Bhola/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126388,
+      "modified": "2026-10-22T15:37:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Bogura/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129558,
+      "modified": "2026-10-22T15:37:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Brahmanbaria/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130279,
+      "modified": "2026-10-22T15:37:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Chandpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131363,
+      "modified": "2026-10-22T15:37:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Chapainawabganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127770,
+      "modified": "2026-10-22T15:37:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Chattogram/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129970,
+      "modified": "2026-10-22T15:37:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Chuadanga/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129447,
+      "modified": "2026-10-22T15:37:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Cox%27s Bazar/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130122,
+      "modified": "2026-10-22T15:37:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Cumilla/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127937,
+      "modified": "2026-10-22T15:37:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Dhaka/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127979,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Dinajpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127672,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Faridpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124489,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Feni/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129226,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Gaibandha/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127633,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Gazipur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127464,
+      "modified": "2026-10-22T15:37:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Gopalganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 125520,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Habiganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127795,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Jamalpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 133018,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Jashore/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124750,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Jhalokati/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127366,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Jhenaidah/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130683,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Joypurhat/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129655,
+      "modified": "2026-10-22T15:37:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Khagrachhari/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124639,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Khulna/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127422,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Kishoreganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129247,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Kurigram/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127041,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Kushtia/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 122568,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Lakshmipur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131076,
+      "modified": "2026-10-22T15:37:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Lalmonirhat/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129051,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Madaripur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130410,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Magura/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129710,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Manikganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126993,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Meherpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127672,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Moulvibazar/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126644,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Munshiganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126474,
+      "modified": "2026-10-22T15:37:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Mymensingh/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131090,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Naogaon/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129542,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Narail/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127370,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Narayanganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 125097,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Narsingdi/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131311,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Natore/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124298,
+      "modified": "2026-10-22T15:37:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Netrokona/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127984,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Nilphamari/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 131425,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Noakhali/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 130044,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Pabna/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129514,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Panchagarh/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124002,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Patuakhali/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 128830,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Pirojpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 125851,
+      "modified": "2026-10-22T15:37:42",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Rajbari/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127669,
+      "modified": "2026-10-22T15:37:43",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Rajshahi/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 120754,
+      "modified": "2026-10-22T15:37:43",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Rangamati/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 123443,
+      "modified": "2026-10-22T15:37:43",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Rangpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 123258,
+      "modified": "2026-10-22T15:37:43",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Satkhira/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124785,
+      "modified": "2026-10-22T15:37:43",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Shariatpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126847,
+      "modified": "2026-10-22T15:37:44",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Sherpur/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 129996,
+      "modified": "2026-10-22T15:37:44",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Sirajganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 124827,
+      "modified": "2026-10-22T15:37:44",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Sunamganj/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 128039,
+      "modified": "2026-10-22T15:37:45",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Sylhet/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 126261,
+      "modified": "2026-10-22T15:37:45",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Tangail/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 128816,
+      "modified": "2026-10-22T15:37:45",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/outbreak_scores/district=Thakurgaon/part-00000-5eb85520-e865-470c-9aac-c3c4f1de5837.c000.snappy.parquet",
+      "bytes": 127015,
+      "modified": "2026-10-22T15:37:45",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/preparedness_calendar/part-00000-a4240a4b-f5f1-4f9a-b56e-0d3aa7082420-c000.snappy.parquet",
+      "bytes": 17485,
+      "modified": "2026-10-22T15:42:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/resource_allocations/part-00000-2a1280f9-6215-417e-94df-a8c661ddd0cb-c000.snappy.parquet",
+      "bytes": 3697,
+      "modified": "2026-10-22T15:41:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/gold/smoke_test/part-00000-39008078-a829-414e-8d82-eccf5ac63a7b-c000.snappy.parquet",
+      "bytes": 1138,
+      "modified": "2026-10-22T13:10:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bagerhat/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18806,
+      "modified": "2026-10-22T15:43:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bagerhat/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19031,
+      "modified": "2026-10-22T15:43:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bandarban/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18580,
+      "modified": "2026-10-22T15:43:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bandarban/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18883,
+      "modified": "2026-10-22T15:43:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Barguna/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19001,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Barguna/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18573,
+      "modified": "2026-10-22T15:43:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Barishal/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19350,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Barishal/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18925,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bhola/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18923,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bhola/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18678,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bogura/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18872,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Bogura/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19027,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Brahmanbaria/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18767,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Brahmanbaria/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18775,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chandpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18959,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chandpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18553,
+      "modified": "2026-10-22T15:43:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chapainawabganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19280,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chapainawabganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18577,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chattogram/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18610,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chattogram/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18836,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chuadanga/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18804,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Chuadanga/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18776,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Cox%27s Bazar/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19066,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Cox%27s Bazar/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18703,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Cumilla/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18759,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Cumilla/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19162,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Dhaka/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18841,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Dhaka/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18600,
+      "modified": "2026-10-22T15:43:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Dinajpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18953,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Dinajpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18933,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Faridpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18972,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Faridpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18770,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Feni/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18796,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Feni/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18696,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gaibandha/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18764,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gaibandha/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18721,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gazipur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19114,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gazipur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18834,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gopalganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19117,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Gopalganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19057,
+      "modified": "2026-10-22T15:43:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Habiganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19005,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Habiganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18901,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jamalpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18701,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jamalpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18834,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jashore/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18716,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jashore/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18757,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jhalokati/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18710,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jhalokati/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18708,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jhenaidah/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18855,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Jhenaidah/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18658,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Joypurhat/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18689,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Joypurhat/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18892,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Khagrachhari/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18740,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Khagrachhari/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18702,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Khulna/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18990,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Khulna/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18888,
+      "modified": "2026-10-22T15:43:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kishoreganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18775,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kishoreganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19136,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kurigram/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18695,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kurigram/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18844,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kushtia/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18799,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Kushtia/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18775,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Lakshmipur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19080,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Lakshmipur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18905,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Lalmonirhat/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18868,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Lalmonirhat/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18649,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Madaripur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19115,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Madaripur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18815,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Magura/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19132,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Magura/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19174,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Manikganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18793,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Manikganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18665,
+      "modified": "2026-10-22T15:43:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Meherpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18766,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Meherpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18667,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Moulvibazar/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18633,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Moulvibazar/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18785,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Munshiganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18606,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Munshiganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18846,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Mymensingh/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18910,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Mymensingh/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18543,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Naogaon/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18628,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Naogaon/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18908,
+      "modified": "2026-10-22T15:43:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narail/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18772,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narail/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18734,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narayanganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18588,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narayanganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18821,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narsingdi/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19100,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Narsingdi/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19147,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Natore/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18814,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Natore/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18726,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Netrokona/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18633,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Netrokona/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18856,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Nilphamari/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19144,
+      "modified": "2026-10-22T15:43:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Nilphamari/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19081,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Noakhali/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18896,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Noakhali/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18544,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Pabna/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19292,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Pabna/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18590,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Panchagarh/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18696,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Panchagarh/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18792,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Patuakhali/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18665,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Patuakhali/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18881,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Pirojpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18846,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Pirojpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18757,
+      "modified": "2026-10-22T15:43:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rajbari/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18735,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rajbari/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18793,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rajshahi/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18711,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rajshahi/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18747,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rangamati/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18819,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rangamati/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18769,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rangpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18584,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Rangpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18837,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Satkhira/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18878,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Satkhira/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18674,
+      "modified": "2026-10-22T15:43:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Shariatpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 19036,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Shariatpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18538,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sherpur/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18778,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sherpur/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18753,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sirajganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18751,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sirajganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18714,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sunamganj/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18822,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sunamganj/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18684,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sylhet/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18762,
+      "modified": "2026-10-22T15:43:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Sylhet/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18692,
+      "modified": "2026-10-22T15:43:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Tangail/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18665,
+      "modified": "2026-10-22T15:43:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Tangail/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18775,
+      "modified": "2026-10-22T15:43:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Thakurgaon/part-00000-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18825,
+      "modified": "2026-10-22T15:43:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/public/daily_cases/district=Thakurgaon/part-00001-8003ee3a-3998-4e4b-a1e2-dce50513e681.c000.snappy.parquet",
+      "bytes": 18579,
+      "modified": "2026-10-22T15:43:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00000-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180593,
+      "modified": "2026-10-22T15:30:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00001-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182287,
+      "modified": "2026-10-22T15:30:04",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00002-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184477,
+      "modified": "2026-10-22T15:30:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00003-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183923,
+      "modified": "2026-10-22T15:30:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00004-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183904,
+      "modified": "2026-10-22T15:30:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00005-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182881,
+      "modified": "2026-10-22T15:30:05",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00006-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181133,
+      "modified": "2026-10-22T15:30:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00007-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182841,
+      "modified": "2026-10-22T15:30:06",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00008-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181761,
+      "modified": "2026-10-22T15:30:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00009-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181458,
+      "modified": "2026-10-22T15:30:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00010-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182816,
+      "modified": "2026-10-22T15:30:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00011-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182329,
+      "modified": "2026-10-22T15:30:07",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00012-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183244,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00013-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181941,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00014-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181756,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00015-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183462,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00016-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183111,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00017-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 179592,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00018-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182156,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00019-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184503,
+      "modified": "2026-10-22T15:30:08",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00020-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181535,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00021-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182716,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00022-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183487,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00023-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181872,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00024-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182418,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00025-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182447,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00026-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183275,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00027-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182868,
+      "modified": "2026-10-22T15:30:09",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00028-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180233,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00029-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181525,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00030-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 179852,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00031-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182860,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00032-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181971,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00033-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181662,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00034-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182420,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00035-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183087,
+      "modified": "2026-10-22T15:30:10",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00036-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181890,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00037-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182366,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00038-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184075,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00039-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181523,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00040-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180941,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00041-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182205,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00042-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181901,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00043-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180530,
+      "modified": "2026-10-22T15:30:11",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00044-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183239,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00045-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182413,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00046-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183397,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00047-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183568,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00048-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183534,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00049-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184627,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00050-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182365,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00051-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182953,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00052-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181590,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00053-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183069,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00054-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181899,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00055-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182809,
+      "modified": "2026-10-22T15:30:12",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00056-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182554,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00057-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183394,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00058-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182399,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00059-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182878,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00060-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180982,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00061-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181290,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00062-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182214,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00063-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181433,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00064-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183441,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00065-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183013,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00066-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184312,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00067-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181338,
+      "modified": "2026-10-22T15:30:13",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00068-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180647,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00069-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181168,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00070-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180586,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00071-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183152,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00072-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180355,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00073-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183351,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00074-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 185084,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00075-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183378,
+      "modified": "2026-10-22T15:30:14",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00076-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183130,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00077-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183102,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00078-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182018,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00079-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181551,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00080-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184074,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00081-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182581,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00082-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181065,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00083-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181349,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00084-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182946,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00085-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182896,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00086-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183338,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00087-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182602,
+      "modified": "2026-10-22T15:30:15",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00088-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181659,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00089-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181816,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00090-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182101,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00091-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181474,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00092-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182962,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00093-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182486,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00094-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182370,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00095-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183054,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00096-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182165,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00097-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183723,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00098-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181306,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00099-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181380,
+      "modified": "2026-10-22T15:30:16",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00100-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183376,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00101-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182519,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00102-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184622,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00103-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180401,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00104-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184968,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00105-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182388,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00106-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181818,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00107-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181805,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00108-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181635,
+      "modified": "2026-10-22T15:30:17",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00109-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183356,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00110-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182106,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00111-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181691,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00112-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183230,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00113-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182618,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00114-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181301,
+      "modified": "2026-10-22T15:30:18",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00115-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184971,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00116-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181446,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00117-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180670,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00118-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184064,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00119-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182280,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00120-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181502,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00121-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182793,
+      "modified": "2026-10-22T15:30:19",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00122-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181634,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00123-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182665,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00124-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183045,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00125-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181986,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00126-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182233,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00127-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182035,
+      "modified": "2026-10-22T15:30:20",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00128-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183789,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00129-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182429,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00130-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182263,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00131-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184582,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00132-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180593,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00133-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182997,
+      "modified": "2026-10-22T15:30:21",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00134-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182599,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00135-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181754,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00136-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183351,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00137-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182220,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00138-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180821,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00139-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182355,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00140-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184586,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00141-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183111,
+      "modified": "2026-10-22T15:30:22",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00142-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182403,
+      "modified": "2026-10-22T15:30:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00143-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182859,
+      "modified": "2026-10-22T15:30:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00144-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181648,
+      "modified": "2026-10-22T15:30:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00145-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180561,
+      "modified": "2026-10-22T15:30:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00146-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182117,
+      "modified": "2026-10-22T15:30:23",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00147-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181838,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00148-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183310,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00149-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182329,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00150-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181598,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00151-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182983,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00152-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181062,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00153-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180800,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00154-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183590,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00155-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183026,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00156-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183035,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00157-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181314,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00158-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183109,
+      "modified": "2026-10-22T15:30:24",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00159-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180881,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00160-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183567,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00161-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182349,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00162-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182346,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00163-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181639,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00164-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183896,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00165-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181681,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00166-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181086,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00167-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182882,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00168-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181536,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00169-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181140,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00170-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 185380,
+      "modified": "2026-10-22T15:30:25",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00171-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180731,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00172-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183295,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00173-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182611,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00174-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182781,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00175-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182502,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00176-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182532,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00177-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183865,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00178-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183033,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00179-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182255,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00180-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 179793,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00181-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180754,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00182-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180855,
+      "modified": "2026-10-22T15:30:26",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00183-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180979,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00184-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 179755,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00185-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182982,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00186-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182710,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00187-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184820,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00188-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182572,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00189-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183056,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00190-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183109,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00191-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183935,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00192-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 180214,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00193-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 184568,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00194-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181999,
+      "modified": "2026-10-22T15:30:27",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00195-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 181842,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00196-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182833,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00197-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182515,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00198-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 182735,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/encounters/part-00199-c51654b8-8834-4802-9b74-8f62957b8bf0-c000.snappy.parquet",
+      "bytes": 183666,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quality_report/part-00000-824be15f-d374-4f94-b350-8183f72a2ac0-c000.csv",
+      "bytes": 369,
+      "modified": "2026-10-22T15:30:42",
+      "type": ".csv"
+    },
+    {
+      "path": "data/silver/quarantine/part-00000-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7716,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00001-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8051,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00002-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7815,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00003-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7935,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00004-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8017,
+      "modified": "2026-10-22T15:30:28",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00005-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8175,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00006-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8170,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00007-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7997,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00008-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7947,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00009-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8408,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00010-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8008,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00011-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7899,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00012-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7962,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00013-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8119,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00014-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7878,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00015-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8025,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00016-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8218,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00017-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7999,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00018-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8102,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00019-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8066,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00020-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7906,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00021-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8001,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00022-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7958,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00023-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7867,
+      "modified": "2026-10-22T15:30:29",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00024-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7491,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00025-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7927,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00026-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8071,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00027-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7456,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00028-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7979,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00029-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8311,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00030-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7667,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00031-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8176,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00032-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7941,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00033-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7865,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00034-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8064,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00035-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7884,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00036-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7950,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00037-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7786,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00038-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8132,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00039-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8689,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00040-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7736,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00041-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7978,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00042-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8116,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00043-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7919,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00044-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8050,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00045-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7768,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00046-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7954,
+      "modified": "2026-10-22T15:30:30",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00047-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8064,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00048-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8165,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00049-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8031,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00050-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7892,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00051-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8062,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00052-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7514,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00053-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7756,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00054-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7797,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00055-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7865,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00056-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7909,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00057-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7738,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00058-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7561,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00059-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7667,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00060-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7648,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00061-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7676,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00062-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7709,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00063-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7922,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00064-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7900,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00065-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7744,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00066-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7410,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00067-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8047,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00068-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8046,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00069-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8038,
+      "modified": "2026-10-22T15:30:31",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00070-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7945,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00071-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7926,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00072-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7587,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00073-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7867,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00074-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8069,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00075-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8017,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00076-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7867,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00077-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7937,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00078-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7692,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00079-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7728,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00080-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7933,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00081-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7916,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00082-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7691,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00083-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7811,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00084-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7362,
+      "modified": "2026-10-22T15:30:32",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00085-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7897,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00086-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7902,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00087-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7976,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00088-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7852,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00089-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7862,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00090-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7967,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00091-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7981,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00092-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7959,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00093-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8237,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00094-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8234,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00095-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7908,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00096-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7868,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00097-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7851,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00098-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8071,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00099-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7852,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00100-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7537,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00101-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8041,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00102-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7757,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00103-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8151,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00104-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8214,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00105-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7975,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00106-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7438,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00107-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7842,
+      "modified": "2026-10-22T15:30:33",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00108-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8420,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00109-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8181,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00110-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8242,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00111-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7771,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00112-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7650,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00113-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8071,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00114-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8386,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00115-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8104,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00116-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8034,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00117-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7852,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00118-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7695,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00119-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7880,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00120-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7752,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00121-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7701,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00122-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7774,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00123-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8075,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00124-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8191,
+      "modified": "2026-10-22T15:30:34",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00125-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8153,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00126-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7889,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00127-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8293,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00128-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7731,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00129-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8107,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00130-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7881,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00131-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7632,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00132-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7632,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00133-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7874,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00134-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8245,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00135-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7929,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00136-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8306,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00137-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7559,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00138-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8049,
+      "modified": "2026-10-22T15:30:35",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00139-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7826,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00140-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7822,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00141-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7722,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00142-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8208,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00143-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8025,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00144-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7893,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00145-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7862,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00146-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7806,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00147-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8051,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00148-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7905,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00149-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7841,
+      "modified": "2026-10-22T15:30:36",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00150-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8295,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00151-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7661,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00152-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8180,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00153-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8032,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00154-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8064,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00155-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7602,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00156-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8068,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00157-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7814,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00158-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8186,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00159-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7996,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00160-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7783,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00161-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8207,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00162-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8169,
+      "modified": "2026-10-22T15:30:37",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00163-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8311,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00164-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8016,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00165-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7825,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00166-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7691,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00167-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7710,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00168-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7724,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00169-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7717,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00170-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7977,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00171-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7976,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00172-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7912,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00173-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7997,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00174-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7703,
+      "modified": "2026-10-22T15:30:38",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00175-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8045,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00176-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7742,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00177-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7791,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00178-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7896,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00179-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8078,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00180-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7660,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00181-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7911,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00182-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7893,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00183-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7652,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00184-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7780,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00185-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8023,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00186-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8064,
+      "modified": "2026-10-22T15:30:39",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00187-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7644,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00188-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7883,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00189-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7827,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00190-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7688,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00191-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8338,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00192-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8058,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00193-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7727,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00194-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7882,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00195-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8036,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00196-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 8049,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00197-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7741,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00198-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7992,
+      "modified": "2026-10-22T15:30:40",
+      "type": ".parquet"
+    },
+    {
+      "path": "data/silver/quarantine/part-00199-e408f4ae-8524-42da-b72c-d21604cfd068-c000.snappy.parquet",
+      "bytes": 7780,
+      "modified": "2026-10-22T15:30:41",
+      "type": ".parquet"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 3409,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "docs/DATA_DICTIONARY.md",
+      "bytes": 3610,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "docs/DATA_QUALITY_AND_PRIVACY.md",
+      "bytes": 3099,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "docs/EXPERIMENTS.md",
+      "bytes": 4799,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "docs/LIMITATIONS.md",
+      "bytes": 2688,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3912,
+      "modified": "2026-10-22T18:18:46",
+      "type": ".md"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 33,
+      "modified": "2026-10-22T12:54:24",
+      "type": ".txt"
+    },
+    {
+      "path": "scripts/check_spark.py",
+      "bytes": 1779,
+      "modified": "2026-10-22T13:09:39",
+      "type": ".py"
+    }
+  ]
+}

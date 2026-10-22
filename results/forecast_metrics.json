@@ -1,0 +1,23 @@
+{
+  "current_saved_output": {
+    "observations": 8960,
+    "mae": 2.0181919642857116,
+    "rmse": 2.6985711686077245,
+    "test_start": "2025-12-04",
+    "test_end": "2025-12-31",
+    "model": "7-day-average-fixed-28-day-horizon",
+    "provenance": "current_saved_evaluation_output",
+    "source": "data/gold/forecast_evaluation/overall/part-00000-278a3b6c-3c49-4ff5-b57b-7e60da834a78-c000.json"
+  },
+  "historical_documented_result": {
+    "observations": 8960,
+    "mae": 5.9894,
+    "rmse": 11.6049,
+    "test_start": "2025-12-04",
+    "test_end": "2025-12-31",
+    "model": "7-day-average-fixed-28-day-horizon",
+    "provenance": "historical_documented_not_independently_verified",
+    "source": "docs/EXPERIMENTS.md"
+  },
+  "warning": "Current evaluation metrics differ substantially from historical documented results. Current values are from the latest saved evaluation output; historical values are retained for provenance and have not been reconciled."
+}

@@ -1,0 +1,7 @@
+configuration,runtime_minutes,provenance,source,raw_log_available
+"AQE off, 200 shuffle partitions",4.91,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit
+"AQE on, 200 shuffle partitions",3.52,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit
+"AQE off, 64 shuffle partitions",4.12,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit
+"AQE on, 200 shuffle partitions, repeat",3.63,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit
+"AQE on, 64 shuffle partitions",3.55,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit
+"AQE on, 32 shuffle partitions",3.45,historical_documented,docs/EXPERIMENTS.md,not_found_in_audit

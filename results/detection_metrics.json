@@ -1,0 +1,26 @@
+{
+  "current_saved_output": {
+    "true_positives": 190,
+    "false_positives": 25336,
+    "false_negatives": 169,
+    "true_negatives": 554145,
+    "sensitivity_percent": 52.92,
+    "false_positive_rate_percent": 4.37,
+    "precision_percent": 0.74,
+    "evaluation_unit": "district-disease-day with at least 14 baseline days",
+    "provenance": "current_saved_evaluation_output",
+    "source": "data/gold/detection_evaluation/part-00000-d8fdf23b-e479-43f4-8978-0cdc8bfaf662-c000.json"
+  },
+  "historical_documented_result": {
+    "true_positives": 184,
+    "false_positives": 21186,
+    "false_negatives": 175,
+    "true_negatives": 558295,
+    "sensitivity_percent": 51.25,
+    "false_positive_rate_percent": 3.66,
+    "precision_percent": 0.86,
+    "provenance": "historical_documented_not_independently_verified",
+    "source": "docs/EXPERIMENTS.md"
+  },
+  "warning": "The current evaluation is based on the saved evaluation output. Historical documented metrics are preserved separately and have not been independently reconciled with the current run."
+}

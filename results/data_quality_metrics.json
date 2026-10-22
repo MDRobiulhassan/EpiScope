@@ -1,0 +1,11 @@
+{
+  "provenance": "historical_documented_not_recomputed",
+  "source": "docs/DATA_QUALITY_AND_PRIVACY.md",
+  "input_rows": 25000000,
+  "clean_rows": 24825210,
+  "quarantined_rows": 174790,
+  "clean_plus_quarantine": 25000000,
+  "reconciles": true,
+  "quarantine_rate_percent": 0.69916,
+  "note": "Counts are transcribed from documentation; this cell did not recount dataset rows."
+}
