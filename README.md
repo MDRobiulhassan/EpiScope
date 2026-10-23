@@ -1,5 +1,5 @@
 <!-- VIDEO_LINK: Replace with the final accessible video URL -->
-**Demo video:** TODO — add the final accessible video URL.
+**Demo video:** [https:youtube.com](https://www.youtube.com/)
 
 # EpiScope
 
@@ -33,6 +33,7 @@ EpiScope is a Big Data Analytics project for exploring disease-surveillance work
 | `serving/` | Public-data preparation and dashboard export |
 | `dashboard/` | D3.js v7 dashboard and JSON data |
 | `scripts/` | Spark diagnostics |
+| `tests/` | Automated tests for pipeline and analytics |
 | `docs/` | Technical documentation |
 | `AI_USAGE.md` | AI assistance disclosure |
 
@@ -84,15 +85,6 @@ These figures describe the recorded experiment, not a guarantee for every machin
 - [Experiments and evaluation](docs/EXPERIMENTS.md)
 - [Limitations](docs/LIMITATIONS.md)
 - [AI usage disclosure](AI_USAGE.md)
-
-## Before submission
-
-- Confirm the actual source schemas and quality rules against the implementation.
-- Rerun or verify the required pipeline stages and outputs.
-- Preserve benchmark logs and document the runtime environment.
-- Verify public-data suppression and dashboard loading.
-- Add the final academic report, policy brief, and demonstration link when ready.
-
 
 ## Prerequisites
 
