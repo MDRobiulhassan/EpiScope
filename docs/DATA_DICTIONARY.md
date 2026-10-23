@@ -1,75 +1,63 @@
-# Data Dictionary and Provenance
+# EpiScope Data Dictionary and Provenance
 
 ## Purpose
 
-This document describes the datasets used by EpiScope and explains how to verify their actual column names and types. The Python source and current Parquet schemas are authoritative; do not infer column names from dashboard labels.
+This document describes EpiScope's datasets, their roles in the processing pipeline, and their provenance. Exact field names and data types must match the current source code, Spark schemas, and exported JSON files.
 
-## Dataset inventory
+## Dataset Inventory
 
 | Dataset | Location | Purpose |
 |---|---|---|
-| Source encounters | Input configured for `generator/generate_encounters.py` | Synthetic encounter-level records |
-| Bronze encounters | `data/bronze/` | Ingested source records |
-| Silver encounters | `data/silver/` | Validated clean records; quarantined records are kept separately according to pipeline configuration |
-| Gold outputs | `data/gold/` | Aggregated analytical datasets |
-| Public case data | Serving output configured by `build_public_data.py` | Privacy-filtered case information |
+| Source encounters | `data/bronze/encounters/encounters.csv` | Synthetic encounter-level input records |
+| Bronze encounters | `data/bronze/encounters_parquet/` | Source records ingested and stored in Parquet format |
+| Silver encounters | `data/silver/encounters/` | Validated and cleaned encounter records |
+| Silver quarantine | `data/silver/` | Records that fail validation, stored separately according to the pipeline configuration |
+| Gold outputs | `data/gold/` | Aggregated analytical datasets used by downstream processing |
+| Public case data | `data/public/daily_cases/` | Case data prepared for public-facing use, with small-count suppression |
 | Dashboard cases | `dashboard/data/cases.json` | Case trends and related dashboard views |
-| Dashboard alerts | `dashboard/data/alerts.json` | Outbreak-detection output |
-| Dashboard forecasts | `dashboard/data/forecasts.json` | Forecast output |
-| Dashboard resources | `dashboard/data/resources.json` | Resource-allocation output |
-| Dashboard calendar | `dashboard/data/calendar.json` | Preparedness-calendar output |
+| Dashboard alerts | `dashboard/data/alerts.json` | Outbreak-detection alerts |
+| Dashboard forecasts | `dashboard/data/forecasts.json` | Forecast results |
+| Dashboard resources | `dashboard/data/resources.json` | Resource-allocation results |
+| Dashboard calendar | `dashboard/data/calendar.json` | Preparedness-calendar results |
 
-Actual output paths can differ if configured in the source code.
+The listed paths reflect the project's documented layout. The current source code determines the exact output paths and schemas.
 
-## Required field documentation
+## Field Definitions
 
-Before final submission, document every field in the encounter schema and every important Gold/dashboard schema using this table:
+The data dictionary should document the fields in the encounter schema and the important Gold and dashboard datasets.
 
 | Field | Data type | Meaning | Source or derivation | Validation / privacy |
 |---|---|---|---|---|
-| Use the exact field name from the schema | Exact Spark/JSON type | What the field represents | Source field or transformation | Rule, allowed values, or suppression behavior |
+| Exact field name from schema | Exact Spark or JSON type | Description of the field | Source field or transformation | Validation rule, allowed values, or suppression behavior |
 
-Include identifiers, event dates, disease/category fields, geographic fields, demographic fields, outcome/count fields, and any weather-related fields only when those fields actually exist in the schema.
+Field definitions must be based on the actual implementation. Document identifiers, dates, disease categories, geographic attributes, demographic attributes, outcomes, counts, and weather-related variables only when they exist in the relevant schema.
 
-## How to inspect Parquet schemas
+For dashboard JSON, document the published field names and types separately when they differ from the underlying Parquet schema.
 
-Run this in Colab after mounting Google Drive and ensuring the paths exist:
+## Data Provenance
 
-```python
-from pathlib import Path
-from pyspark.sql import SparkSession
+EpiScope uses synthetic encounter data and synthetic outbreak labels in its recorded experiments. These data support controlled testing and evaluation; they must not be presented as real patient records or actual public-health surveillance observations.
 
-ROOT = Path(
-    "/content/drive/MyDrive/University/8th Semester/BDA/episcope"
-)
+Weather-related fields must be identified as synthetic or derived unless their external source has been independently established.
 
-spark = (
-    SparkSession.builder
-    .appName("EpiScopeSchemaInspection")
-    .getOrCreate()
-)
+The provenance record should identify:
 
-for relative in ["data/bronze", "data/silver", "data/gold"]:
-    path = ROOT / relative
-    if not path.exists():
-        print(f"Not found: {path}")
-        continue
+- **Generation:** Generator configuration, scale factor, random seed, generation date, and input row count when available.
+- **Bronze processing:** Source input and ingestion transformations.
+- **Silver processing:** Validation rules, cleaning operations, quarantine criteria, and data-quality outputs.
+- **Gold processing:** Aggregations and derived analytical datasets.
+- **Analytics:** Transformations used to produce detection, forecast, resource-allocation, and preparedness-calendar outputs.
+- **Public serving:** Transformations and privacy controls applied before dashboard publication.
+- **Dashboard export:** The relationship between internal outputs and the exported JSON datasets.
 
-    print(f"\\n=== {relative} ===")
-    try:
-        df = spark.read.parquet(str(path))
-        df.printSchema()
-        print("Columns:", df.columns)
-    except Exception as exc:
-        print(f"Could not read as Parquet: {exc}")
-```
+## Schema Verification
 
-Some directories may contain CSV files or nested output folders instead of Parquet directly. Inspect the configured paths in the pipeline scripts if the read fails.
+Parquet schemas should be verified using Spark's schema inspection facilities. Dashboard JSON schemas should be checked against representative exported records and the dashboard code.
 
-For JSON, inspect representative records and types from each exported file. Do not expose sensitive records in documentation.
+If a dataset cannot be read from its documented path, consult the corresponding pipeline script to identify the configured input or output location and storage format. Do not infer field names or types from dashboard labels.
 
-## Data provenance
+## Privacy Considerations
 
-The encounter dataset and outbreak labels used in the recorded experiment are synthetic. The weather-related fields must also be described as synthetic or derived unless their origin is independently established. Do not imply that synthetic observations are sourced from weather stations, hospitals, or government surveillance systems.
+Public-facing datasets are separated from internal analytical outputs so privacy controls can be applied before publication. Small-count suppression is intended to prevent exact publication of low case counts. It does not, by itself, guarantee protection against indirect disclosure or re-identification.
 
-Record the generator configuration, scale factor, input row count, generation date, and relevant random seeds when available. Record transformations between Bronze, Silver, Gold, and public-serving outputs.
+Privacy checks should be repeated after changes to data transformations, suppression rules, or dashboard exports.
