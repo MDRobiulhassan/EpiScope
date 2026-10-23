@@ -16,9 +16,9 @@ def main():
         .appName("EpiScope-Gold-Aggregation")
         .master("local[*]")
         .config("spark.ui.enabled", "false")
-        .getOrCreate()
         .config("spark.sql.adaptive.enabled", "true")
         .config("spark.sql.shuffle.partitions", "32")
+        .getOrCreate()
     )
     spark.sparkContext.setLogLevel("ERROR")
 
