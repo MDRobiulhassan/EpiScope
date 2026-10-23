@@ -1,58 +1,82 @@
-# Data Quality and Privacy Controls
+# EpiScope Data Quality and Privacy Controls
 
-## Silver-layer validation
+## Silver-Layer Validation
 
-The Silver pipeline is implemented in `pipeline/silver.py`. It separates accepted clean records from quarantined records.
+The Silver pipeline, implemented in `pipeline/silver.py`, validates encounter records and separates accepted clean records from quarantined records.
 
-The recorded 25-million-row run produced:
+The recorded 25-million-row run produced the following results:
 
 | Measure | Result |
 |---|---:|
 | Input rows | 25,000,000 |
 | Clean rows | 24,825,210 |
 | Quarantined rows | 174,790 |
-| Quarantine rate | 0.69916% approximately |
+| Quarantine rate | Approximately 0.69916% |
 | Reconciliation | Clean + quarantined = input |
 
-The recorded run reconciled exactly. This does not, by itself, prove that every validation rule is correct.
+The counts reconcile exactly:
 
-## Quality-rule inventory
+\[
+24{,}825{,}210 + 174{,}790 = 25{,}000{,}000
+\]
 
-The assignment requires at least 12 data-quality rules. For submission, create a precise inventory directly from the implementation in `pipeline/silver.py`. Do not count multiple descriptions of the same rule as separate rules.
+These results demonstrate count reconciliation for the recorded run. They do not independently establish that every validation rule behaves correctly.
 
-Use this format:
+## Data-Quality Rules
 
-| ID | Rule | Field(s) | Failure behavior | Test/evidence |
-|---|---|---|---|---|
-| Q01 | Copy exact implemented rule | Actual field | Reject, quarantine, repair, or other implemented behavior | Test or recorded result |
-| Q02–Q12+ | Add each distinct implemented rule | Actual field(s) | Actual behavior | Evidence |
+The Silver pipeline is responsible for applying data-quality checks before records are passed to downstream processing. The implemented rules should be documented using their actual field names, conditions, and failure behavior.
 
-Verify at least the applicable categories: required values, type/format validity, date validity, permitted categories, numeric ranges, identifier consistency, duplicate handling, and cross-field constraints. These are categories to check, not claims that every one is already implemented.
+The rule inventory should cover the distinct checks implemented in the source code, including applicable validation categories such as:
 
-Document how rules are applied, whether a row can fail multiple rules, and whether the reported counts represent rows or individual rule violations.
+- Required values and null handling
+- Data-type and format validity
+- Date validity and permitted ranges
+- Allowed categorical values
+- Numeric constraints
+- Identifier consistency
+- Duplicate handling
+- Cross-field consistency
 
-## Privacy and public-data suppression
+These are validation categories, not a claim that every category is currently implemented. The final rule inventory must contain at least 12 distinct implemented rules to satisfy the assignment requirement.
 
-`serving/build_public_data.py` is responsible for preparing public-facing data. The recorded check of `dashboard/data/cases.json` found no exact published case counts between 1 and 4.
+For each rule, document its identifier, condition, affected fields, failure behavior, and supporting test or execution evidence. Clarify whether one record can fail multiple rules and whether quality metrics count rejected records, individual rule violations, or both.
 
-The intended policy is to suppress small counts from 1 through 4. Verify how suppression is represented in the JSON, whether suppressed values can be reconstructed from other fields or views, and whether the same rule is applied consistently across all public outputs.
+## Privacy and Public-Data Suppression
 
-A single small-count check is not a complete privacy audit. Review geographic and temporal combinations, linked dashboard views, totals, and repeated queries for possible disclosure.
+`serving/build_public_data.py` prepares public-facing case data before it is exported for dashboard use.
 
-## Provenance and data minimization
+The recorded check of `dashboard/data/cases.json` found no exact published case counts between 1 and 4. The intended suppression policy hides exact counts in this range.
 
-- Keep synthetic data clearly identified as synthetic.
-- Do not expose unnecessary record-level identifiers in public JSON.
-- Document which fields are retained, aggregated, suppressed, or excluded.
-- Separate internal analytical data from public-serving exports.
-- Do not claim legal or regulatory compliance based only on count suppression.
+Suppression behavior must remain consistent across public-facing outputs. A suppressed value should not be exposed through an alternative field or be trivially recoverable from linked views, totals, or other published values.
 
-## Revalidation checklist
+Small-count suppression reduces one form of disclosure risk, but it does not guarantee complete privacy. Geographic and temporal combinations, linked dashboard views, repeated queries, and aggregate totals can create additional disclosure risks.
 
-- [ ] Inventory at least 12 distinct implemented rules.
-- [ ] Verify clean and quarantine reconciliation.
-- [ ] Inspect nulls, invalid values, and duplicates as applicable.
-- [ ] Test small counts 1, 2, 3, and 4.
-- [ ] Test a count of 5 to verify the intended threshold boundary.
-- [ ] Search all public JSON outputs for unintended exact small counts.
-- [ ] Confirm dashboard changes do not bypass public-data preparation.
+## Provenance and Data Minimization
+
+EpiScope uses synthetic data in its recorded experiments. Synthetic records must remain clearly identified as synthetic and must not be represented as real patient or surveillance records.
+
+The public-serving layer should:
+
+- Exclude unnecessary record-level identifiers.
+- Retain only fields required for the intended public-facing purpose.
+- Apply aggregation and suppression before publication.
+- Keep internal analytical datasets separate from public dashboard exports.
+- Document transformations and privacy controls applied to published fields.
+
+Count suppression alone does not establish compliance with any legal or regulatory privacy framework.
+
+## Validation and Regression Testing
+
+Data-quality and privacy controls should be tested whenever validation logic, data transformations, or dashboard exports change.
+
+Important checks include:
+
+- Confirming that clean and quarantined row counts reconcile with the input.
+- Testing distinct implemented quality rules against valid and invalid examples.
+- Checking nulls, invalid values, and duplicates where applicable.
+- Testing suppression at counts of 1, 2, 3, and 4.
+- Testing the threshold boundary at a count of 5.
+- Searching all public JSON datasets for unintended exact small counts.
+- Confirming that dashboard changes do not bypass public-data preparation.
+
+Recorded results should be distinguished from tests that have not yet been executed. Passing a single boundary check is useful evidence, but it is not a complete data-quality or privacy audit.
