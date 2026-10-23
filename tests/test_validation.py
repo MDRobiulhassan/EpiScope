@@ -1,7 +1,11 @@
+import os
 import pytest
-from pathlib import Path
+import sys
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
+
+os.environ.setdefault("PYSPARK_PYTHON", sys.executable)
+os.environ.setdefault("PYSPARK_DRIVER_PYTHON", sys.executable)
 
 @pytest.fixture(scope="session")
 def spark():

@@ -9,6 +9,7 @@ in correct dependency order, verifying outputs at each step.
 import subprocess
 import sys
 import time
+import argparse
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -20,9 +21,12 @@ STAGES = [
     ("Gold Aggregation", [sys.executable, "pipeline/gold.py"]),
     ("Outbreak Detection", [sys.executable, "analytics/detection/detect_outbreaks.py"]),
     ("Outbreak Evaluation", [sys.executable, "analytics/detection/evaluate_detection.py"]),
+    ("Detection Threshold Evaluation", [sys.executable, "analytics/detection/evaluate_thresholds.py"]),
     ("Case Forecasting", [sys.executable, "analytics/forecast/forecast_cases.py"]),
     ("Forecast Evaluation", [sys.executable, "analytics/forecast/evaluate_forecasts.py"]),
+    ("Forecast Rolling Backtest", [sys.executable, "analytics/forecast/backtest_forecasts.py"]),
     ("Resource Allocation", [sys.executable, "analytics/optimise/allocate_resources.py"]),
+    ("Efficiency Equity Curve", [sys.executable, "analytics/optimise/equity_curve.py"]),
     ("Preparedness Calendar", [sys.executable, "analytics/calendar/preparedness_calendar.py"]),
     ("Build Public Data", [sys.executable, "serving/build_public_data.py"]),
     ("Export Dashboard Data", [sys.executable, "serving/export_dashboard_data.py"]),
@@ -43,10 +47,36 @@ def run_stage(name, command):
         sys.exit(res.returncode)
 
 def main():
+    parser = argparse.ArgumentParser(description="Run the EpiScope pipeline.")
+    parser.add_argument(
+        "--rows",
+        type=int,
+        default=10000,
+        help="Number of synthetic encounter rows to generate.",
+    )
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
+
+    if args.rows <= 0:
+        parser.error("--rows must be positive")
+
+    stages = list(STAGES)
+    stages[0] = (
+        "Encounter Generation",
+        [
+            sys.executable,
+            "generator/generate_encounters.py",
+            "--rows",
+            str(args.rows),
+            "--seed",
+            str(args.seed),
+        ],
+    )
+
     print("Starting complete EpiScope workflow pipeline...")
     total_start = time.perf_counter()
     
-    for name, command in STAGES:
+    for name, command in stages:
         run_stage(name, command)
         
     total_elapsed = time.perf_counter() - total_start

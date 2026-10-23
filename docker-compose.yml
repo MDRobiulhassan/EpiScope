@@ -9,7 +9,7 @@ services:
     working_dir: /opt/bitnami/spark/project
     command: >
       bash -c "pip install -r requirements.txt &&
-              python scripts/run_pipeline.py"
+      python scripts/run_pipeline.py --rows 10000"
     environment:
       - SPARK_MODE=master
 
@@ -21,4 +21,4 @@ services:
     working_dir: /app
     ports:
       - "8000:8000"
-    command: python -m http.server 8000\n
+    command: python -m http.server 8000

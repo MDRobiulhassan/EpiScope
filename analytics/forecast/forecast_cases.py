@@ -95,6 +95,10 @@ def main():
                 "moving_average",
                 F.avg("case_count").over(history_window),
             )
+            .withColumn(
+                "history_stddev",
+                F.coalesce(F.stddev_pop("case_count").over(history_window), F.lit(0.0)),
+            )
         )
 
         latest = (
@@ -115,6 +119,7 @@ def main():
                 F.coalesce(
                     F.col("moving_average"), F.lit(0.0)
                 ).alias("daily_forecast"),
+                F.col("history_stddev"),
             )
         )
 
@@ -137,6 +142,17 @@ def main():
                 ),
             )
             .withColumn(
+                "lower_80",
+                F.greatest(
+                    F.lit(0.0),
+                    F.round(F.col("daily_forecast") - 1.2816 * F.col("history_stddev"), 2),
+                ),
+            )
+            .withColumn(
+                "upper_80",
+                F.round(F.col("daily_forecast") + 1.2816 * F.col("history_stddev"), 2),
+            )
+            .withColumn(
                 "model",
                 F.lit("7-day-moving-average"),
             )
@@ -147,6 +163,8 @@ def main():
                 "forecast_date",
                 "forecast_day",
                 "forecast_cases",
+                "lower_80",
+                "upper_80",
                 "model",
             )
         )

@@ -1,3 +1,4 @@
 
 pyspark==3.5.5
 pytest==8.3.5
+pulp==2.9.0

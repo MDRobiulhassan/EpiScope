@@ -1,6 +1,8 @@
 <!-- Replace with the final accessible demonstration video URL -->
 **Demo video:** [Add final video URL]
 
+**Google Colab runner:** [scripts/EpiScope_Colab_Run.ipynb](scripts/EpiScope_Colab_Run.ipynb)
+
 # EpiScope: Public Health Surveillance and Preparedness Dashboard
 
 EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, Department of Computer Science and Engineering, Premier University, Chittagong, Spring 2026**. It demonstrates a large-scale data-processing workflow for disease surveillance, outbreak detection, case forecasting, resource planning, and public-facing visualization using Apache Spark, PySpark, Parquet, Python, and D3.js v7.
@@ -80,6 +82,8 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `docs/` | Architecture, data, experiment, and limitation documentation |
 | `requirements.txt` | Python dependency pins |
 | `AI_USAGE.md` | AI assistance disclosure |
+| `scripts/EpiScope_Colab_Run.ipynb` | Google Colab execution cells |
+| `docs/REQUIREMENT_TRACEABILITY.md` | Assignment ID mapping and handover checklist |
 
 ## Technology Stack
 

@@ -1,6 +1,7 @@
 
 from pathlib import Path
 
+import pulp
 from pyspark.sql import SparkSession, Window
 from pyspark.sql import functions as F
 
@@ -13,6 +14,7 @@ OUTPUT_PATH = PROJECT_ROOT / "data" / "gold" / "resource_allocations"
 TOTAL_RESOURCE_UNITS = 100
 MINIMUM_PER_DISTRICT = 1
 SEVERE_CASE_WEIGHT = 3.0
+UNIT_COST = 1.0
 
 
 def main():
@@ -42,8 +44,9 @@ def main():
             )
         )
 
-        district_count = demand.count()
-        if district_count == 0:
+        demand_rows = [row.asDict() for row in demand.collect()]
+        district_count = len(demand_rows)
+        if not demand_rows:
             raise ValueError("No forecast data available for allocation.")
 
         # This example assumes one minimum unit per district.
@@ -59,76 +62,69 @@ def main():
                 f"{district_count} districts."
             )
 
-        total_priority = demand.agg(
-            F.sum("priority_score").alias("total")
-        ).first()["total"] or 0.0
+        total_priority = sum(float(row["priority_score"] or 0.0) for row in demand_rows)
 
         if total_priority <= 0:
-            demand = demand.withColumn(
-                "priority_score", F.lit(1.0)
-            )
+            for row in demand_rows:
+                row["priority_score"] = 1.0
             total_priority = float(district_count)
 
-        # Allocate remaining units proportionally using the largest-remainder
-        # method so the final integer allocations sum to the available total.
-        allocation = (
-            demand
-            .withColumn(
-                "_exact_extra",
-                F.lit(float(available_after_minimum))
-                * F.col("priority_score")
-                / F.lit(float(total_priority)),
+        model = pulp.LpProblem("episcope_resource_allocation", pulp.LpMinimize)
+        allocation_variables = {
+            row["district"]: pulp.LpVariable(
+                f"allocation_{index}", lowBound=MINIMUM_PER_DISTRICT, cat="Integer"
             )
-            .withColumn(
-                "_floor_extra",
-                F.floor("_exact_extra").cast("int"),
+            for index, row in enumerate(demand_rows)
+        }
+        unmet_variables = {
+            row["district"]: pulp.LpVariable(
+                f"unmet_{index}", lowBound=0, cat="Continuous"
             )
-            .withColumn(
-                "_fraction",
-                F.col("_exact_extra") - F.col("_floor_extra"),
-            )
+            for index, row in enumerate(demand_rows)
+        }
+        model += pulp.lpSum(
+            float(row["priority_score"] or 0.0) * unmet_variables[row["district"]]
+            for row in demand_rows
         )
+        model += pulp.lpSum(allocation_variables.values()) <= TOTAL_RESOURCE_UNITS
+        for row in demand_rows:
+            district = row["district"]
+            demand_units = float(row["forecast_case_demand"] or 0.0)
+            model += unmet_variables[district] >= demand_units - allocation_variables[district]
+        if model.solve(pulp.PULP_CBC_CMD(msg=False)) != pulp.LpStatusOptimal:
+            raise RuntimeError("The resource allocation model did not solve optimally.")
 
-        allocated_floor = allocation.agg(
-            F.sum("_floor_extra").alias("total")
-        ).first()["total"] or 0
+        allocation_rows = []
+        for row in demand_rows:
+            district = row["district"]
+            allocated = int(round(allocation_variables[district].value() or 0))
+            proportional = MINIMUM_PER_DISTRICT + int(
+                round(
+                    available_after_minimum
+                    * float(row["priority_score"] or 0.0)
+                    / total_priority
+                )
+            )
+            allocation_rows.append(
+                (
+                    district,
+                    float(row["forecast_case_demand"] or 0.0),
+                    int(row["forecast_days"] or 0),
+                    float(row["priority_score"] or 0.0),
+                    allocated,
+                    proportional,
+                    max(0.0, float(row["forecast_case_demand"] or 0.0) - allocated),
+                    "linear-programme-cbc",
+                )
+            )
 
-        remaining_units = available_after_minimum - int(allocated_floor)
-
-        remainder_window = Window.orderBy(
-            F.desc("_fraction"), F.asc("district")
-        )
-
-        allocation = (
-            allocation
-            .withColumn(
-                "_remainder_rank",
-                F.row_number().over(remainder_window),
-            )
-            .withColumn(
-                "extra_unit",
-                F.when(
-                    F.col("_remainder_rank") <= remaining_units, 1
-                ).otherwise(0),
-            )
-            .withColumn(
-                "allocated_units",
-                F.lit(MINIMUM_PER_DISTRICT)
-                + F.col("_floor_extra")
-                + F.col("extra_unit"),
-            )
-            .withColumn(
-                "allocation_method",
-                F.lit("minimum-plus-proportional-largest-remainder"),
-            )
-            .select(
-                "district",
-                "forecast_case_demand",
-                "forecast_days",
-                "priority_score",
-                "allocated_units",
-                "allocation_method",
-            )
+        allocation = spark.createDataFrame(
+            allocation_rows,
+            [
+                "district", "forecast_case_demand", "forecast_days",
+                "priority_score", "allocated_units", "population_proportional_units",
+                "unmet_demand", "allocation_method",
+            ],
         )
 
         allocation.write.mode("overwrite").parquet(str(OUTPUT_PATH))

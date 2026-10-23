@@ -7,6 +7,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "data" / "bronze" / "encounters"
+FACILITY_OUTPUT = ROOT / "data" / "bronze" / "facilities.csv"
+GROUND_TRUTH_OUTPUT = ROOT / "data" / "bronze" / "ground_truth_outbreaks.csv"
 
 DISTRICTS = [
     "Bagerhat", "Bandarban", "Barguna", "Barishal", "Bhola",
@@ -33,6 +35,13 @@ DISEASES = [
     "Typhoid",
 ]
 SEVERITIES = ["mild", "moderate", "severe"]
+ICD10_CODES = {
+    "Dengue": "A90",
+    "Diarrhoea": "A09",
+    "Malaria": "B50",
+    "Respiratory Infection": "J11",
+    "Typhoid": "A01",
+}
 
 START_DATE = date(2021, 1, 1)
 END_DATE = date(2025, 12, 31)
@@ -103,20 +112,75 @@ def generate_record(encounter_id, rng, windows, active_keys):
     if rng.random() < 0.002:
         temperature = 99.9
 
+    delay_days = min(21, int(rng.expovariate(1 / 3.5)))
+    report_date = encounter_date + timedelta(days=delay_days)
+    severity = rng.choices(SEVERITIES, weights=severity_weights, k=1)[0]
+    admitted = severity == "severe" or rng.random() < 0.08
+    patient_id = f"PAT-{rng.randrange(1, max(100, int(0.72 * 25000000))):09d}"
+
     return {
         "encounter_id": encounter_id,
+        "patient_id": patient_id,
+        "facility_id": f"FAC-{rng.randrange(1, 601):04d}",
+        "onset_date": encounter_date.isoformat(),
+        "report_date": report_date.isoformat(),
         "encounter_date": encounter_date.isoformat(),
         "district": district,
         "disease": disease,
+        "icd10_code": ICD10_CODES[disease],
         "age": age,
-        "severity": rng.choices(
-            SEVERITIES, weights=severity_weights, k=1
-        )[0],
+        "sex": rng.choice(["F", "M", "X"]),
+        "severity": severity,
         "temperature_c": temperature,
         "rainfall_mm": rainfall,
+        "lab_confirmed": rng.random() < (0.65 if disease != "Respiratory Infection" else 0.35),
+        "admitted": admitted,
+        "outcome": "recovered" if rng.random() < 0.985 else "deceased",
         "synthetic_outbreak": is_outbreak,
         "source": "synthetic",
     }
+
+
+def write_facility_registry():
+    FACILITY_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with FACILITY_OUTPUT.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=["facility_id", "district", "facility_type", "beds", "icu_beds"],
+        )
+        writer.writeheader()
+        for facility_number in range(1, 601):
+            district = DISTRICTS[(facility_number - 1) % len(DISTRICTS)]
+            beds = 20 + (facility_number * 17) % 181
+            writer.writerow(
+                {
+                    "facility_id": f"FAC-{facility_number:04d}",
+                    "district": district,
+                    "facility_type": ["hospital", "clinic", "upazila_health_complex"][facility_number % 3],
+                    "beds": beds,
+                    "icu_beds": max(1, beds // 12),
+                }
+            )
+
+
+def write_ground_truth(windows):
+    GROUND_TRUTH_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with GROUND_TRUTH_OUTPUT.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=["district", "disease", "start_date", "end_date", "outbreak_type"],
+        )
+        writer.writeheader()
+        for index, (district, disease, start, end) in enumerate(windows):
+            writer.writerow(
+                {
+                    "district": district,
+                    "disease": disease,
+                    "start_date": start.isoformat(),
+                    "end_date": end.isoformat(),
+                    "outbreak_type": "slow_growth" if index == 0 else "seasonal_spike",
+                }
+            )
 
 
 def main():
@@ -139,16 +203,28 @@ def main():
 
     fields = [
         "encounter_id",
+        "patient_id",
+        "facility_id",
+        "onset_date",
+        "report_date",
         "encounter_date",
         "district",
         "disease",
+        "icd10_code",
         "age",
+        "sex",
         "severity",
         "temperature_c",
         "rainfall_mm",
+        "lab_confirmed",
+        "admitted",
+        "outcome",
         "synthetic_outbreak",
         "source",
     ]
+
+    write_facility_registry()
+    write_ground_truth(windows)
 
     with output_file.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fields)
@@ -158,9 +234,14 @@ def main():
             end_id = min(start_id + args.chunk_size, total_rows + 1)
 
             for encounter_id in range(start_id, end_id):
+                generated_id = (
+                    rng.randint(1, encounter_id - 1)
+                    if encounter_id > 1 and rng.random() < 0.02
+                    else encounter_id
+                )
                 writer.writerow(
                     generate_record(
-                        encounter_id, rng, windows, active_keys
+                        generated_id, rng, windows, active_keys
                     )
                 )
 
@@ -169,6 +250,8 @@ def main():
     print(f"Districts: {len(DISTRICTS)}")
     print(f"Rows: {total_rows:,}")
     print(f"CSV: {output_file}")
+    print(f"Facilities: {FACILITY_OUTPUT}")
+    print(f"Ground truth: {GROUND_TRUTH_OUTPUT}")
 
 
 if __name__ == "__main__":

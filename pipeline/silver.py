@@ -1,5 +1,6 @@
 
 from pathlib import Path
+import os
 import shutil
 
 from pyspark import StorageLevel
@@ -14,6 +15,7 @@ from pyspark.sql import functions as F
 ROOT = Path(__file__).resolve().parents[1]
 
 INPUT_PATH = ROOT / "data" / "bronze" / "encounters_parquet"
+FACILITY_PATH = ROOT / "data" / "bronze" / "facilities.csv"
 CLEAN_PATH = ROOT / "data" / "silver" / "encounters"
 QUARANTINE_PATH = ROOT / "data" / "silver" / "quarantine"
 REPORT_PATH = ROOT / "data" / "silver" / "quality_report"
@@ -46,6 +48,9 @@ RULES = [
     ("DQ10", "Duplicate encounter ID"),
     ("DQ11", "Non-positive encounter ID"),
     ("DQ12", "Missing disease or severity"),
+    ("DQ13", "Onset date after report date"),
+    ("DQ14", "Invalid disease code"),
+    ("DQ15", "Unknown facility ID"),
 ]
 
 
@@ -141,9 +146,14 @@ def main():
 
         required_columns = {
             "encounter_id",
+            "patient_id",
+            "facility_id",
+            "onset_date",
+            "report_date",
             "encounter_date",
             "district",
             "disease",
+            "icd10_code",
             "age",
             "severity",
             "temperature_c",
@@ -160,12 +170,42 @@ def main():
                 f"{sorted(missing)}"
             )
 
+        if not FACILITY_PATH.exists():
+            raise FileNotFoundError(f"Facility registry not found: {FACILITY_PATH}")
+
+        facility_ids = [
+            row["facility_id"]
+            for row in spark.read.option("header", True).csv(str(FACILITY_PATH)).select("facility_id").collect()
+        ]
+
+        hash_salt = os.environ.get("EPISCOPE_HASH_SALT")
+        if not hash_salt:
+            raise RuntimeError(
+                "EPISCOPE_HASH_SALT must be supplied outside the repository "
+                "before Silver processing."
+            )
+
         # 2. Normalize and cast columns.
         df = (
             raw
             .withColumn(
                 "encounter_id",
                 F.col("encounter_id").cast("long"),
+            )
+            .withColumn(
+                "patient_id_hash",
+                F.sha2(
+                    F.concat(F.lit(hash_salt), F.col("patient_id").cast("string")),
+                    256,
+                ),
+            )
+            .withColumn(
+                "onset_date",
+                F.to_date(F.col("onset_date").cast("string")),
+            )
+            .withColumn(
+                "report_date",
+                F.to_date(F.col("report_date").cast("string")),
             )
             .withColumn(
                 "encounter_date",
@@ -202,6 +242,10 @@ def main():
             .withColumn(
                 "source",
                 F.trim(F.col("source").cast("string")),
+            )
+            .withColumn(
+                "icd10_code",
+                F.upper(F.trim(F.col("icd10_code").cast("string"))),
             )
         )
 
@@ -271,6 +315,24 @@ def main():
             # DQ12: Missing disease or severity
             F.col("disease").isNull()
             | F.col("severity").isNull(),
+
+            # DQ13: Onset cannot occur after reporting.
+            F.col("onset_date").isNull()
+            | F.col("report_date").isNull()
+            | (F.col("onset_date") > F.col("report_date")),
+
+            # DQ14: Disease and ICD-10 code must agree.
+            ~(
+                ((F.col("disease") == "Dengue") & (F.col("icd10_code").isin("A90", "A91")))
+                | ((F.col("disease") == "Diarrhoea") & (F.col("icd10_code").isin("A00", "A01", "A09")))
+                | ((F.col("disease") == "Malaria") & F.col("icd10_code").rlike(r"^B5[0-4]$"))
+                | ((F.col("disease") == "Respiratory Infection") & F.col("icd10_code").isin("J10", "J11"))
+                | ((F.col("disease") == "Typhoid") & F.col("icd10_code").isin("A01"))
+            ),
+
+            # DQ15: Facility must exist in the registry.
+            F.col("facility_id").isNull()
+            | (~F.col("facility_id").isin(facility_ids)),
         ]
 
         # 5. Build the quality-error array.
@@ -305,7 +367,7 @@ def main():
         clean = (
             checked
             .filter(F.col("_is_valid"))
-            .drop("_id_count", "_quality_errors", "_is_valid")
+            .drop("_id_count", "_quality_errors", "_is_valid", "patient_id")
             .persist(StorageLevel.MEMORY_AND_DISK)
         )
 

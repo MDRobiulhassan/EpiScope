@@ -10,6 +10,9 @@ const files = {
 const tooltip = d3.select("#tooltip");
 const districtFilter = d3.select("#district-filter");
 const diseaseFilter = d3.select("#disease-filter");
+const budgetSlider = d3.select("#budget-slider");
+const thresholdSlider = d3.select("#threshold-slider");
+const equitySlider = d3.select("#equity-slider");
 
 let data = {};
 
@@ -47,6 +50,9 @@ async function loadData() {
 
   districtFilter.on("change", render);
   diseaseFilter.on("change", render);
+  budgetSlider.on("input", render);
+  thresholdSlider.on("input", render);
+  equitySlider.on("input", render);
 
   d3.select("#status").text(
     `Loaded ${data.cases.length.toLocaleString()} public daily records.`
@@ -92,7 +98,9 @@ function drawLineChart(container, rows, dateKey, valueKey, label) {
   const parsed = rows
     .map(d => ({
       date: new Date(d[dateKey]),
-      value: numeric(d[valueKey])
+      value: numeric(d[valueKey]),
+      lower: numeric(d.lower_80),
+      upper: numeric(d.upper_80)
     }))
     .filter(d => !Number.isNaN(+d.date) && d.value !== null)
     .sort((a, b) => a.date - b.date);
@@ -142,6 +150,22 @@ function drawLineChart(container, rows, dateKey, valueKey, label) {
     .attr("d", d3.line()
       .x(d => x(d.date))
       .y(d => y(d.value)));
+
+  const intervalRows = parsed.filter(d => d.lower !== null && d.upper !== null);
+  if (intervalRows.length) {
+    svg.append("path")
+      .datum(intervalRows)
+      .attr("fill", "none")
+      .attr("stroke", "#c45a3c")
+      .attr("stroke-dasharray", "5 4")
+      .attr("d", d3.line().x(d => x(d.date)).y(d => y(d.lower)));
+    svg.append("path")
+      .datum(intervalRows)
+      .attr("fill", "none")
+      .attr("stroke", "#c45a3c")
+      .attr("stroke-dasharray", "5 4")
+      .attr("d", d3.line().x(d => x(d.date)).y(d => y(d.upper)));
+  }
 
   svg.selectAll("circle")
     .data(parsed)
@@ -227,11 +251,15 @@ function drawDistrictChart(rows) {
 function drawAlerts(rows) {
   clear("#alerts-table");
 
+  const threshold = +thresholdSlider.property("value");
   const candidates = rows.filter(d =>
     d.is_outbreak_alert === true ||
     d.is_outbreak_alert === 1 ||
     d.is_outbreak_alert === "true"
-  );
+  ).filter(d => {
+    const score = numeric(d.alert_score);
+    return score === null || score >= threshold;
+  });
 
   const table = d3.select("#alerts-table").append("table");
   const columns = ["encounter_date", "district", "disease", "case_count", "baseline_mean"];
@@ -278,13 +306,25 @@ function drawResources(rows) {
     return;
   }
 
-  const filteredRows = rows.filter(d =>
+  const budget = +budgetSlider.property("value");
+  const equityFloor = +equitySlider.property("value");
+  d3.select("#budget-value").text(budget);
+  d3.select("#threshold-value").text(thresholdSlider.property("value"));
+  d3.select("#equity-value").text(equityFloor.toFixed(2));
+  const totalDemand = d3.sum(rows, d => numeric(d.forecast_case_demand) || 0) || 1;
+  const filteredRows = rows.map(d => ({
+    ...d,
+    allocated_units: Math.max(
+      equityFloor * budget / Math.max(rows.length, 1),
+      budget * (numeric(d.forecast_case_demand) || 0) / totalDemand,
+    ),
+  })).filter(d =>
     districtFilter.property("value") === "ALL" ||
     d[districtKey] === districtFilter.property("value")
   );
 
   const top = filteredRows
-    .map(d => ({ district: d[districtKey], value: numeric(d[valueKey]) }))
+    .map(d => ({ district: d[districtKey], value: numeric(d.allocated_units) || numeric(d[valueKey]) }))
     .filter(d => d.value !== null)
     .sort((a, b) => b.value - a.value)
     .slice(0, 20);

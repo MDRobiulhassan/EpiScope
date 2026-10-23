@@ -67,12 +67,21 @@ def main():
     # 1. Privacy-protected daily cases
     cases = spark.read.parquet(str(PUBLIC / "daily_cases"))
 
-    cases = cases.select(
-        F.col("encounter_date").cast("string").alias("date"),
-        "district",
-        "disease",
-        "published_case_count",
-        "suppressed",
+    cases = (
+        cases
+        .withColumn("week_start", F.date_trunc("week", "encounter_date").cast("date"))
+        .groupBy("week_start", "district", "disease")
+        .agg(
+            F.sum("published_case_count").cast("long").alias("published_case_count"),
+            F.max(F.col("suppressed").cast("int")).cast("boolean").alias("suppressed"),
+        )
+        .select(
+            F.col("week_start").cast("string").alias("date"),
+            "district",
+            "disease",
+            "published_case_count",
+            "suppressed",
+        )
     )
 
     export_json(cases, "cases")
@@ -139,6 +148,12 @@ def main():
         "district",
         "disease",
         F.col(value_col).cast("double").alias("forecast_cases"),
+        F.col("lower_80").cast("double").alias("lower_80")
+        if "lower_80" in forecast_columns
+        else F.lit(None).cast("double").alias("lower_80"),
+        F.col("upper_80").cast("double").alias("upper_80")
+        if "upper_80" in forecast_columns
+        else F.lit(None).cast("double").alias("upper_80"),
     )
 
     export_json(forecasts, "forecasts")
