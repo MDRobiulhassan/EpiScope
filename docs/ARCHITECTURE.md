@@ -2,15 +2,15 @@
 
 ## Overview
 
-EpiScope separates data preparation, analytics, and dashboard serving into distinct stages. Apache Spark handles large-scale transformations, Parquet stores processed data, and D3.js v7 renders the exported dashboard datasets.
+EpiScope separates data preparation, analytics, and dashboard serving into distinct stages. Apache Spark processes encounter data, Parquet stores intermediate analytical datasets, and D3.js v7 renders the exported JSON datasets in the dashboard.
 
-## Logical data flow
+## Logical Data Flow
 
 ```text
 Synthetic encounter generator / input data
                     |
                     v
-              Bronze layer
+             Bronze ingestion
                     |
                     v
        Silver validation and cleaning
@@ -19,16 +19,18 @@ Synthetic encounter generator / input data
              |
              v
              Gold
+       Aggregated data
              |
        +-----+-------------------+
        |             |           |
        v             v           v
-  Detection      Forecasts    Aggregates
+  Detection      Forecasting   Other
+                               analytics
        |             |           |
        +-------------+-----------+
                      |
-          Resource allocation
-          Preparedness calendar
+        Resource allocation
+        Preparedness calendar
                      |
                      v
          Public-data preparation
@@ -41,45 +43,51 @@ Synthetic encounter generator / input data
              D3.js v7 dashboard
 ```
 
-This diagram describes the intended logical flow. Verify exact dependencies and output paths against the current scripts before changing the implementation.
+The diagram represents the overall processing stages. Individual analytics may consume different datasets, and their exact dependencies are determined by the implementation.
 
 ## Components
 
-### Data generation
-`generator/generate_encounters.py` produces synthetic encounter records for scalable experiments.
+### Data Generation
 
-### Bronze
-`pipeline/bronze.py` ingests the source data into the initial processing layer.
+`generator/generate_encounters.py` generates synthetic encounter records for pipeline testing and scalable experiments.
 
-### Silver
-`pipeline/silver.py` validates records, separates clean and quarantined records, and prepares data for downstream processing.
+### Bronze Layer
 
-### Gold
-`pipeline/gold.py` creates aggregated data for analytics and serving.
+`pipeline/bronze.py` ingests the generated encounter CSV and stores the initial dataset in Parquet format.
+
+### Silver Layer
+
+`pipeline/silver.py` validates encounter records, separates clean records from quarantined records, and produces data-quality outputs for downstream processing.
+
+### Gold Layer
+
+`pipeline/gold.py` creates aggregated analytical datasets from the cleaned encounter data.
 
 ### Analytics
-- `analytics/detection/detect_outbreaks.py`: outbreak-detection prototype.
-- `analytics/detection/evaluate_detection.py`: detection evaluation.
-- `analytics/forecast/forecast_cases.py`: baseline forecasting.
-- `analytics/forecast/evaluate_forecasts.py`: forecast evaluation.
-- `analytics/optimise/allocate_resources.py`: resource-allocation logic.
-- `analytics/calendar/preparedness_calendar.py`: preparedness calendar generation.
 
-### Serving and visualization
-- `serving/build_public_data.py`: prepares public-facing data.
-- `serving/export_dashboard_data.py`: exports dashboard datasets.
-- `dashboard/index.html`: dashboard page.
-- `dashboard/app.js`: D3 visualization and interaction logic.
-- `dashboard/data/`: exported JSON datasets.
+- `analytics/detection/detect_outbreaks.py`: implements the outbreak-detection prototype.
+- `analytics/detection/evaluate_detection.py`: evaluates outbreak-detection performance.
+- `analytics/forecast/forecast_cases.py`: generates baseline case forecasts.
+- `analytics/forecast/evaluate_forecasts.py`: evaluates forecast performance.
+- `analytics/optimise/allocate_resources.py`: implements resource-allocation logic.
+- `analytics/calendar/preparedness_calendar.py`: generates the preparedness calendar.
 
-## Storage and privacy
+### Serving and Visualization
 
-Processed analytical data is stored in Parquet. Dashboard datasets are JSON. Public-facing outputs must be treated separately from internal analytical outputs so privacy controls can be applied before data is exposed.
+- `serving/build_public_data.py`: prepares public-facing data and applies small-count suppression.
+- `serving/export_dashboard_data.py`: exports datasets for dashboard consumption.
+- `dashboard/index.html`: defines the dashboard page.
+- `dashboard/app.js`: implements D3.js visualizations and interactions.
+- `dashboard/data/`: contains the exported JSON datasets used by the dashboard.
 
-The recorded public-data check verified that published case counts from 1 through 4 were not exposed as exact counts in the tested `cases.json`. This check should be repeated after every export change.
+## Storage and Privacy
 
-## Execution environment
+Intermediate analytical datasets are stored in Parquet format, while dashboard datasets are exported as JSON. Public-facing data is prepared separately from internal analytical outputs so that privacy controls can be applied before publication.
 
-The recorded experiments used a Google Colab environment with Spark running in local mode. Exact runtime depends on available CPU, memory, storage, Spark configuration, and data layout.
+Small-count suppression is intended to prevent exact publication of low case counts. Its effectiveness depends on the implementation and the possibility of indirect disclosure; suppression of individual counts alone does not guarantee complete protection against re-identification.
 
-For implementation-specific paths, arguments, and schemas, consult the Python source files. This document intentionally avoids assuming that all scripts accept the same command-line arguments.
+## Execution Environment
+
+The recorded experiments used Google Colab with Apache Spark running in local mode. Execution time and resource requirements depend on the available CPU, memory, storage, Spark configuration, and dataset size.
+
+Implementation-specific paths, input schemas, output locations, and execution details are defined in the corresponding Python source files. See `docs/EXPERIMENTS.md` for performance measurements and `docs/LIMITATIONS.md` for known limitations.
