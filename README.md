@@ -1,109 +1,160 @@
-<!-- VIDEO_LINK: Replace with the final accessible video URL -->
-**Demo video:** [https:youtube.com](https://www.youtube.com/)
+<!-- Replace with the final accessible demonstration video URL -->
+**Demo video:** [Add final video URL]
 
-# EpiScope
+# EpiScope: Public Health Surveillance and Preparedness Dashboard
 
-EpiScope is a Big Data Analytics project for exploring disease-surveillance workflows using Apache Spark, Parquet, and a D3.js v7 dashboard.
+EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, Department of Computer Science and Engineering, Premier University, Chittagong, Spring 2026**. It demonstrates a large-scale data-processing workflow for disease surveillance, outbreak detection, case forecasting, resource planning, and public-facing visualization using Apache Spark, PySpark, Parquet, Python, and D3.js v7.
 
-## Project capabilities
+**Repository:** [mdrobiulhassan/EpiScore](https://github.com/mdrobiulhassan/EpiScore)
 
-- Generate synthetic encounter data at large scale.
-- Process data through Bronze, Silver, and Gold layers.
-- Validate records and quarantine invalid data.
-- Aggregate disease and geographic indicators.
-- Prototype outbreak detection and short-term case forecasting.
-- Produce resource-allocation recommendations and a preparedness calendar.
-- Export public-facing dashboard data with small-count suppression.
-- Evaluate analytical outputs and benchmark Spark execution.
+**Important limitation:** Encounter records and injected outbreak labels are synthetic. The analytical results are experimental and do not establish effectiveness in real-world public-health surveillance. Weather-related fields must not be described as real weather-station observations unless independently verified.
 
-**Important:** Encounter data and outbreak labels are synthetic. Weather-related fields must not be described as real observations unless independently verified. The analytical outputs are prototypes, not validated public-health predictions.
+## Project Features
 
-## Repository structure
+- Generate synthetic encounter records for large-scale processing.
+- Process encounter data through Bronze, Silver, and Gold layers.
+- Validate and clean records and quarantine invalid data.
+- Aggregate surveillance indicators for downstream analytics.
+- Generate and evaluate outbreak-detection signals against synthetic ground truth.
+- Generate and evaluate short-term case forecasts.
+- Produce resource-allocation and preparedness-calendar outputs.
+- Apply small-count suppression to public-facing case data.
+- Export JSON datasets for an interactive D3.js dashboard.
+- Measure pipeline runtime and evaluate Spark configuration performance.
+
+## Architecture and Data Flow
+
+```text
+Synthetic Encounter Generation
+             |
+             v
+      Bronze Ingestion
+             |
+             v
+   Silver Validation and Cleaning
+        |             |
+        v             v
+   Clean Records   Quarantine
+        |
+        v
+    Gold Aggregation
+        |
+        +-------------------------+
+        |            |            |
+        v            v            v
+    Detection    Forecasting   Other Analytics
+        |            |            |
+        +------------+------------+
+                     |
+                     v
+          Resource and Calendar Outputs
+                     |
+                     v
+       Public Data and Small-Count Suppression
+                     |
+                     v
+             Dashboard JSON Export
+                     |
+                     v
+             D3.js v7 Dashboard
+```
+
+The diagram summarizes the overall workflow. Individual scripts may have additional input dependencies; consult their implementations for exact execution order.
+
+## Repository Structure
 
 | Path | Purpose |
 |---|---|
 | `generator/` | Synthetic encounter generation |
-| `pipeline/bronze.py` | Bronze ingestion |
-| `pipeline/silver.py` | Data validation, cleaning, and quarantine |
-| `pipeline/gold.py` | Aggregated analytical data |
+| `pipeline/bronze.py` | Bronze-layer ingestion |
+| `pipeline/silver.py` | Validation, cleaning, and quarantine |
+| `pipeline/gold.py` | Gold-layer aggregation |
 | `analytics/detection/` | Outbreak detection and evaluation |
 | `analytics/forecast/` | Forecast generation and evaluation |
 | `analytics/optimise/` | Resource allocation |
-| `analytics/calendar/` | Preparedness calendar |
+| `analytics/calendar/` | Preparedness-calendar generation |
 | `serving/` | Public-data preparation and dashboard export |
-| `dashboard/` | D3.js v7 dashboard and JSON data |
-| `scripts/` | Spark diagnostics |
-| `tests/` | Automated tests for pipeline and analytics |
-| `docs/` | Technical documentation |
+| `dashboard/` | D3.js dashboard and exported JSON datasets |
+| `scripts/` | Spark diagnostics and utilities |
+| `tests/` | Automated tests |
+| `docs/` | Architecture, data, experiment, and limitation documentation |
+| `requirements.txt` | Python dependency pins |
 | `AI_USAGE.md` | AI assistance disclosure |
 
-## Processing workflow
+## Technology Stack
 
-1. Generate or provide the input encounter dataset.
-2. Run Bronze ingestion.
-3. Run Silver validation and cleaning.
-4. Run Gold aggregation.
-5. Run outbreak detection and its evaluation.
-6. Run forecast generation and its evaluation.
-7. Run resource allocation and preparedness-calendar generation.
-8. Build privacy-filtered public data.
-9. Export dashboard JSON files.
-10. Open the dashboard using a local HTTP server or the configured hosting environment.
+- **Python and PySpark:** Data generation, processing, analytics, and evaluation.
+- **Apache Spark:** Distributed data-processing framework used in local-mode experiments.
+- **Parquet:** Columnar storage for processed datasets.
+- **D3.js v7:** Interactive dashboard visualizations.
+- **GitHub Pages:** Hosting for the static dashboard.
+- **pytest:** Automated testing.
 
-Check each script's arguments and path configuration before running it. Do not assume that running a script from a different working directory will resolve relative paths correctly. Run the pipeline stages in dependency order.
+## Recorded Full-Scale Experiment
 
-## Dashboard
+The recorded experiment processed **25,000,000 input rows**. The Silver-layer results reconciled as follows:
 
-The dashboard is in `dashboard/`, with `index.html`, `app.js`, and JSON files under `dashboard/data/`.
+| Metric | Recorded result |
+|---|---:|
+| Input rows | 25,000,000 |
+| Clean rows | 24,825,210 |
+| Quarantined rows | 174,790 |
+| Quarantine rate | 0.69916% |
 
-The expected exported datasets are:
-- `cases.json`
-- `alerts.json`
-- `forecasts.json`
-- `resources.json`
-- `calendar.json`
+The recorded pipeline and evaluation stages took approximately **27.40 minutes**, excluding encounter generation, which took approximately **7.17 minutes**.
 
-Serve the directory over HTTP when required by the browser. Verify that all JSON requests succeed and that all dashboard views render after regenerating data.
+The measurements were collected in a constrained research environment using Spark local mode. Runtime will vary with hardware, memory, storage, Spark configuration, and workload. Refer to [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the individual stage timings, optimization experiments, and evaluation caveats.
 
-## Reproducibility and performance
+## Detection Evaluation
 
-The recorded 25-million-input experiment completed the measured pipeline and evaluation stages in approximately 27.4 minutes, excluding encounter generation. See `docs/EXPERIMENTS.md` for stage timings and benchmark caveats.
+The latest recorded detection evaluation reported:
 
-The recorded Silver validation result was:
-- Input rows: 25,000,000
-- Clean rows: 24,825,210
-- Quarantined rows: 174,790
-- Quarantine rate: approximately 0.699%
+| Metric | Result |
+|---|---:|
+| True positives | 190 |
+| False positives | 25,336 |
+| False negatives | 169 |
+| True negatives | 554,145 |
+| Sensitivity | 52.92% |
+| False-positive rate | 4.37% |
+| Precision | 0.74% |
 
-These figures describe the recorded experiment, not a guarantee for every machine or execution.
+The evaluation unit was district–disease–day, with at least 14 baseline days required.
 
-## Documentation
+The low precision indicates that many generated alerts were false positives relative to the synthetic evaluation labels. These results should be interpreted as prototype performance, not evidence of operational readiness.
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Data dictionary](docs/DATA_DICTIONARY.md)
-- [Data quality and privacy](docs/DATA_QUALITY_AND_PRIVACY.md)
-- [Experiments and evaluation](docs/EXPERIMENTS.md)
-- [Limitations](docs/LIMITATIONS.md)
-- [AI usage disclosure](AI_USAGE.md)
+## Forecast Evaluation
 
-## Prerequisites
+The latest recorded forecast evaluation reported:
 
-- Python version: verify against the pinned dependencies before release.
-- Java version: verify compatibility with the installed PySpark version.
-- Git.
-- A machine with sufficient memory and disk space for the selected dataset scale.
+| Metric | Result |
+|---|---:|
+| Evaluation observations | 8,960 |
+| Mean absolute error (MAE) | 2.0182 |
+| Root mean squared error (RMSE) | 2.6986 |
+| Test period | December 4–31, 2025 |
+| Forecast model | Seven-day-average fixed 28-day horizon |
 
-## Local run
+These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naïve baseline or validate performance on real-world outbreaks.
 
-The clean-clone, one-command pipeline runner is not yet verified.
-Do not treat the following as the final ENG-1 command until it has
-been implemented and tested:
+## Automated Tests
 
-```bash
-python scripts/run_pipeline.py
+The recorded test run for `tests/test_validation.py` completed successfully:
+
+```text
+Platform: Linux
+Python: 3.13.16
+pytest: 8.4.2
+
+tests/test_validation.py
+2 passed
 ```
 
-## Run the dashboard locally
+This confirms that the two tests in that file passed in the reported environment. It does not establish that every test, pipeline stage, or end-to-end execution path has been verified.
+
+The earlier dependency specification listed `pytest==8.3.5`, while this test run used pytest 8.4.2. The final environment should be checked against `requirements.txt` before release.
+
+## Run the Dashboard Locally
 
 From the repository root, run:
 
@@ -111,32 +162,59 @@ From the repository root, run:
 python -m http.server 8000 --directory dashboard
 ```
 
-Then open http://localhost:8000 in a browser. This serves the dashboard
-and its existing JSON files; it does not regenerate the data.
+Then open [http://localhost:8000](http://localhost:8000).
 
-## Hidden test drop
+This serves the existing dashboard and JSON files. It does not regenerate encounter data, rerun analytics, or refresh the exported datasets.
 
-1. Place instructor-provided test inputs in the location specified by
-   the instructor, without committing private test data.
-2. Use the documented pipeline runner with the instructor's input path.
-3. Check the generated quality report, quarantine output, analytics,
-   and dashboard exports.
-4. Record the command and results. Replace these generic steps with
-   the instructor's exact hidden-test interface when it is provided.
+The hosted dashboard is available at:
 
-## Requirement traceability
+[https://mdrobiulhassan.github.io/EpiScore/dashboard/](https://mdrobiulhassan.github.io/EpiScore/dashboard/)
 
-| Requirement ID | Implementation location | Report section |
-|---|---|---|
-| ING-1 to ING-3 | `generator/`, `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold.py` | Data and architecture |
-| DQ-1 to DQ-3 | `pipeline/silver.py`, `data/silver/quality_report/` | Data quality |
-| AN-1 to AN-3 | `analytics/detection/` | Outbreak detection and evaluation |
-| AN-4 to AN-5 | `analytics/forecast/` | Forecasting and evaluation |
-| AN-6 to AN-8 | `analytics/optimise/` | Resource allocation |
-| AN-9 | `analytics/calendar/` | Preparedness calendar |
-| VIS-1 to VIS-4 | `dashboard/`, `serving/export_dashboard_data.py` | Dashboard |
-| ENG-1 | `scripts/run_pipeline.py` — verify or implement | Reproducibility |
-| ENG-2 to ENG-3 | `docs/EXPERIMENTS.md` and benchmark evidence | Performance evaluation |
+GitHub Pages serves the published static files. New pipeline outputs must be exported and published before they appear in the hosted dashboard.
 
-This is an initial mapping. Verify each ID against the official rubric
-and the final report before submission.
+## Pipeline Execution
+
+The project contains separate scripts for data generation, processing, analytics, and serving. Run them according to their actual dependencies and configured input/output paths.
+
+**A verified clean-clone, one-command pipeline runner has not yet been established.** The previously proposed `scripts/run_pipeline.py` must not be treated as an available command unless that file has been implemented and tested.
+
+## Documentation
+
+- [Project proposal](docs/proposal.md)
+- [Architecture](docs/architecture.md)
+- [Data dictionary](docs/data_dictionary.md)
+- [Data quality and privacy](docs/data_quality_privacy.md)
+- [Experiments and evaluation](docs/EXPERIMENTS.md)
+- [Limitations](docs/LIMITATIONS.md)
+- [AI usage disclosure](AI_USAGE.md)
+
+## Requirement Traceability
+
+The initial requirement mapping is maintained in the project report and should be checked against the official course rubric and final implementation.
+
+| Requirement group | Main implementation area |
+|---|---|
+| ING | `generator/`, `pipeline/` |
+| DQ | `pipeline/silver.py` and data-quality outputs |
+| AN-1 to AN-3 | `analytics/detection/` |
+| AN-4 to AN-5 | `analytics/forecast/` |
+| AN-6 to AN-8 | `analytics/optimise/` |
+| AN-9 | `analytics/calendar/` |
+| VIS | `serving/`, `dashboard/` |
+| ENG | Execution, reproducibility, and benchmark evidence |
+
+The exact mapping of individual requirement IDs to source files and report sections must follow the official rubric. A directory mapping alone does not prove that a requirement has been satisfied.
+
+## Data Privacy and Research Limitations
+
+- Encounter records and injected outbreak labels are synthetic.
+- Public case counts from one through four are suppressed by the documented public-data preparation logic.
+- Small-count suppression reduces direct disclosure risk but does not, by itself, prove that indirect disclosure is impossible.
+- Detection and forecast metrics depend on the synthetic data, evaluation definitions, and tested time period.
+- Resource-allocation and preparedness outputs are analytical demonstrations, not validated operational recommendations.
+- Performance measurements reflect the recorded environment and should not be generalized without additional experiments.
+
+## Release Information
+
+The final submission should include the repository URL, IEEE report PDF, and accessible demonstration video. The repository release should use the required `v1.0` tag after the final code and documentation have been checked.
+
