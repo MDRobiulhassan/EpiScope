@@ -17,13 +17,13 @@ ChatGPT was used as an AI-assisted development, troubleshooting, and documentati
 - Organizing report sections and explaining architectural decisions, evaluation results, and system limitations.
 - Refining project documentation for clarity, consistency, and technical accuracy.
 - Preparing a synthetic daily inventory-feed generator and its idempotent Spark ingestion/validation/aggregation path.
-- Drafting assignment documentation, a team presentation split, slide content, and a speaking script.
+- Preparing assignment documentation, a four-member speaking plan, slide content, and a presentation script.
 
 ## Representative Prompts
 
 - Review the assignment PDF against the repository without installing or running the project.
 - Add a Colab-runnable incremental input demonstration and correct related documentation.
-- Prepare presentation slides and a balanced speaking script for the three listed team members.
+- Prepare presentation slides and a balanced speaking script for the four listed team members.
 
 ## Human Responsibility and Verification
 

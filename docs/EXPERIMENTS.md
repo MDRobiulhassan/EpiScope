@@ -144,9 +144,11 @@ The low precision indicates that false-positive alerts substantially outnumber t
 
 ## 8. Dashboard Privacy Check
 
-The recorded public `dashboard/data/cases.json` contained 584,320 records. The recorded check found no exposed `published_case_count` values from 1 through 4, with approximately 246,000 records reported as suppressed.
+An earlier daily-case export was documented as 584,320 rows, with approximately 246,000 suppressed. The current saved dashboard file uses weekly aggregation and is therefore not directly comparable with that earlier daily export.
 
-This result documents the tested output at that time. It does not prove that all public datasets are free from disclosure risks or that small counts cannot be inferred from totals, linked views, or other published fields. The check should be repeated after rebuilding public data.
+The current local `dashboard/data/cases.json` contains 36,000 weekly rows. All are publishable, with counts from 32 to 3,667; no weekly count from 1 through 4 is present. The five saved dashboard JSON files total 9.81 MiB, below the notebook's 10 MiB limit.
+
+This is a check of the current saved case file, not a complete privacy audit. Also, the cases and alerts JSON files have later modification times than the forecasts, resources, and calendar files. The exports may not represent one pipeline run; regenerate all five together before treating the dashboard as a final synchronized snapshot. Suppression does not prevent inference from linked totals, overlapping views, or repeated queries.
 
 ## 9. Reproducibility and Limitations
 

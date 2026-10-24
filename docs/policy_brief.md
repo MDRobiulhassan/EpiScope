@@ -4,6 +4,8 @@
 
 **Audience:** District health officials, public-health planners, and emergency-preparedness teams
 
+**Prepared by:** Md. Samin Osman (0222220005101042), Robiul Hassan (0222220005101043), Walid Talal (0222220005101045), and Md. Mahafujul Alam (0222220005101066)
+
 **Purpose:** Explain how EpiScope could support surveillance and preparedness, what its current experiments demonstrate, and what must happen before operational use.
 
 ## The Policy Problem

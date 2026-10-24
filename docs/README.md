@@ -143,6 +143,10 @@ These are historical single-run measurements without raw logs in the reviewed pa
 
 Gold-stage runtimes were documented as 1.55 minutes for 6.25 million rows, 2.03 minutes for 12.5 million rows, and 3.45 minutes for 24,825,210 clean rows. The smaller datasets were generated using prefix or row-limit samples and may not preserve the full dataset distribution. These measurements cover the Gold stage only, not end-to-end pipeline scaling.
 
+## 5.6 Saved Dashboard Export Snapshot
+
+The current local dashboard files contain 36,000 weekly case rows (all publishable, with counts from 32 to 3,667), 17,063 alert rows, 8,960 forecast rows, 64 district allocations totaling 100 units, and 3,840 preparedness-calendar rows. The combined JSON payload is 9.81 MiB. These values summarize saved files and were not produced by a new pipeline run. The cases and alerts files have later modification times than the forecast, resource, and calendar files, so the files are not yet confirmed as a synchronized export from one run.
+
 # 6. Discussion
 
 EpiScope demonstrates an integrated workflow connecting large-input processing, data-quality reconciliation, baseline analytics, and dashboard-oriented export. The documented Silver-stage reconciliation provides evidence of row accounting for the recorded run. The runtime records suggest that the measured stages fit within the stated processing target in the recorded environment, although the absence of raw timing logs limits independent verification.

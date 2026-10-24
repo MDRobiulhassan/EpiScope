@@ -1,12 +1,25 @@
-**Demo video:** Pending an accessible share link. Add the link after recording and verify it opens without sign-in.
-
 **Google Colab runner:** [scripts/EpiScope_Colab_Run.ipynb](scripts/EpiScope_Colab_Run.ipynb)
 
 # EpiScope: Public Health Surveillance and Preparedness Dashboard
 
-EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, Department of Computer Science and Engineering, Premier University, Chittagong, Spring 2026**. It demonstrates a large-scale data-processing workflow for disease surveillance, outbreak detection, case forecasting, resource planning, and public-facing visualization using Apache Spark, PySpark, Parquet, Python, and D3.js v7.
+EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, Department of Computer Science and Engineering, Premier University, Chattogram, Spring 2026**. It demonstrates a large-scale data-processing workflow for disease surveillance, outbreak detection, case forecasting, resource planning, and public-facing visualization using Apache Spark, PySpark, Parquet, Python, and D3.js v7.
 
 **Repository:** [mdrobiulhassan/EpiScore](https://github.com/mdrobiulhassan/EpiScore)
+
+## Project Documents
+
+- [IEEE report — PDF](docs/episcope_ieee_report.pdf) · [LaTeX source](docs/episcope_ieee_report.tex)
+- [Policy brief — PDF](docs/policy_brief.pdf) · [Markdown source](docs/policy_brief.md)
+- [Presentation slides — PowerPoint](docs/presentation.pptx) · [HTML version](docs/presentation.html) · [four-member script](docs/presentation_script.md)
+
+The IEEE report PDF is six pages, including the two-page policy-brief appendix. The standalone policy-brief PDF is two pages.
+
+## Project Team
+
+- Md. Samin Osman — 0222220005101042
+- Robiul Hassan — 0222220005101043
+- Walid Talal — 0222220005101045
+- Md. Mahafujul Alam — 0222220005101066
 
 **Important limitation:** Encounter records and injected outbreak labels are synthetic. The analytical results are experimental and do not establish effectiveness in real-world public-health surveillance. Weather-related fields must not be described as real weather-station observations unless independently verified.
 
@@ -85,11 +98,12 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `requirements.txt` | Python dependency pins |
 | `AI_USAGE.md` | AI assistance disclosure |
 | `scripts/EpiScope_Colab_Run.ipynb` | Google Colab execution cells |
-| `docs/REQUIREMENT_TRACEABILITY.md` | Assignment ID mapping and handover checklist |
-| `docs/TEAM_ROLES_AND_CONTRIBUTION_DRAFT.md` | Balanced speaking plan and proposed team responsibilities |
-| `docs/CONTRIBUTION_MATRIX_DRAFT.md` | Unsigned contribution matrix draft for team review |
+| `docs/IMPLEMENTATION_MAP.md` | Assignment areas, implementation paths, and saved evidence |
+| `docs/REQUIREMENT_TRACEABILITY.md` | Assignment requirements mapped to implementation and repository evidence |
+| `docs/PRESENTATION_ROLES.md` | Four-member presentation speaking assignments |
 | `docs/presentation.html` | Browser-based presentation slides |
-| `docs/presentation_script.md` | Three-member speaking script |
+| `docs/presentation.pptx` | Four-member PowerPoint presentation |
+| `docs/presentation_script.md` | Four-member speaking script |
 
 ## Technology Stack
 
@@ -147,6 +161,22 @@ The latest recorded forecast evaluation reported:
 
 These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naïve baseline or validate performance on real-world outbreaks.
 
+## Saved Dashboard Export Snapshot
+
+The repository currently contains these dashboard JSON files:
+
+| Export | Rows / value |
+|---|---:|
+| Weekly case records | 36,000 (all published; range 32–3,667) |
+| Sum of published weekly counts | 10,011,332 |
+| Outbreak-alert records | 17,063 |
+| Forecast records | 8,960 |
+| District allocations | 64; 100 units total |
+| Preparedness-calendar rows | 3,840 |
+| Combined JSON payload | 9.81 MiB |
+
+These figures summarize the saved JSON files, not a new pipeline run. The cases and alerts files have later modification times than the forecast, resource, and calendar files, so this is a **mixed saved snapshot**, not a synchronized export run. The case counts are weekly aggregates, and suppression is applied to weekly totals; no weekly counts from 1 to 4 appear in this snapshot.
+
 ## Automated Tests
 
 The recorded test run for `tests/test_validation.py` completed successfully:
@@ -162,7 +192,7 @@ tests/test_validation.py
 
 This confirms that the two tests in that file passed in the reported environment. It does not establish that every test, pipeline stage, or end-to-end execution path has been verified.
 
-The earlier dependency specification listed `pytest==8.3.5`, while this test run used pytest 8.4.2. The final environment should be checked against `requirements.txt` before release.
+The recorded environment used pytest 8.4.2, while `requirements.txt` specifies pytest 8.3.5.
 
 ## Run the Dashboard Locally
 
@@ -198,26 +228,11 @@ The inventory feed is synthetic and currently demonstrates ingestion, validation
 - [Data quality and privacy](docs/DATA_QUALITY_AND_PRIVACY.md)
 - [Experiments and evaluation](docs/EXPERIMENTS.md)
 - [Limitations](docs/LIMITATIONS.md)
-- [Policy brief draft](docs/policy_brief.md) · [LaTeX appendix used by the report](docs/policy_brief.tex)
 - [AI usage disclosure](AI_USAGE.md)
-- [Presentation slides](docs/presentation.html) · [speaking script](docs/presentation_script.md)
 
-## Requirement Traceability
+## Implementation Map
 
-The initial requirement mapping is maintained in the project report and should be checked against the official course rubric and final implementation.
-
-| Requirement group | Main implementation area |
-|---|---|
-| ING | `generator/`, `pipeline/` |
-| DQ | `pipeline/silver.py` and data-quality outputs |
-| AN-1 to AN-3 | `analytics/detection/` |
-| AN-4 to AN-5 | `analytics/forecast/` |
-| AN-6 to AN-8 | `analytics/optimise/` |
-| AN-9 | `analytics/calendar/` |
-| VIS | `serving/`, `dashboard/` |
-| ENG | Execution, reproducibility, and benchmark evidence |
-
-The exact mapping of individual requirement IDs to source files and report sections must follow the official rubric. A directory mapping alone does not prove that a requirement has been satisfied.
+The [implementation map](docs/IMPLEMENTATION_MAP.md) gives a concise project overview; [requirement traceability](docs/REQUIREMENT_TRACEABILITY.md) maps assignment areas to implementation and saved evidence.
 
 ## Data Privacy and Research Limitations
 
@@ -227,8 +242,3 @@ The exact mapping of individual requirement IDs to source files and report secti
 - Detection and forecast metrics depend on the synthetic data, evaluation definitions, and tested time period.
 - Resource-allocation and preparedness outputs are analytical demonstrations, not validated operational recommendations.
 - Performance measurements reflect the recorded environment and should not be generalized without additional experiments.
-
-## Release Information
-
-The final submission should include the repository URL, IEEE report PDF, and accessible demonstration video. The repository release should use the required `v1.0` tag after the final code and documentation have been checked.
-

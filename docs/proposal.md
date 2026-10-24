@@ -80,7 +80,7 @@ The project work is organized into the following areas:
 - **Dashboard and serving:** Public-data preparation, suppression checks, JSON export, D3.js visualization, and usability evaluation.
 - **Shared responsibilities:** Testing, documentation, code review, risk management, and presentation preparation.
 
-The presentation draft assigns Robiul Hassan (0222220005101043) the core pipeline narrative, Md Samin Osman (0222220005101042) evaluation and planning, and Md Mahafujul Alam (0222220005101066) dashboard, privacy, and recommendations. This is a proposed speaking and preparation split, not a record of past contribution. Actual work and agreed individual shares must be recorded in the signed contribution matrix.
+The four-member presentation assigns Robiul Hassan (0222220005101043) the pipeline narrative, Md. Samin Osman (0222220005101042) evaluation and planning, Md. Mahafujul Alam (0222220005101066) the dashboard, and Walid Talal (0222220005101045) privacy, limitations, and recommendations. These assignments describe presentation sections.
 
 ## 6. Risk Register
 

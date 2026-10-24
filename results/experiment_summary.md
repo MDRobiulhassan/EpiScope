@@ -18,6 +18,24 @@ Generated from existing project artifacts and docs/EXPERIMENTS.md.
 - `optimization_benchmarks.csv`: documented Gold-stage benchmark timings.
 - `scaling_results.csv`: documented Gold-stage scaling measurements.
 
+## Saved dashboard export snapshot
+
+These values were read from the existing JSON files in `dashboard/data/`; no Spark job was run to produce this summary.
+
+| Export | Saved value |
+|---|---:|
+| Weekly cases | 36,000 rows; all publishable; counts 32–3,667 |
+| Sum of weekly published counts | 10,011,332 |
+| Alerts | 17,063 rows |
+| Forecasts | 8,960 rows |
+| Resource allocations | 64 districts; 100 units total |
+| Preparedness calendar | 3,840 rows |
+| Total JSON payload | 9.81 MiB |
+
+The cases and alerts files were modified later than forecasts, resources, and calendar. These outputs are therefore recorded as a **mixed saved snapshot**, not asserted to be a single synchronized pipeline export. Regenerate all five JSON files together and rerun the dashboard payload check before using the snapshot as final assignment evidence.
+
+The latest case export is weekly, unlike the older daily privacy export recorded in `docs/EXPERIMENTS.md`. The current file contains no weekly published counts from 1 through 4; that check does not establish protection against inference from linked views or totals.
+
 ## Critical validation issues
 
 1. Current detection evaluation reports TP=190, FP=25336, FN=169,
@@ -39,13 +57,6 @@ Generated from existing project artifacts and docs/EXPERIMENTS.md.
    were prefix/limit samples and may not preserve the full data distribution.
 6. Historical benchmark results lack raw timing evidence in the audited paths.
 
-## Recommended next validation
+## Interpretation
 
-- Preserve the latest detection and forecast evaluation outputs and their
-  exact source paths in the corresponding metrics JSON files.
-- Investigate the historical metric discrepancies only if the original
-  evaluation artifacts or run configuration become available.
-- Verify that docs/EXPERIMENTS.md and the IEEE report use the current
-  metrics consistently and identify historical values as unverified.
-- Clearly document dataset limitations, evaluation windows, and baseline
-  model assumptions in the final report.
+Current detection and forecast metrics refer to the saved evaluation outputs named in the corresponding JSON files. Historical values are retained separately because their original artifacts and run configuration are unavailable for independent reconciliation. The synthetic data, evaluation windows, and baseline assumptions constrain interpretation of every result.
