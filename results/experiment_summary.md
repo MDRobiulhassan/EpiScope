@@ -57,13 +57,6 @@ The latest case export is weekly, unlike the older daily privacy export recorded
    were prefix/limit samples and may not preserve the full data distribution.
 6. Historical benchmark results lack raw timing evidence in the audited paths.
 
-## Recommended next validation
+## Interpretation
 
-- Preserve the latest detection and forecast evaluation outputs and their
-  exact source paths in the corresponding metrics JSON files.
-- Investigate the historical metric discrepancies only if the original
-  evaluation artifacts or run configuration become available.
-- Verify that docs/EXPERIMENTS.md and the IEEE report use the current
-  metrics consistently and identify historical values as unverified.
-- Clearly document dataset limitations, evaluation windows, and baseline
-  model assumptions in the final report.
+Current detection and forecast metrics refer to the saved evaluation outputs named in the corresponding JSON files. Historical values are retained separately because their original artifacts and run configuration are unavailable for independent reconciliation. The synthetic data, evaluation windows, and baseline assumptions constrain interpretation of every result.
