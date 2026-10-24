@@ -45,6 +45,8 @@ EpiScope follows a layered data-processing architecture:
 4. **Gold:** Produce aggregated analytical datasets for detection, forecasting, resource estimation, and preparedness outputs.
 5. **Serving and visualization:** Prepare public-facing datasets, apply documented small-count suppression, export JSON files, and present selected outputs through a D3.js v7 dashboard.
 
+The incremental inventory demonstration is a separate source path: it generates one daily facility stock and bed-occupancy snapshot, appends unseen `(snapshot_date, facility_id)` keys to Bronze, validates and quarantines records in Silver, and aggregates district-day totals in Gold. It is currently a parallel pipeline; the resource-allocation optimizer does not consume these inventory aggregates, and corrected values for an existing key are not merged.
+
 Apache Spark and PySpark perform data transformations and analytical processing. Parquet provides columnar storage for processed datasets. Python supports data generation, analytics, evaluation, and export. D3.js provides interactive visualizations, while GitHub supports source control and GitHub Pages hosts the static dashboard.
 
 The final tagged repository and its documentation are the authoritative references for actual implementation details, execution commands, dependencies, and deployment behavior.
@@ -78,7 +80,7 @@ The project work is organized into the following areas:
 - **Dashboard and serving:** Public-data preparation, suppression checks, JSON export, D3.js visualization, and usability evaluation.
 - **Shared responsibilities:** Testing, documentation, code review, risk management, and presentation preparation.
 
-Actual contributions must be recorded in the agreed contribution matrix and must reflect work completed by each member.
+The presentation draft assigns Robiul Hassan (0222220005101043) the core pipeline narrative, Md Samin Osman (0222220005101042) evaluation and planning, and Md Mahafujul Alam (0222220005101066) dashboard, privacy, and recommendations. This is a proposed speaking and preparation split, not a record of past contribution. Actual work and agreed individual shares must be recorded in the signed contribution matrix.
 
 ## 6. Risk Register
 

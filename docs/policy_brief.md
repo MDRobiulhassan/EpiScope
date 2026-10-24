@@ -12,6 +12,8 @@ Public-health teams need to identify unusual disease activity early enough to in
 
 EpiScope is a prototype analytics pipeline designed to explore this workflow. It processes synthetic encounter records through Bronze, Silver, and Gold stages, applies data-quality checks, generates district–disease–day outbreak signals, produces short-term forecasts, and prepares resource-allocation and preparedness-calendar outputs. A browser dashboard presents selected results for review.
 
+The project also includes a separate synthetic daily facility stock and bed-occupancy feed. It demonstrates incremental Bronze–Silver–Gold processing with replay protection, but it is not currently connected to the resource optimizer and does not represent live facility inventory.
+
 **Policy message:** EpiScope is a prototype for testing surveillance and preparedness workflows, not a validated clinical or public-health warning system. Its outputs should be reviewed alongside local evidence and expert judgment.
 
 ## What EpiScope Provides

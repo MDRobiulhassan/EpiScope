@@ -1,35 +1,45 @@
-# Requirement Traceability
+# Requirement Traceability and Handover
 
-This table maps assignment requirements to implementation and evidence. Run the Colab notebook before recording measured results.
+This is a project-side mapping to the assignment brief. A listed implementation path is not proof of a requirement; use run output, report evidence, and the rubric to confirm completion.
 
-| ID | Implementation | Evidence/output |
+| Assignment area | Implementation | Evidence and current status |
 |---|---|---|
-| ING-1 | `generator/generate_encounters.py` | encounter CSV, facility registry, separate outbreak truth |
-| ING-2 | `pipeline/`, `analytics/` | PySpark transformations |
-| ING-3 | `pipeline/bronze.py`, `pipeline/gold.py` | Parquet outputs |
-| ING-4 | `scripts/run_pipeline.py` | repeated-run demonstration; incremental drop still requires dedicated input plumbing |
-| DQ-1 | `pipeline/silver.py` | 15 validation rules and quarantine output |
-| DQ-2 | `pipeline/silver.py` | Silver quality report |
-| DQ-3 | `pipeline/bronze.py` | ingestion metadata; batch lineage should be extended before final submission |
-| PRV-1 | `pipeline/silver.py`, `.env.example` | salted `patient_id_hash`; raw ID removed from clean output |
-| PRV-2 | `serving/build_public_data.py` | counts 1-4 suppressed |
-| AN-1/AN-2 | `analytics/detection/` | detector metrics and `detection_threshold_tradeoff` |
-| AN-4/AN-5 | `analytics/forecast/` | forecasts, interval fields, rolling backtest output |
-| AN-7/AN-8 | `analytics/optimise/` | PuLP allocation and `equity_budget_curve` |
-| AN-9 | `analytics/calendar/` | preparedness calendar |
-| VIS-1/2/3 | `dashboard/` | D3 dashboard, filters, chart panels, what-if controls |
-| VIS-4 | `serving/export_dashboard_data.py` | dashboard payload-size check in Colab notebook |
-| ENG-1 | `scripts/run_pipeline.py`, `scripts/EpiScope_Colab_Run.ipynb` | documented execution sequence |
-| ENG-2 | Colab notebook scale cell | runtime and output-size records |
-| ENG-4 | `tests/` | validation, generator-contract, hashing, and suppression tests |
+| Batch synthetic encounters | `generator/generate_encounters.py` | Colab notebook records the 25-million-row batch run. The current project copy does not include the full generated dataset. |
+| Bronze–Silver–Gold encounter processing | `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold.py` | Layered Spark processing; recorded row counts are historical project results and should be confirmed from the final Colab run before submission. |
+| Incremental source feed | `generator/generate_inventory_drop.py`, `pipeline/inventory.py` | One-day facility stock/bed snapshot; Bronze is append-only by `(snapshot_date, facility_id)`, Silver validates/quarantines, Gold aggregates by district and date. Run twice in Colab; the replay should append zero rows. |
+| Encounter data quality | `pipeline/silver.py` | Source currently implements 15 named checks. The printed quality report counts rule failures, which may overlap. Confirm behavior against current run output and tests before claiming all checks passed. |
+| Inventory data quality | `pipeline/inventory.py` | Checks snapshot date, facility and district values, nonnegative stock and bed fields, positive capacity, and occupancy not exceeding capacity. |
+| Privacy controls | `pipeline/silver.py`, `serving/build_public_data.py` | Salted patient hash in clean Silver output and small-count suppression in public case data. This is not a formal privacy guarantee. |
+| Outbreak detection and evaluation | `analytics/detection/` | Saved evaluation metrics exist; latest documented precision is low (0.74%), so the detector is not suitable for unreviewed operational alerts. |
+| Forecasting and evaluation | `analytics/forecast/` | Seven-day-average fixed 28-day baseline and saved evaluation. No claim of beating a seasonal-naive baseline. |
+| Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Illustrative outputs. Current optimizer uses forecast demand and fixed assumptions; it does not consume the new inventory feed. |
+| D3 dashboard and serving | `serving/`, `dashboard/` | Static dashboard and JSON exports are present. Record a fresh walkthrough for the final video. |
+| Scalability and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/EXPERIMENTS.md` | Notebook contains historical execution records. Capture fresh output and preserve run configuration if using the figures as submission evidence. |
+| Report, policy brief, and video | `docs/episcope_ieee_report.tex`, `docs/policy_brief.md`, presentation files | Draft report and policy brief exist. Export the final report PDF, include the policy brief as a two-page appendix, and add an accessible video link. |
+
+## Colab incremental-feed steps
+
+The `One-day incremental inventory feed` section in `scripts/EpiScope_Colab_Run.ipynb` performs these steps without editing or replacing `pipeline/bronze.py`:
+
+1. Generate `data/incremental_drop/inventory_snapshot.csv` for one snapshot date.
+2. Run `pipeline/inventory.py` to append unseen facility/date keys and rebuild Silver and Gold inventory outputs.
+3. Run the same pipeline again. It should append zero rows because the snapshot keys already exist.
+
+The daily feed is synthetic. The first version uses first-write-wins behavior: corrected or late revisions to an existing facility/date key are not merged. This limitation must remain explicit in the presentation and report.
 
 ## Final handover checklist
 
-- Replace the video URL placeholder in `README.md`.
-- Fill group number, member names, IDs, repository URL, and video URL in `docs/episcope_ieee_report.tex`.
-- Export the report PDF into `docs/`.
-- Complete and sign the contribution matrix and individual reflections.
-- Add the accessible video link and timestamps.
-- Run the Colab notebook and retain raw timing and evaluation outputs.
-- Implement and demonstrate the instructor's hidden incremental drop before claiming ING-4 compliance.
-- Create the final `v1.0` tag only after the report, dashboard, and results match the code.
+- [ ] Confirm group number and any required cover-page details.
+- [ ] Review `docs/episcope_ieee_report.tex`; export the final IEEE report PDF.
+- [ ] Include `policy_brief.tex` as the two-page nontechnical policy-brief appendix when exporting the report; confirm the resulting PDF page count/layout.
+- [ ] Add the signed contribution matrix and individual reflections to the report appendices.
+- [ ] Review and sign `docs/CONTRIBUTION_MATRIX_DRAFT.md` only after the proposed roles and shares match actual work.
+- [ ] Run the incremental section in Colab and retain its real console output. Confirm first ingestion adds the expected facilities and the replay adds zero.
+- [ ] Replace the demo-video placeholder in `README.md` and the report with an accessible link; include video timestamps.
+- [ ] Record a 15–20 minute presentation. Each member should explain their assigned section and appear in the video for at least the duration required by the brief.
+- [ ] Check that report, slides, video, and saved metrics describe the same code version and experiment.
+- [ ] Create the required `v1.0` tag only after final materials are aligned.
+
+## Suggested team division
+
+The speaker assignments and proposed work areas are in `docs/TEAM_ROLES_AND_CONTRIBUTION_DRAFT.md`. Use the signed contribution matrix to report actual work and agreed shares; update the draft if it does not match what each person did.

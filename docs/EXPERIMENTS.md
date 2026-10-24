@@ -6,6 +6,10 @@ The measurements in this document were recorded during Google Colab experiments 
 
 Synthetic encounter generation is excluded from the pipeline-runtime total unless explicitly stated.
 
+## Incremental Inventory Replay Demonstration
+
+The code for this demonstration is in `generator/generate_inventory_drop.py` and `pipeline/inventory.py`; it is separate from the historical encounter benchmarks above. No fresh execution output is recorded in this document yet. Run the two-pass section in `scripts/EpiScope_Colab_Run.ipynb`, retain the actual console output, and update this section before treating the feed as experimentally demonstrated. On a fresh inventory Bronze path the first pass should append one row per facility; replaying the same file should append zero. The feed is synthetic, and inventory Gold is not currently consumed by the resource optimizer.
+
 ## 2. Full-Scale Pipeline Performance
 
 The recorded experiment used 25,000,000 input encounter rows.

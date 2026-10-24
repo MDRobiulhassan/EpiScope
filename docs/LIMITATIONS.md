@@ -62,6 +62,8 @@ These are recorded measurements and have not necessarily been recomputed during 
 
 The complete set of Silver-layer quality rules must be verified against the implementation. A documented rule inventory alone does not establish that each rule is implemented, tested, or triggered correctly.
 
+The incremental inventory feed is synthetic and runs as a parallel Bronze–Silver–Gold path. The current resource optimizer does not consume its Gold outputs. Replay protection is first-write-wins for `(snapshot_date, facility_id)`; corrected values for an existing key are ignored rather than merged. The new Colab demonstration must be run and its output recorded before claiming execution evidence.
+
 ## 5. Privacy and Small-Count Suppression
 
 The public-data preparation process is intended to suppress exact published counts from 1 through 4. A previous check of `cases.json` found no exact `published_case_count` values in this range, but this limited result does not establish that every public output is safe.

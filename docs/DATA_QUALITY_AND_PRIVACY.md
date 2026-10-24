@@ -26,18 +26,29 @@ These results demonstrate count reconciliation for the recorded run. They do not
 
 The Silver pipeline is responsible for applying data-quality checks before records are passed to downstream processing. The implemented rules should be documented using their actual field names, conditions, and failure behavior.
 
-The rule inventory should cover the distinct checks implemented in the source code, including applicable validation categories such as:
+The current source declares and applies the following 15 named checks. This list is based on `pipeline/silver.py`; rerun the Colab workflow to capture current counts.
 
-- Required values and null handling
-- Data-type and format validity
-- Date validity and permitted ranges
-- Allowed categorical values
-- Numeric constraints
-- Identifier consistency
-- Duplicate handling
-- Cross-field consistency
+| Rule | Implemented check |
+|---|---|
+| DQ01 | Missing encounter ID |
+| DQ02 | Invalid encounter date |
+| DQ03 | Encounter date outside 2021–2025 |
+| DQ04 | Missing district |
+| DQ05 | Disease outside the configured categories |
+| DQ06 | Missing or out-of-range age (0–120) |
+| DQ07 | Severity outside `mild`, `moderate`, `severe` |
+| DQ08 | Missing or out-of-range temperature (-20 to 60) |
+| DQ09 | Missing, negative, or over-1000 rainfall |
+| DQ10 | Encounter ID occurs more than once |
+| DQ11 | Encounter ID is non-positive |
+| DQ12 | Missing disease or severity |
+| DQ13 | Missing onset/report date or onset after report |
+| DQ14 | Disease and ICD-10 code do not match configured pairs |
+| DQ15 | Missing or unregistered facility ID |
 
-These are validation categories, not a claim that every category is currently implemented. The final rule inventory must contain at least 12 distinct implemented rules to satisfy the assignment requirement.
+The rule conditions can overlap: a record can fail multiple checks. The quality report's `failed_records` values count affected rows per rule, not unique quarantined rows, so adding rule counts can exceed the quarantine count.
+
+The separate incremental inventory path applies date/key/district checks, nonnegative stock and bed values, positive bed capacity, and a check that occupied beds do not exceed capacity. These checks are implemented in `pipeline/inventory.py`; the Colab run should be used to capture the observed clean/quarantine counts.
 
 For each rule, document its identifier, condition, affected fields, failure behavior, and supporting test or execution evidence. Clarify whether one record can fail multiple rules and whether quality metrics count rejected records, individual rule violations, or both.
 

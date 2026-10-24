@@ -1,5 +1,4 @@
-<!-- Replace with the final accessible demonstration video URL -->
-**Demo video:** [Add final video URL]
+**Demo video:** Pending an accessible share link. Add the link after recording and verify it opens without sign-in.
 
 **Google Colab runner:** [scripts/EpiScope_Colab_Run.ipynb](scripts/EpiScope_Colab_Run.ipynb)
 
@@ -14,6 +13,7 @@ EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, De
 ## Project Features
 
 - Generate synthetic encounter records for large-scale processing.
+- Generate and ingest a one-day synthetic facility inventory/bed-occupancy snapshot with replay protection.
 - Process encounter data through Bronze, Silver, and Gold layers.
 - Validate and clean records and quarantine invalid data.
 - Aggregate surveillance indicators for downstream analytics.
@@ -68,9 +68,11 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | Path | Purpose |
 |---|---|
 | `generator/` | Synthetic encounter generation |
+| `generator/generate_inventory_drop.py` | One-day synthetic facility stock and bed-occupancy input |
 | `pipeline/bronze.py` | Bronze-layer ingestion |
 | `pipeline/silver.py` | Validation, cleaning, and quarantine |
 | `pipeline/gold.py` | Gold-layer aggregation |
+| `pipeline/inventory.py` | Idempotent Bronze–Silver–Gold processing for incremental inventory snapshots |
 | `analytics/detection/` | Outbreak detection and evaluation |
 | `analytics/forecast/` | Forecast generation and evaluation |
 | `analytics/optimise/` | Resource allocation |
@@ -84,6 +86,10 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `AI_USAGE.md` | AI assistance disclosure |
 | `scripts/EpiScope_Colab_Run.ipynb` | Google Colab execution cells |
 | `docs/REQUIREMENT_TRACEABILITY.md` | Assignment ID mapping and handover checklist |
+| `docs/TEAM_ROLES_AND_CONTRIBUTION_DRAFT.md` | Balanced speaking plan and proposed team responsibilities |
+| `docs/CONTRIBUTION_MATRIX_DRAFT.md` | Unsigned contribution matrix draft for team review |
+| `docs/presentation.html` | Browser-based presentation slides |
+| `docs/presentation_script.md` | Three-member speaking script |
 
 ## Technology Stack
 
@@ -180,17 +186,21 @@ GitHub Pages serves the published static files. New pipeline outputs must be exp
 
 The project contains separate scripts for data generation, processing, analytics, and serving. Run them according to their actual dependencies and configured input/output paths.
 
-**A verified clean-clone, one-command pipeline runner has not yet been established.** The previously proposed `scripts/run_pipeline.py` must not be treated as an available command unless that file has been implemented and tested.
+For Google Colab, use [`scripts/EpiScope_Colab_Run.ipynb`](scripts/EpiScope_Colab_Run.ipynb). It contains the batch workflow and a separate incremental inventory-feed demonstration. `scripts/run_pipeline.py` is the batch encounter workflow; it does not process the incremental inventory feed. Run the notebook's incremental section after the batch run, then replay the same inventory snapshot to show that no duplicate facility/date keys are appended.
+
+The inventory feed is synthetic and currently demonstrates ingestion, validation, quarantine, and district-level Gold aggregation. It is not yet an input to the resource-allocation optimizer, and corrected values for an already ingested snapshot key are not merged.
 
 ## Documentation
 
 - [Project proposal](docs/proposal.md)
-- [Architecture](docs/architecture.md)
-- [Data dictionary](docs/data_dictionary.md)
-- [Data quality and privacy](docs/data_quality_privacy.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Data dictionary](docs/DATA_DICTIONARY.md)
+- [Data quality and privacy](docs/DATA_QUALITY_AND_PRIVACY.md)
 - [Experiments and evaluation](docs/EXPERIMENTS.md)
 - [Limitations](docs/LIMITATIONS.md)
+- [Policy brief draft](docs/policy_brief.md) · [LaTeX appendix used by the report](docs/policy_brief.tex)
 - [AI usage disclosure](AI_USAGE.md)
+- [Presentation slides](docs/presentation.html) · [speaking script](docs/presentation_script.md)
 
 ## Requirement Traceability
 

@@ -1,0 +1,34 @@
+\clearpage
+\onecolumn
+\section*{Appendix: Policy Brief for Public-Health Decision Makers}
+\subsection*{EpiScope: A research prototype for surveillance and preparedness}
+
+\noindent\textbf{Audience:} District health officials, surveillance teams, and emergency-preparedness planners.
+
+\subsection*{The decision problem}
+Health teams need to notice unusual disease activity early enough to investigate it and prepare staff, supplies, and services. Relevant information may come from different systems and arrive late or with inconsistent quality. A useful analytics workflow must therefore check incoming data, summarize trends, provide interpretable signals, and communicate limitations alongside recommendations.
+
+EpiScope demonstrates this workflow using synthetic encounter and facility data. It places records into Bronze, Silver, and Gold processing stages; produces outbreak signals and short-term forecasts; and prepares resource and calendar outputs for a D3.js dashboard. A separate demonstration generates a daily synthetic stock and bed-occupancy snapshot and processes it through Bronze, Silver, and Gold with replay protection. The snapshot is not live facility information and is not yet an input to the resource-allocation optimizer.
+
+\subsection*{What the current evidence says}
+The latest saved synthetic evaluation reports detection sensitivity of 52.92\%, a false-positive rate of 4.37\%, and precision of 0.74\%. The low precision means that most alerts were false positives in the evaluated dataset. Such alerts would require substantial human review and should not be sent directly to field teams as confirmed events.
+
+The latest saved forecasting evaluation reports mean absolute error of 2.0182 and root mean squared error of 2.6986 across 8,960 district--disease--day observations from December 4--31, 2025. The forecast repeats a seven-day average through a fixed 28-day horizon. It has not been shown to outperform a seasonal baseline. These results are historical project outputs from synthetic data; they are not evidence of real-world outbreak performance or health impact.
+
+\clearpage
+\subsection*{Recommended use and safeguards}
+\begin{enumerate}
+    \item \textbf{Keep a person in the decision loop.} Treat an alert as a prompt to review recent counts, reporting completeness, local context, and possible data errors. Do not treat it as confirmation of an outbreak.
+    \item \textbf{Improve alert quality before expanding use.} Test alternative thresholds on a held-out period. Review sensitivity, precision, false-positive rate, and alert volume together, and agree with district teams on an acceptable review workload.
+    \item \textbf{Compare forecasts with simple alternatives.} Evaluate the seven-day-average method against a seasonal-naive baseline and report errors by disease, district, and time period. Identify where forecasts are unreliable.
+    \item \textbf{Check practical constraints before allocating resources.} Validate stock, bed capacity, staff, transport, and local protocols. Current allocation and preparedness outputs are demonstrations based on illustrative assumptions, not validated operational instructions.
+    \item \textbf{Protect data and review disclosure risks.} Keep encounter-level identifiers restricted. The clean analytical dataset hashes patient IDs, and public case counts from one through four are suppressed. Suppression reduces direct exposure but does not guarantee anonymity; linked totals and views may still reveal small counts.
+\end{enumerate}
+
+\subsection*{Conditions before operational use}
+The data in EpiScope are synthetic. Temperature and rainfall-like fields are generated values rather than verified weather-station observations. Synthetic data are useful for testing the processing path, but cannot establish how the system performs under real reporting delays, missing facility submissions, changing disease patterns, or local resource constraints.
+
+Before any field use, the system would need representative and authorized data, independent epidemiological review, stronger detector precision, forecast comparison and calibration, a tested privacy and access-control plan, and a defined process for alert review and escalation. The incremental inventory demonstration would also need validated live sources, a policy for corrected or late snapshots, and integration with allocation logic before it could inform supply recommendations.
+
+\vfill
+\noindent\textbf{Decision requested:} Continue supervised validation and improve the evidence. Do not use EpiScope for autonomous outbreak declarations, clinical decisions, or unreviewed resource allocation.

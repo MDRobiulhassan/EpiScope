@@ -16,6 +16,14 @@ ChatGPT was used as an AI-assisted development, troubleshooting, and documentati
 - Assisting with code review, validation procedures, and technical documentation.
 - Organizing report sections and explaining architectural decisions, evaluation results, and system limitations.
 - Refining project documentation for clarity, consistency, and technical accuracy.
+- Preparing a synthetic daily inventory-feed generator and its idempotent Spark ingestion/validation/aggregation path.
+- Drafting assignment documentation, a team presentation split, slide content, and a speaking script.
+
+## Representative Prompts
+
+- Review the assignment PDF against the repository without installing or running the project.
+- Add a Colab-runnable incremental input demonstration and correct related documentation.
+- Prepare presentation slides and a balanced speaking script for the three listed team members.
 
 ## Human Responsibility and Verification
 

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EpiScope — Project Presentation</title>
+<style>
+:root{--ink:#f4f7fb;--muted:#9eb2c8;--bg:#071525;--panel:#10243a;--line:#28415b;--teal:#52e0c4;--blue:#7bb5ff;--amber:#ffbd69;--red:#ff7e83}
+*{box-sizing:border-box}body{margin:0;background:#020a13;color:var(--ink);font:16px/1.45 Inter,Segoe UI,Arial,sans-serif;overflow:hidden}
+.slide{display:none;position:absolute;inset:0;width:100vw;height:100vh;min-height:540px;padding:6vh 7vw 7vh;background:radial-gradient(ellipse at 90% 8%,#153e5a 0,transparent 34%),linear-gradient(130deg,#071525 20%,#091a2c 100%);overflow:auto}
+.slide.active{display:flex;flex-direction:column}.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.14em}.brand{color:var(--teal);font-weight:800}.speaker{border:1px solid var(--line);border-radius:99px;padding:.45rem .9rem;letter-spacing:.05em;text-transform:none;color:var(--blue)}
+h1{font-size:clamp(2.8rem,6vw,5.7rem);line-height:.98;letter-spacing:-.045em;margin:8vh 0 2vh;max-width:1000px}h2{font-size:clamp(2.2rem,4.2vw,4rem);line-height:1.03;letter-spacing:-.04em;margin:5vh 0 2vh}h3{font-size:1.15rem;margin:0 0 .55rem;color:var(--teal)}p{color:#d6e0eb;font-size:clamp(1rem,1.45vw,1.3rem);max-width:1000px}.lead{font-size:clamp(1.2rem,2vw,1.65rem);color:#e9f1f8;max-width:920px}.sub{color:var(--muted);font-size:1rem}.accent{color:var(--teal)}.amber{color:var(--amber)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2vh}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:linear-gradient(145deg,#122a42,#0d2034);border:1px solid var(--line);border-radius:18px;padding:1.25rem 1.4rem;box-shadow:0 15px 35px #0003}.card p{font-size:1rem;margin:.25rem 0 0;color:#bdcbd9}.metric{font-size:clamp(2.2rem,4vw,4rem);font-weight:800;letter-spacing:-.05em;color:var(--teal)}.metric.bad{color:var(--red)}.metric.blue{color:var(--blue)}.metric.amber{color:var(--amber)}
+.flow{display:flex;align-items:stretch;gap:.65rem;margin:3vh 0}.step{flex:1;background:#10263b;border:1px solid var(--line);border-radius:14px;padding:1.1rem .8rem;text-align:center;font-weight:700}.arrow{align-self:center;color:var(--teal);font-size:1.5rem}.pill{display:inline-block;border-radius:99px;background:#153c45;color:var(--teal);padding:.35rem .7rem;font-size:.8rem;font-weight:700;margin:.2rem}.callout{border-left:4px solid var(--amber);padding:.6rem 1rem;background:#ffbd6912;color:#ffe4bf;border-radius:0 12px 12px 0;margin-top:1rem;max-width:950px}.list{display:grid;gap:.8rem;margin-top:1.5rem}.item{display:flex;gap:.85rem;align-items:flex-start;font-size:1.15rem;color:#d8e3ed}.dot{width:.7rem;height:.7rem;margin-top:.45rem;border-radius:50%;background:var(--teal);flex:none}.foot{margin-top:auto;display:flex;justify-content:space-between;color:#7890a8;font-size:.8rem;padding-top:1.2rem}.names{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}.person{padding:.8rem 1rem;border:1px solid var(--line);border-radius:14px;background:#10243a;color:#dce8f3}.person strong{display:block;color:var(--ink)}
+.bars{display:grid;gap:.85rem;margin-top:1.5rem;max-width:850px}.bar{display:grid;grid-template-columns:190px 1fr 90px;align-items:center;gap:1rem;color:#c6d5e2}.track{height:14px;border-radius:99px;background:#1d344a;overflow:hidden}.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--blue))}.fill.red{background:linear-gradient(90deg,#ff9a72,var(--red))}
+.nav{position:fixed;bottom:18px;right:24px;display:flex;align-items:center;gap:.65rem;z-index:5}.nav button{background:#17344b;border:1px solid #35536d;color:#eaf3fa;border-radius:10px;padding:.55rem .85rem;cursor:pointer;font-size:1rem}.nav button:hover{background:#24516b}.count{min-width:62px;text-align:center;color:#9eb2c8;font-variant-numeric:tabular-nums}.progress{position:fixed;bottom:0;left:0;height:4px;background:var(--teal);width:0;transition:width .2s;z-index:6}
+@media(max-width:760px){.slide{padding:5vh 6vw 8vh}.grid,.grid.three{grid-template-columns:1fr}.flow{flex-wrap:wrap}.step{min-width:27%}.arrow{display:none}.bar{grid-template-columns:120px 1fr 66px}.names{gap:.5rem}.person{font-size:.85rem}.top{font-size:.68rem}}
+@media print{body{overflow:visible;background:white}.slide,.slide.active{display:flex;position:relative;width:100vw;height:56.25vw;min-height:0;page-break-after:always;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}.nav,.progress{display:none}}
+</style>
+</head>
+<body>
+<section class="slide active" data-speaker="Robiul Hassan">
+  <div class="top"><span class="brand">EPISCOPE · CSE 4345</span><span class="speaker">Robiul Hassan · opening</span></div>
+  <h1>From data to<br><span class="accent">preparedness</span></h1>
+  <p class="lead">A synthetic big-data workflow for disease surveillance, outbreak signals, forecasts, and resource-planning demonstrations.</p>
+  <div class="names"><div class="person"><strong>Robiul Hassan</strong>0222220005101043</div><div class="person"><strong>Md Samin Osman</strong>0222220005101042</div><div class="person"><strong>Md Mahafujul Alam</strong>0222220005101066</div></div>
+  <div class="foot"><span>Big Data Analytics · Spring 2026</span><span>Prototype evidence, synthetic data</span></div>
+</section>
+<section class="slide" data-speaker="Robiul Hassan">
+  <div class="top"><span class="brand">01 · THE CHALLENGE</span><span class="speaker">Robiul Hassan</span></div>
+  <h2>Join the steps behind<br>an early signal</h2>
+  <div class="grid three">
+    <article class="card"><h3>Different sources</h3><p>Encounters, facility records, and daily stock/bed snapshots arrive in different forms and at different times.</p></article>
+    <article class="card"><h3>Useful decisions</h3><p>Teams need to inspect data quality, signals, demand forecasts, and preparedness outputs together.</p></article>
+    <article class="card"><h3>Engineering trade-offs</h3><p>Balance early detection with false alarms, geographic detail with privacy, and freshness with compute limits.</p></article>
+  </div>
+  <div class="callout">All project data are synthetic. The prototype does not establish real-world public-health effectiveness.</div>
+  <div class="foot"><span>Problem framing</span><span>02 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Robiul Hassan">
+  <div class="top"><span class="brand">02 · BATCH ARCHITECTURE</span><span class="speaker">Robiul Hassan</span></div>
+  <h2>Layer, check, aggregate,<br>then explain</h2>
+  <div class="flow"><div class="step">Synthetic<br>encounters</div><span class="arrow">→</span><div class="step">Bronze<br>Parquet</div><span class="arrow">→</span><div class="step">Silver<br>clean + quarantine</div><span class="arrow">→</span><div class="step">Gold<br>aggregates</div></div>
+  <div class="flow"><div class="step">Detection</div><div class="step">Forecasts</div><div class="step">Allocation + calendar</div><div class="step">Public JSON → D3</div></div>
+  <p class="sub">Spark local mode · Parquet storage · Python analytics · D3.js v7 dashboard</p>
+  <div class="foot"><span>Batch encounter workflow</span><span>03 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Robiul Hassan">
+  <div class="top"><span class="brand">03 · INCREMENTAL INPUT</span><span class="speaker">Robiul Hassan · Colab walkthrough</span></div>
+  <h2>A daily stock snapshot,<br>with replay protection</h2>
+  <div class="flow"><div class="step">Generate one-day<br>facility feed</div><span class="arrow">→</span><div class="step">Bronze<br>append new keys</div><span class="arrow">→</span><div class="step">Silver<br>validate + quarantine</div><span class="arrow">→</span><div class="step">Gold<br>district-day totals</div></div>
+  <div class="grid"><article class="card"><h3>Replay key</h3><p><span class="pill">snapshot_date</span><span class="pill">facility_id</span></p><p>Same date and facility are skipped on replay.</p></article><article class="card"><h3>Current boundary</h3><p>Separate demonstration path. The optimizer does not yet consume inventory Gold; corrected existing keys are not merged.</p></article></div>
+  <div class="callout">Run the two Colab passes and show the actual output. Expected replay result: 0 rows appended.</div>
+  <div class="foot"><span>New code in this revision · Colab result pending</span><span>04 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Samin Osman">
+  <div class="top"><span class="brand">04 · RECORDED EVALUATION</span><span class="speaker">Md Samin Osman</span></div>
+  <h2>Metrics need context</h2>
+  <div class="grid three">
+    <article class="card"><div class="metric blue">52.92%</div><h3>Sensitivity</h3><p>Latest saved synthetic evaluation.</p></article>
+    <article class="card"><div class="metric amber">4.37%</div><h3>False-positive rate</h3><p>Measured at district–disease–day level.</p></article>
+    <article class="card"><div class="metric bad">0.74%</div><h3>Precision</h3><p>False alerts greatly outnumber true alerts.</p></article>
+  </div>
+  <div class="grid"><article class="card"><div class="metric blue">2.0182</div><h3>Forecast MAE</h3><p>Seven-day average repeated across a fixed 28-day horizon.</p></article><article class="card"><div class="metric blue">2.6986</div><h3>Forecast RMSE</h3><p>8,960 synthetic test observations, Dec 4–31, 2025.</p></article></div>
+  <div class="foot"><span>Values from latest saved project outputs; not freshly rerun for this deck</span><span>05 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Samin Osman">
+  <div class="top"><span class="brand">05 · PLANNING OUTPUTS</span><span class="speaker">Md Samin Osman</span></div>
+  <h2>Planning aids need<br>human review</h2>
+  <div class="grid three">
+    <article class="card"><h3>Forecast demand</h3><p>District forecasts feed an illustrative allocation objective under a fixed budget.</p></article>
+    <article class="card"><h3>Equity floor</h3><p>The current optimizer assigns a minimum unit per district before prioritizing remaining units.</p></article>
+    <article class="card"><h3>Inventory snapshot</h3><p>New Gold output reports district stock and occupancy, but is not yet connected to allocation.</p></article>
+  </div>
+  <div class="callout">Check staffing, current stock, transport, and local protocols before acting on any output.</div>
+  <div class="foot"><span>Illustrative assumptions · no validated operational recommendation</span><span>06 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Mahafujul Alam">
+  <div class="top"><span class="brand">06 · DASHBOARD</span><span class="speaker">Md Mahafujul Alam</span></div>
+  <h2>One interface for<br>several views</h2>
+  <div class="grid"><article class="card"><h3>Published views</h3><p>Cases · alerts · forecasts · resources · preparedness calendar</p><div class="bars"><div class="bar"><span>Cases</span><span class="track"><span class="fill" style="display:block;width:84%"></span></span><span>trends</span></div><div class="bar"><span>Forecasts</span><span class="track"><span class="fill" style="display:block;width:68%"></span></span><span>horizon</span></div><div class="bar"><span>Resources</span><span class="track"><span class="fill" style="display:block;width:54%"></span></span><span>what-if</span></div></div></article><article class="card"><h3>How it updates</h3><p>Spark writes JSON exports. The browser reads those files; new analytics appear only after the export step is rerun.</p><p class="sub">Recorded payload check: 2.90 MB total, below the 10 MB notebook threshold.</p></article></div>
+  <div class="callout">Video cue: show filters, linked views, and one implemented what-if control in the running dashboard.</div>
+  <div class="foot"><span>D3.js v7 · static JSON export</span><span>07 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Mahafujul Alam">
+  <div class="top"><span class="brand">07 · PRIVACY + LIMITS</span><span class="speaker">Md Mahafujul Alam</span></div>
+  <h2>Show what the system<br>cannot prove</h2>
+  <div class="grid three">
+    <article class="card"><h3>Data protection</h3><p>Raw IDs are hashed before clean Silver output; public case counts 1–4 are suppressed.</p></article>
+    <article class="card"><h3>Not anonymity</h3><p>Linked totals and views can still create inference risk. Bronze and quarantine stay restricted.</p></article>
+    <article class="card"><h3>Not deployment-ready</h3><p>Synthetic data, very low detection precision, a simple forecast baseline, and no live inventory integration.</p></article>
+  </div>
+  <div class="foot"><span>Prototype limitations are part of the result</span><span>08 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Mahafujul Alam">
+  <div class="top"><span class="brand">08 · TEAM PRESENTATION SPLIT</span><span class="speaker">Md Mahafujul Alam</span></div>
+  <h2>Three sections,<br>balanced time</h2>
+  <div class="grid three">
+    <article class="card"><h3>Robiul · ~5 min</h3><p>Core architecture, batch path, and incremental Colab walkthrough.</p><p class="sub">Lead the main technical narrative.</p></article>
+    <article class="card"><h3>Samin · ~5 min</h3><p>Data-quality context, evaluation metrics, and planning assumptions.</p><p class="sub">Interpret the saved results.</p></article>
+    <article class="card"><h3>Mahafujul · ~5 min</h3><p>Dashboard, privacy/limitations, and recommendations.</p><p class="sub">Close with the decision boundary.</p></article>
+  </div>
+  <p class="sub">Presentation assignments are not a substitute for the signed contribution matrix; report actual contributions.</p>
+  <div class="foot"><span>Draft speaking plan · confirm with all members</span><span>09 / 10</span></div>
+</section>
+<section class="slide" data-speaker="Md Mahafujul Alam">
+  <div class="top"><span class="brand">09 · TAKEAWAY</span><span class="speaker">Md Mahafujul Alam · close</span></div>
+  <h2>Validate before<br>operational use</h2>
+  <p class="lead">EpiScope demonstrates a connected synthetic-data workflow. Its recorded results support continued validation and review, not autonomous public-health decisions.</p>
+  <div class="list"><div class="item"><span class="dot"></span><span>Run and capture the new incremental replay in Colab.</span></div><div class="item"><span class="dot"></span><span>Improve alert quality and compare forecasts with appropriate baselines.</span></div><div class="item"><span class="dot"></span><span>Connect validated stock data only after schema, governance, and allocation assumptions are reviewed.</span></div></div>
+  <h3 style="margin-top:2rem">Thank you</h3>
+  <div class="foot"><span>EpiScope · CSE 4345 · Spring 2026</span><span>10 / 10</span></div>
+</section>
+<div class="nav"><button id="prev" aria-label="Previous slide">←</button><span class="count" id="count">01 / 10</span><button id="next" aria-label="Next slide">→</button><button id="full" aria-label="Toggle fullscreen">⛶</button></div><div class="progress" id="progress"></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;function show(n){i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('active',k===i));document.querySelector('#count').textContent=`${String(i+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;document.querySelector('#progress').style.width=`${(i+1)/slides.length*100}%`;document.title=`${i+1}. ${slides[i].querySelector('h1,h2')?.textContent.replace(/\s+/g,' ').trim()} — EpiScope`;}document.querySelector('#prev').onclick=()=>show(i-1);document.querySelector('#next').onclick=()=>show(i+1);document.querySelector('#full').onclick=()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});show(0);
+</script>
+</body>
+</html>

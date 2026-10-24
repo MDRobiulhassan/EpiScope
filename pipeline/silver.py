@@ -257,7 +257,7 @@ def main():
             F.count(F.lit(1)).over(id_window),
         )
 
-        # 4. Define all 12 quality-rule conditions.
+        # 4. Define all 15 quality-rule conditions.
         conditions = [
             # DQ01: Missing encounter ID
             F.col("encounter_id").isNull(),

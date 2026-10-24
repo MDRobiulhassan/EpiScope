@@ -10,16 +10,14 @@
 \title{EpiScope: A Big Data Analytics Pipeline for Synthetic Disease Surveillance, Outbreak Detection, and Preparedness Support}
 
 \author{
-\IEEEauthorblockN{Robiul Hassan}
+\IEEEauthorblockN{Robiul Hassan (0222220005101043) \\ Md Samin Osman (0222220005101042) \\ Md Mahafujul Alam (0222220005101066)}
 \IEEEauthorblockA{
 Department of Computer Science and Engineering\\
-Premier University, Chattogram, Bangladesh\\
-Email: [add university email]
+Premier University, Chattogram, Bangladesh
 }
 \thanks{
-Group Number: [add group number].\\
-Group Members and IDs: [add all member names and university IDs].\\
-Repository: [add repository URL].\\
+Group Number: [confirm group number].\\
+Repository: \url{https://github.com/mdrobiulhassan/EpiScore}.\\
 Video Demonstration: [add accessible video URL].
 }
 }
@@ -75,6 +73,10 @@ The pipeline uses three logical data layers:
 \end{itemize}
 
 The Silver stage aims to preserve accounting between accepted and quarantined rows. Reconciliation demonstrates count consistency but does not independently prove that every validation rule is correct.
+
+\subsection{Incremental Inventory Input}
+
+The project includes a separate synthetic daily inventory feed with facility stock and bed-occupancy fields. The Colab workflow generates a one-day snapshot and processes it through Bronze, Silver, and Gold. Bronze appends only unseen \texttt{(snapshot\_date, facility\_id)} keys, so replaying the same snapshot should append zero rows. The first-write-wins key policy does not apply corrections to a previously ingested facility-day. This incremental path is currently a parallel demonstration; the resource-allocation optimizer does not consume its Gold output. Colab execution and console output must be captured before this behavior is claimed as experimentally demonstrated.
 
 \subsection{Analytics}
 
@@ -203,6 +205,7 @@ Several limitations remain:
     \item \textbf{Historical discrepancies:} Older forecast and detection figures differ from current saved outputs and have not been reconciled.
     \item \textbf{Benchmark evidence:} Historical runtime and optimization records lack raw logs in the audited paths, and the reported values may be affected by caching and environment variability.
     \item \textbf{Privacy:} Suppressing small counts is not a formal privacy guarantee. All public exports and cross-view inference risks require further testing.
+    \item \textbf{Incremental inventory:} The synthetic daily feed demonstrates key-based replay protection, but the optimizer does not yet consume its outputs and corrected snapshots are not merged.
     \item \textbf{Quality-rule evidence:} The distinct implemented Silver validation rules and their test evidence should be inventoried from source code before claiming full compliance with a required rule count.
 \end{itemize}
 
@@ -235,6 +238,9 @@ IEEE, ``IEEE Reference Guide.'' [Online]. Available:
 \url{https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/}
 
 \end{thebibliography}
+
+\appendices
+\input{policy_brief.tex}
 
 \end{document}
 ```
