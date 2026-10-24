@@ -13,7 +13,7 @@ This is a project-side mapping to the assignment brief. A listed implementation 
 | Outbreak detection and evaluation | `analytics/detection/` | Saved evaluation metrics exist; latest documented precision is low (0.74%), so the detector is not suitable for unreviewed operational alerts. |
 | Forecasting and evaluation | `analytics/forecast/` | Seven-day-average fixed 28-day baseline and saved evaluation. No claim of beating a seasonal-naive baseline. |
 | Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Illustrative outputs. Current optimizer uses forecast demand and fixed assumptions; it does not consume the new inventory feed. |
-| D3 dashboard and serving | `serving/`, `dashboard/` | Static dashboard and JSON exports are present. Record a fresh walkthrough for the final video. |
+| D3 dashboard and serving | `serving/`, `dashboard/` | Saved JSON exports contain 36,000 weekly case rows, 17,063 alerts, 8,960 forecast rows, 64 allocations, and 3,840 calendar rows; total payload is 9.81 MiB. File modification times differ, so regenerate all outputs together and capture a synchronized final snapshot. Record a fresh walkthrough for the final video. |
 | Scalability and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/EXPERIMENTS.md` | Notebook contains historical execution records. Capture fresh output and preserve run configuration if using the figures as submission evidence. |
 | Report, policy brief, and video | `docs/episcope_ieee_report.tex`, `docs/policy_brief.md`, presentation files | Draft report and policy brief exist. Export the final report PDF, include the policy brief as a two-page appendix, and add an accessible video link. |
 
@@ -37,6 +37,7 @@ The daily feed is synthetic. The first version uses first-write-wins behavior: c
 - [ ] Run the incremental section in Colab and retain its real console output. Confirm first ingestion adds the expected facilities and the replay adds zero.
 - [ ] Replace the demo-video placeholder in `README.md` and the report with an accessible link; include video timestamps.
 - [ ] Record a 15–20 minute presentation. Each member should explain their assigned section and appear in the video for at least the duration required by the brief.
+- [ ] Regenerate the five dashboard JSON outputs together and verify the payload size and charts from that synchronized snapshot.
 - [ ] Check that report, slides, video, and saved metrics describe the same code version and experiment.
 - [ ] Create the required `v1.0` tag only after final materials are aligned.
 

@@ -147,6 +147,22 @@ The latest recorded forecast evaluation reported:
 
 These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naïve baseline or validate performance on real-world outbreaks.
 
+## Saved Dashboard Export Snapshot
+
+The repository currently contains these dashboard JSON files:
+
+| Export | Rows / value |
+|---|---:|
+| Weekly case records | 36,000 (all published; range 32–3,667) |
+| Sum of published weekly counts | 10,011,332 |
+| Outbreak-alert records | 17,063 |
+| Forecast records | 8,960 |
+| District allocations | 64; 100 units total |
+| Preparedness-calendar rows | 3,840 |
+| Combined JSON payload | 9.81 MiB |
+
+These figures are a summary of the saved JSON files, not a new pipeline run. The cases and alerts files have later modification times than the forecast, resource, and calendar files. Treat this as a **mixed export snapshot** until all five files are regenerated together and the dashboard payload check is rerun. The case counts are weekly aggregates, and suppression is applied to weekly totals; no weekly counts from 1 to 4 appear in this snapshot.
+
 ## Automated Tests
 
 The recorded test run for `tests/test_validation.py` completed successfully:
@@ -228,7 +244,13 @@ The exact mapping of individual requirement IDs to source files and report secti
 - Resource-allocation and preparedness outputs are analytical demonstrations, not validated operational recommendations.
 - Performance measurements reflect the recorded environment and should not be generalized without additional experiments.
 
-## Release Information
+## Submission Readiness
+
+The repository contains the implementation, saved dashboard exports, report source, policy-brief source, and presentation files. The assignment handover is **not complete** until the team adds the final report PDF, confirms the report and policy-brief page layout, supplies the required group details, records and links the accessible demonstration video, captures the incremental replay output, and agrees to and signs the contribution matrix and individual reflections. See [`docs/REQUIREMENT_TRACEABILITY.md`](docs/REQUIREMENT_TRACEABILITY.md).
 
 The final submission should include the repository URL, IEEE report PDF, and accessible demonstration video. The repository release should use the required `v1.0` tag after the final code and documentation have been checked.
+
+## Release Information
+
+No final v1.0 release is recorded yet. Create it after the report, dashboard snapshot, Colab evidence, and presentation have been aligned and checked.
 

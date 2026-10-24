@@ -1,78 +1,86 @@
-# EpiScope Presentation Script (Three Speakers)
+# EpiScope Presentation Script
 
-**Target duration:** about 15 minutes, plus a short live dashboard/Colab view if needed. The script gives each member approximately five minutes. Rehearse once and shorten pauses before cutting one member's section.
+**Target:** about 15 minutes total. Robiul speaks for about 4 minutes, Samin for about 5 minutes, and Mahafujul for about 5 minutes. Allow about one minute for Robiul's Colab demonstration. The slides are in [presentation.html](presentation.html).
 
-The slides are in [`presentation.html`](presentation.html). Use the sections below by slide number. Keep the incremental-feed wording conditional until the new Colab cells have actually been run and their output captured.
+The slides use saved evaluation values and the current local dashboard JSON summary. The dashboard files do not all have the same modification time, so do not describe the dashboard counts as one synchronized run until the five exports are regenerated together.
 
-## Speaker 1 — Robiul Hassan (Slides 1–4, about 5 minutes)
+## Robiul Hassan — Slides 1–4
 
-### Slide 1 — EpiScope
+### Slide 1 — Opening
 
-“Hello. We are presenting EpiScope, our Big Data Analytics project for CSE 4345. I’m Robiul Hassan, and with me are Md Samin Osman and Md Mahafujul Alam. EpiScope is a research prototype for organizing synthetic disease-surveillance data, identifying possible outbreak signals, producing short-term forecasts, and presenting planning outputs in a dashboard. The data are synthetic, so the results show how the workflow behaves; they do not demonstrate performance on real patient or government surveillance records.”
+“Hello. We are presenting EpiScope, our Big Data Analytics project. I’m Robiul Hassan, with Md Samin Osman and Md Mahafujul Alam. EpiScope demonstrates a data workflow for synthetic disease surveillance. It takes encounter records through validation and aggregation, then produces analytical outputs and a dashboard. Our goal is to show the engineering process and its limits. These are synthetic records, so our results do not establish how the system would perform with real patients or public-health data.”
 
-### Slide 2 — The problem
+### Slide 2 — System design
 
-“The project brief describes a practical challenge: health, climate, and supply data may arrive in different formats and at different times. Analysts need a way to check the data, identify unusual patterns, estimate near-term demand, and communicate useful summaries to national and district users. The engineering task is to connect those steps in a reproducible pipeline. The project also has to balance early detection against false alerts, useful geographic detail against privacy, and detailed processing against the compute available in a student environment.”
+“The main batch path begins with a generated encounter CSV. Bronze ingests the source and records lineage. Silver applies validation rules, separates clean records from quarantine, and hashes patient identifiers in the clean output. Gold creates district and disease aggregates. The analytics stages use those aggregates for outbreak detection, forecasting, resource allocation, and preparedness-calendar outputs. Serving prepares selected data for the browser dashboard.
 
-### Slide 3 — Pipeline architecture
+“We also added a separate daily facility inventory path for stock and bed occupancy. It has its own Bronze, Silver, and Gold outputs. It does not replace the encounter input, and the optimizer does not use its inventory totals. Keeping these two paths separate helps us show what has actually been integrated.”
 
-“The main batch path starts with generated encounter records. Bronze stores the ingested records in Parquet and adds source and ingestion metadata. Silver applies validation rules, hashes patient identifiers for clean output, and separates invalid rows into quarantine. Gold aggregates clean encounters into district and disease summaries used by the analytics modules. Detection, forecasting, resource allocation, and calendar generation then produce outputs for serving. Public data is prepared and exported to JSON before the D3.js dashboard reads it. Keeping these stages separate makes it easier to identify where a result came from. It does not automatically prove every rule or analysis is correct, so the report keeps the limits visible.”
+### Slide 3 — Data quality
 
-“The encounter generator creates a large synthetic batch and also creates the facility registry and a separate outbreak-label file. The label file is for evaluation; a detector should not use the ground-truth label as an input feature. Silver currently declares fifteen checks, including date ranges, disease-code consistency, duplicate encounter IDs, and facility membership. Rows may fail more than one check, which is why per-rule counts do not add up to the number of unique quarantined rows. We use Parquet between stages so the Spark pipeline can read columnar outputs, while the public browser gets smaller JSON files.”
+“The documented large-scale run processed 25 million encounter rows. The documented Silver output retained 24,825,210 rows and quarantined 174,790. Those numbers reconcile to the input, with a quarantine rate of about 0.70 percent. The Silver implementation contains fifteen named checks covering dates, required fields, codes, duplicates, measurements, and facility membership.
 
-### Slide 4 — Incremental inventory feed
+“One caution: a row can fail more than one check, so individual rule counts can overlap. Row reconciliation confirms accounting for that run; it does not prove each rule is correct. We should use the actual final Colab output if it differs from the historical values shown here.”
 
-“The assignment also describes facility stock and bed occupancy as a daily incremental source. We added a separate synthetic snapshot generator and pipeline for that input. It creates one row per facility for one snapshot date, then writes the input to its own Bronze path. Silver checks the date, facility fields, stock values, and bed capacity. Gold summarizes stock and occupancy by district and date. The idempotency key is the combination of snapshot date and facility ID. When the same daily file is processed again, existing keys should be skipped. This is a separate demonstration; it does not overwrite the batch encounter input and it is not currently used by the resource optimizer. We’ll show the actual two-pass output from Colab here.”
+### Slide 4 — Incremental input and live cue
 
-“The sample registry contains six hundred synthetic facilities, so the first run on an empty inventory Bronze folder should add six hundred records. If this folder already contains the same date, the first run can add fewer or zero; we should explain the exact observed output rather than force a number. The important replay check is that the second pass adds zero rows and the Bronze row count does not grow. We also rebuild Silver and Gold from Bronze after each pass, so the downstream snapshot remains available. This example is first-write-wins: if a facility reports a correction for the same date later, this version skips it. Supporting corrections would require a merge or revision policy.”
+“The incremental example generates one synthetic stock snapshot per facility. The key is the snapshot date together with the facility ID. Bronze appends unseen keys; Silver validates the records; Gold aggregates stock and occupancy by district and date. Replaying the same snapshot should append zero new keys.
 
-**Live view cue:** show the first `pipeline/inventory.py` output and the replay output. Point out `Rows appended this run` and use the actual values shown by Colab.
+“I’ll show the actual Colab output now. We should read the observed first-run and replay counts from the screen. We should not claim the expected first-run count if the folder already had some of those keys. This version uses first-write-wins behavior, so it does not merge corrections to an existing date and facility. The inventory feed is also not used by the optimizer.”
 
-## Speaker 2 — Md Samin Osman (Slides 5–6, about 5 minutes)
+**Demo cue:** Show the generation cell, first pipeline output, and replay output. Point to the actual “Rows appended this run” values. Robiul’s section should end after the demo.
 
-### Slide 5 — Evaluation results
+## Md Samin Osman — Slides 5–6
 
-“This slide summarizes the latest recorded evaluation values in the project documentation. The detection evaluation reports sensitivity of 52.92 percent, false-positive rate of 4.37 percent, and precision of 0.74 percent. The low precision means false alerts greatly outnumber true alerts in this synthetic evaluation. That matters because a real team could face a large review burden. We should show sensitivity and precision together instead of presenting the detector as simply successful because it finds some positive cases. The forecast uses a seven-day average repeated across a fixed 28-day horizon. Its latest saved evaluation reports MAE 2.0182 and RMSE 2.6986 over 8,960 observations. These are historical saved results from synthetic data, not results from a newly rerun evaluation today. They do not establish that the forecast beats a seasonal baseline or works on real outbreaks.”
+### Slide 5 — Detection results
 
-“The saved confusion counts are 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives. That makes the precision result easier to interpret: most observations that the detector flagged were not labeled as outbreak positives in this evaluation. Sensitivity also matters because about half of the positive observations were detected. These measurements use district–disease–day observations with at least fourteen baseline days. The dataset is synthetic, and choices in how labels and evaluation units are constructed affect the numbers. The results should guide tuning and further checks, not be presented as field performance.”
+“The latest saved detection evaluation reports sensitivity of 52.92 percent, a false-positive rate of 4.37 percent, and precision of 0.74 percent. The confusion counts are 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives. The evaluation unit is a district, disease, and day with at least fourteen baseline days.
 
-“For forecasting, MAE summarizes typical absolute error, while RMSE weighs larger errors more heavily. We report both because one number alone can hide large misses. The fixed forecast repeats a pre-test seven-day average for the whole four-week horizon, so it does not adapt daily. We have not shown that it beats a seasonal-naïve alternative. There are older forecast metrics in the project history that differ from the latest saved values; the report flags that discrepancy instead of combining the two.”
+“These metrics need to be read together. The detector finds about half of the labelled positive observations, but its precision is very low: false alerts greatly outnumber true alerts. That would create a substantial review workload if every alert were escalated. The alerts are experimental signals, not confirmed outbreaks. They need human review and further threshold and baseline evaluation before anyone considers an operational pilot.”
 
-### Slide 6 — Planning outputs and trade-offs
+“The confusion counts explain the precision result. Precision is true positives divided by all predicted positives: 190 divided by 190 plus 25,336. Sensitivity is true positives divided by all labelled positives: 190 divided by 190 plus 169. The false-positive rate uses the 25,336 false positives against all 579,481 labelled negatives. This also shows why a low false-positive rate alone can be misleading when the dataset contains many more negative than positive observations. We should report alert volume and precision alongside sensitivity.”
 
-“The project also generates resource-allocation and preparedness-calendar outputs. The allocation stage uses forecast demand and an illustrative resource budget with a minimum allocation per district. These assumptions make the optimization visible and reproducible, but they are not a substitute for current inventory, transport, staffing, or local policy. The new daily inventory input creates a useful district-level stock and occupancy summary, but the optimizer does not consume that summary yet. That boundary matters: we should not imply that the current recommendations use live or updated stock. Our next improvement would connect validated inventory snapshots to the allocation logic, then compare efficiency and minimum district coverage across budget settings. Until then, these outputs are planning demonstrations that require human review.”
+### Slide 6 — Forecast and planning
 
-“The code reports allocated units, a population-proportional comparison, and unmet demand under the fixed illustrative budget. The equity-curve output varies the budget so a reviewer can consider how broader coverage changes as more units become available. These are useful ways to expose assumptions, but they do not validate that the chosen objective matches health priorities. The calendar is also a planning prompt generated from the project’s synthetic analytical outputs. If a district officer were using a real system, the stock snapshot would need timestamps, source checks, missing-feed handling, and clear treatment of stale reports. Our current demonstration only proves a small, deterministic daily feed can pass through the layered storage path after it is run in Colab.”
+“The saved forecast evaluation contains 8,960 observations for December 4 through 31, 2025. The model repeats a seven-day average across a fixed 28-day horizon. It does not update its prediction each day. The reported mean absolute error is 2.0182 cases, and the root mean squared error is 2.6986 cases.
 
-## Speaker 3 — Md Mahafujul Alam (Slides 7–10, about 5 minutes)
+“These values describe the saved synthetic evaluation only. Earlier documentation contains different forecast metrics, and the discrepancy has not been resolved. We have not shown that this baseline outperforms a seasonal-naïve alternative.
+
+“The project also produces an illustrative allocation across 64 districts under a 100-unit budget, plus a preparedness calendar. The optimizer uses forecast demand and a minimum district share. It does not consume the new inventory feed. These outputs demonstrate how planning logic can be connected to the pipeline; they do not validate staffing or stock decisions or show improved health outcomes.”
+
+“The MAE and RMSE are both measured in cases, but RMSE gives more weight to larger errors. The model's repeated average is intentionally simple, so these values should be compared with alternatives before making claims about forecast quality. The planning stage has its own assumptions: a fixed illustrative budget, forecast-based demand, and a minimum district share. In a real planning system, the input would also need current stock, staff capacity, transport, reporting gaps, and local priorities.”
+
+## Md Mahafujul Alam — Slides 7–9
 
 ### Slide 7 — Dashboard
 
-“The dashboard is the presentation layer for cases, alerts, forecasts, resources, and preparedness timing. It uses D3.js and reads exported JSON files, which keeps the browser view separate from the Spark processing. The interface is intended to help users move from an overall view to a district or disease view and inspect different analytical outputs. In the recorded notebook, the JSON payload check reports a total below the documented ten-megabyte limit. During the video, we should show the dashboard itself and demonstrate the filters and coordinated views that are implemented. We should avoid implying the dashboard is connected to a continuously updating service: it displays the exported files, so new pipeline results must be exported before they appear.”
+“The dashboard reads exported JSON files rather than querying Spark directly. The local files currently contain 36,000 weekly case rows, 17,063 alert rows, 8,960 forecasts, 64 resource allocations, and 3,840 preparedness-calendar rows. Their combined payload is 9.81 MiB, below the notebook’s 10 MiB check.
 
-“During the recording, filter cases by disease or district, inspect alerts, then show forecasts, resources, and the calendar. Demonstrate only controls that actually respond. The payload check is a size check, not a user study, and new results appear only after the export is rerun.”
+“These are counts from the files currently in the repository. The case and alert files have later modification times than the forecast, resource, and calendar files, so we have not confirmed that all five came from one export run. Before the final recording, we should regenerate the dashboard exports together and rerun the payload check. In the interface, district and disease filter the case, alert, and forecast views. The alert z-score threshold filters alerts; the budget and equity controls recalculate the allocation scenario.”
+
+**Dashboard demo cue (about 2 minutes):**
+
+1. Select one district and one disease. Point out that the case, alert, and forecast panels respond to those filters.
+2. Raise the alert z-score threshold and show that fewer alerts remain in the table.
+3. Change the budget and equity floor. Point to the allocation summary and bars; the budget controls the total units, while the equity floor increases the minimum equal-share portion before the remaining units follow forecast demand.
+4. Explain that these charts use static JSON exports. The browser does not rerun Spark, and a district/disease filter does not change the source data.
 
 ### Slide 8 — Privacy and limitations
 
-“The encounter data and outbreak labels are synthetic. Raw patient identifiers are hashed before the clean Silver output and are removed from that clean dataset; Bronze and quarantine outputs still contain identifiers and should remain restricted. Public case counts from one to four are suppressed by the serving logic. That reduces direct disclosure of small counts, but it is not a formal privacy guarantee: related totals or views could still reveal information. The analytics also have real limitations. The detector's recorded precision is very low, the forecast is a simple fixed baseline, and the inventory feed is synthetic and not connected to the optimizer. These are reasons to keep human review and further validation in the workflow.”
+“The system uses synthetic encounter records, facility values, and outbreak labels. The clean Silver output uses a salted patient hash, while raw identifiers remain in restricted internal outputs. The public weekly case export suppresses counts from one to four. That reduces direct exposure of small counts, but it is not a formal privacy guarantee. Linked totals and overlapping views can still create inference risk.
 
-“The temperature and rainfall-like fields are synthetic, not weather-station observations. Raw patient IDs remain in restricted Bronze and quarantine data. Small-count suppression also cannot rule out inference from linked totals and views, so we describe it as a risk reduction rather than a guarantee of anonymity.”
+“The detector’s low precision, the simple fixed forecast, the separate inventory path, and the unresolved differences between historical results are all important limitations. Temperature and rainfall-like fields are also synthetic. This project is an educational research prototype and should not be used to direct care or public-health operations.”
 
-### Slide 9 — Proposed team split
+### Slide 9 — Conclusion
 
-“We divided the speaking sections so each member has close to the same time. Robiul covers the core architecture and incremental pipeline. Samin explains evaluation and planning logic. I cover the dashboard, privacy, limitations, and recommendations. The project-role split shown here is a draft to help organize the handover. Our signed contribution matrix must reflect actual work completed and agreed percentages, rather than assuming that the presentation split is the same as the project contribution split.”
+“EpiScope demonstrates a connected workflow from synthetic input to quality checks, analytics, and dashboard export. The strongest evidence is that the processing stages and separate inventory path are implemented and can be inspected. The saved metrics also show why analytical outputs need careful evaluation: the detector has a high false-alert burden, and the forecast is a simple baseline.
 
-“Our unsigned draft puts Robiul as the lead for the core pipeline, Samin on evaluation review, and Mahafujul on dashboard and presentation preparation. A 60/20/20 share is only a proposal based on Robiul's description; the team must agree on actual contributions and sign the final matrix. We have balanced speaking time even though project effort was not equal.”
-
-### Slide 10 — Conclusion
-
-“EpiScope demonstrates a connected data workflow, from synthetic input and data-quality processing to analytics and a public-facing dashboard. The incremental inventory path extends that workflow with a replayable daily input and separate Bronze, Silver, and Gold outputs. The current evidence supports continued validation and demonstration, not operational deployment. Before such use, the system would need authorized representative data, stronger alert performance, validated forecasts, integration with real stock and capacity sources, and review by public-health specialists. Thank you.”
-
-“Next, we’ll capture the incremental replay in Colab, align the report and slides with the actual outputs, finish the policy brief and signed matrix, and add an accessible video link. A future version should accept authorized inventory data and connect it to allocation after expert review. This concludes our presentation. Thank you; we’re ready for questions.”
+“Before submission, we still need to synchronize and capture the final dashboard exports, retain the actual incremental replay output, finish the report PDF and policy-brief layout, agree on and sign the contribution matrix, and add an accessible video link. Our conclusion is that EpiScope supports further validation, not operational deployment. Thank you.”
 
 ## Before recording
 
-1. Run the Colab incremental section and replace the live-view cue with the actual console output.
-2. Confirm the dashboard and final JSON files correspond to the code/results being presented.
-3. Add the final video URL to the README and report after upload, and test that it opens without sign-in.
-4. Keep speaker times close to one another and ensure each member explains their own assigned section in their own words.
+1. Regenerate the five dashboard JSON files together, then rerun the payload check.
+2. Run the inventory snapshot and replay in Colab; replace expected language with the actual counts shown.
+3. Confirm the evaluation values against the saved results you plan to submit.
+4. Record each member’s section and keep speaking time close to the targets above. Include both the Colab and dashboard demonstrations in the total presentation time.
+5. Add the report PDF, signed contribution matrix and reflections, and accessible video link before calling the handover complete.

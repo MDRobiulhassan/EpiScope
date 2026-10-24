@@ -18,6 +18,24 @@ Generated from existing project artifacts and docs/EXPERIMENTS.md.
 - `optimization_benchmarks.csv`: documented Gold-stage benchmark timings.
 - `scaling_results.csv`: documented Gold-stage scaling measurements.
 
+## Saved dashboard export snapshot
+
+These values were read from the existing JSON files in `dashboard/data/`; no Spark job was run to produce this summary.
+
+| Export | Saved value |
+|---|---:|
+| Weekly cases | 36,000 rows; all publishable; counts 32–3,667 |
+| Sum of weekly published counts | 10,011,332 |
+| Alerts | 17,063 rows |
+| Forecasts | 8,960 rows |
+| Resource allocations | 64 districts; 100 units total |
+| Preparedness calendar | 3,840 rows |
+| Total JSON payload | 9.81 MiB |
+
+The cases and alerts files were modified later than forecasts, resources, and calendar. These outputs are therefore recorded as a **mixed saved snapshot**, not asserted to be a single synchronized pipeline export. Regenerate all five JSON files together and rerun the dashboard payload check before using the snapshot as final assignment evidence.
+
+The latest case export is weekly, unlike the older daily privacy export recorded in `docs/EXPERIMENTS.md`. The current file contains no weekly published counts from 1 through 4; that check does not establish protection against inference from linked views or totals.
+
 ## Critical validation issues
 
 1. Current detection evaluation reports TP=190, FP=25336, FN=169,
