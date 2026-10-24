@@ -258,11 +258,11 @@ function drawAlerts(rows) {
     d.is_outbreak_alert === "true"
   ).filter(d => {
     const score = numeric(d.alert_score);
-    return score === null || score >= threshold;
+    return score !== null && score >= threshold;
   });
 
   const table = d3.select("#alerts-table").append("table");
-  const columns = ["encounter_date", "district", "disease", "case_count", "baseline_mean"];
+  const columns = ["encounter_date", "district", "disease", "case_count", "baseline_mean", "alert_score"];
 
   table.append("thead").append("tr")
     .selectAll("th")
@@ -308,15 +308,26 @@ function drawResources(rows) {
 
   const budget = +budgetSlider.property("value");
   const equityFloor = +equitySlider.property("value");
+  const districtCount = Math.max(rows.length, 1);
+  const floorPerDistrict = equityFloor * budget / districtCount;
+  const demandValues = rows.map(d => Math.max(0, numeric(d.forecast_case_demand) || 0));
+  const totalDemand = d3.sum(demandValues);
+  const remainingBudget = Math.max(0, budget - floorPerDistrict * districtCount);
   d3.select("#budget-value").text(budget);
   d3.select("#threshold-value").text(thresholdSlider.property("value"));
   d3.select("#equity-value").text(equityFloor.toFixed(2));
-  const totalDemand = d3.sum(rows, d => numeric(d.forecast_case_demand) || 0) || 1;
-  const filteredRows = rows.map(d => ({
+  d3.select("#allocation-summary").text(
+    `Allocating ${budget} units across ${rows.length} districts; ` +
+    `each district receives a ${floorPerDistrict.toFixed(2)}-unit minimum, ` +
+    `with the rest weighted by forecast demand.`
+  );
+
+  const filteredRows = rows.map((d, index) => ({
     ...d,
-    allocated_units: Math.max(
-      equityFloor * budget / Math.max(rows.length, 1),
-      budget * (numeric(d.forecast_case_demand) || 0) / totalDemand,
+    allocated_units: floorPerDistrict + (
+      totalDemand > 0
+        ? remainingBudget * demandValues[index] / totalDemand
+        : remainingBudget / districtCount
     ),
   })).filter(d =>
     districtFilter.property("value") === "ALL" ||
@@ -365,7 +376,7 @@ function drawResources(rows) {
     .attr("height", y.bandwidth())
     .attr("fill", "#b7792b")
     .on("mousemove", (event, d) =>
-      showTooltip(event, `${d.district}: ${d.value} allocated`))
+      showTooltip(event, `${d.district}: ${d.value.toFixed(2)} allocated units`))
     .on("mouseleave", hideTooltip);
 }
 

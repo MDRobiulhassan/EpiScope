@@ -40,6 +40,13 @@
       padding: 20px 5%;
     }
 
+    .control-help {
+      flex-basis: 100%;
+      margin: 0;
+      font-size: 12px;
+      color: #64748b;
+    }
+
     label {
       display: flex;
       flex-direction: column;
@@ -134,15 +141,16 @@
         <option value="ALL">All diseases</option>
       </select>
     </label>
-    <label>Budget <output id="budget-value">100</output>
+    <label>Allocation budget (units) <output id="budget-value">100</output>
       <input id="budget-slider" type="range" min="64" max="200" value="100" step="1">
     </label>
-    <label>Alert threshold <output id="threshold-value">2</output>
+    <label>Alert z-score threshold <output id="threshold-value">2</output>
       <input id="threshold-slider" type="range" min="1" max="4" value="2" step="0.5">
     </label>
-    <label>Equity floor <output id="equity-value">0.10</output>
+    <label>Equity floor (equal-share fraction) <output id="equity-value">0.10</output>
       <input id="equity-slider" type="range" min="0" max="0.5" value="0.1" step="0.05">
     </label>
+    <p class="control-help">Budget and equity floor recalculate resource allocations. Alert z-score filters the alert table.</p>
   </section>
 
   <div id="status">Loading dashboard data...</div>
@@ -175,6 +183,7 @@
     <section class="panel wide">
       <h2>5. Resource Allocation and Preparedness</h2>
       <p>Allocation outputs and seasonal preparation recommendations.</p>
+      <p id="allocation-summary" aria-live="polite"></p>
       <div id="resource-chart"></div>
       <div class="table-wrap" id="calendar-table"></div>
     </section>

@@ -131,6 +131,19 @@ def main():
             .filter(F.col("is_outbreak_alert") == True)
         )
 
+    if (
+        "alert_score" not in alerts.columns
+        and {"case_count", "baseline_mean", "baseline_stddev"}.issubset(alerts.columns)
+    ):
+        alerts = alerts.withColumn(
+            "alert_score",
+            F.when(
+                F.col("baseline_stddev") > 0,
+                (F.col("case_count") - F.col("baseline_mean"))
+                / F.col("baseline_stddev"),
+            ).otherwise(F.lit(0.0)),
+        )
+
     alert_columns = alerts.columns
 
     # Select only fields that exist in this pipeline's output.
