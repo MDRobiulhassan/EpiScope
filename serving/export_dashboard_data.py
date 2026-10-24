@@ -66,10 +66,22 @@ def main():
     # 1. Weekly public cases. Aggregate before suppression so multiple
     # small daily counts can be safely published as a weekly total.
     cases = spark.read.parquet(str(GOLD / "daily_cases"))
+    missing_case_columns = {"encounter_date", "district", "disease", "case_count"} - set(cases.columns)
+    if missing_case_columns:
+        raise ValueError(
+            "Gold daily_cases is missing required columns: "
+            f"{sorted(missing_case_columns)}"
+        )
+    source_case_rows = cases.count()
+    if source_case_rows == 0:
+        raise ValueError(f"Gold daily_cases is empty: {GOLD / 'daily_cases'}")
 
     weekly_cases = (
         cases
-        .withColumn("week_start", F.date_trunc("week", "encounter_date").cast("date"))
+        .withColumn(
+            "week_start",
+            F.to_date(F.date_trunc("week", F.to_timestamp("encounter_date"))),
+        )
         .groupBy("week_start", "district", "disease")
         .agg(F.sum("case_count").cast("long").alias("case_count"))
         .withColumn(
@@ -89,6 +101,18 @@ def main():
             "suppressed",
         )
     )
+
+    weekly_case_rows = weekly_cases.count()
+    publishable_case_rows = weekly_cases.filter(
+        F.col("published_case_count").isNotNull()
+    ).count()
+    print(
+        "Dashboard cases: "
+        f"{source_case_rows:,} daily rows -> {weekly_case_rows:,} weekly rows; "
+        f"{publishable_case_rows:,} publishable"
+    )
+    if weekly_case_rows == 0:
+        raise ValueError("Weekly case aggregation produced no rows.")
 
     export_json(weekly_cases, "cases")
 
