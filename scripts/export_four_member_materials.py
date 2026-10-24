@@ -200,7 +200,7 @@ def main():
     report_main = re.sub(r"(?s)\\appendices.*?\\end\{document\}", "", report_source)
     report_html = latex_to_html(report_main)
     author_names = "<br>".join(f"{html.escape(name)} ({idno})" for name, idno in MEMBERS)
-    report_html = f'<div class="authorblock">{author_names}<br>Department of Computer Science and Engineering<br>Premier University, Chattogram, Bangladesh<br>Repository: https://github.com/mdrobiulhassan/EpiScore</div>' + report_html
+    report_html = f'<div class="authorblock">{author_names}<br>Department of Computer Science and Engineering<br>Premier University, Chattogram, Bangladesh<br>Repository: https://github.com/mdrobiulhassan/EpiScope</div>' + report_html
     brief_html = latex_to_html(brief_source)
     brief_header = '<h2>Appendix: Policy Brief for Public-Health Decision Makers</h2><h3>EpiScope: A research prototype for surveillance and preparedness</h3><p><b>Prepared by:</b> Md. Samin Osman (0222220005101042), Robiul Hassan (0222220005101043), Walid Talal (0222220005101045), and Md. Mahafujul Alam (0222220005101066).</p>'
     brief_html = brief_header + brief_html

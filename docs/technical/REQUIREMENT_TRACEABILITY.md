@@ -5,7 +5,7 @@ This document maps the assignment areas to the EpiScope implementation and the e
 | Assignment area | Implementation | Repository evidence and scope |
 |---|---|---|
 | Batch synthetic encounters | `generator/generate_encounters.py` | The Colab notebook documents the 25-million-row batch run. The generated full dataset is not stored in this repository. |
-| Bronze–Silver–Gold encounter processing | `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold.py` | Layered Spark processing. Saved data-quality counts record the documented 25-million-row reconciliation. |
+| Bronze-Silver-Gold encounter processing | `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold.py` | Layered Spark processing. Saved data-quality counts record the documented 25-million-row reconciliation. |
 | Incremental source feed | `generator/generate_inventory_drop.py`, `pipeline/inventory.py` | Synthetic daily facility stock and occupancy snapshot. Bronze ingestion is keyed by `(snapshot_date, facility_id)` and supports replay protection. |
 | Encounter data quality | `pipeline/silver.py` | The implementation contains named validation checks and separates clean records from quarantine. `results/data_quality_metrics.json` contains documented row counts; it does not recount a source dataset. |
 | Inventory data quality | `pipeline/inventory.py` | Validates snapshot date, facility and district values, nonnegative stock and bed fields, positive capacity, and occupancy not exceeding capacity. |
@@ -14,9 +14,9 @@ This document maps the assignment areas to the EpiScope implementation and the e
 | Forecasting and evaluation | `analytics/forecast/` | `results/forecast_metrics.json` contains the current saved 28-day forecast evaluation and historical metrics. The evaluated baseline repeats a seven-day average. |
 | Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Produces illustrative resource and calendar outputs. The optimizer uses forecast demand and does not consume the incremental inventory feed. |
 | Dashboard and serving | `serving/`, `dashboard/` | Five saved JSON exports are in `dashboard/data/`. Their modification times differ; the saved values are a mixed snapshot rather than one synchronized export run. |
-| Scalability and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/EXPERIMENTS.md` | Historical timing, scaling, and optimization measurements are stored under `results/`. They describe the documented environment and procedures. |
-| Report and policy brief | `docs/episcope_ieee_report.tex`, `docs/policy_brief.tex`, `docs/policy_brief.md` | The report PDF is six pages and includes the two-page policy brief appendix. A standalone two-page policy brief PDF is also included. |
-| Presentation | `docs/presentation.html`, `docs/presentation.pptx`, `docs/presentation_script.md` | Nine-slide presentation and a speaking script with sections assigned to the four listed members. |
+| Scalability and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/technical/EXPERIMENTS.md` | Historical timing, scaling, and optimization measurements are stored under `results/`. They describe the documented environment and procedures. |
+| Report and policy brief | `docs/report/episcope_ieee_report.tex`, `docs/report/policy_brief.tex`, `docs/report/policy_brief.md` | The report PDF is six pages and includes the two-page policy brief appendix. A standalone two-page policy brief PDF is also included. |
+| Presentation | `docs/presentation/presentation.html`, `docs/presentation/presentation.pptx`, `docs/presentation/presentation_script.md` | Nine-slide presentation and a speaking script with sections assigned to the four listed members. |
 
 ## Saved evaluation results
 

@@ -29,9 +29,9 @@ The synthetic encounter generator writes these fields. Spark infers source types
 | `encounter_id` | integer | Encounter record identifier. | Generated; 2% of generated rows may reuse an earlier ID to model resubmissions. |
 | `patient_id` | string | Synthetic patient identifier. | Generated; hashed in Silver and removed from clean output. It remains in restricted Bronze and quarantine data. |
 | `facility_id` | string | Facility reference. | Generated from the synthetic facility registry. |
-| `onset_date` | date | Synthetic symptom onset date. | Generated within 2021–2025. |
+| `onset_date` | date | Synthetic symptom onset date. | Generated within 2021-2025. |
 | `report_date` | date | Synthetic date reported. | Onset date plus a generated reporting delay. |
-| `encounter_date` | date | Date assigned to the synthetic encounter. | Generated within 2021–2025 and used in Gold aggregations. |
+| `encounter_date` | date | Date assigned to the synthetic encounter. | Generated within 2021-2025 and used in Gold aggregations. |
 | `district` | string | Bangladesh district label. | Generated from the project's 64-district list. |
 | `disease` | string | Synthetic disease category. | Dengue, diarrhoea, malaria, respiratory infection, or typhoid. |
 | `icd10_code` | string | Disease code used by this generator. | Generated mapping; Silver checks consistency with the disease category. |
@@ -72,7 +72,7 @@ The inventory pipeline appends only keys not already present in Bronze. Replayin
 
 ## Provenance and privacy
 
-Encounter, outbreak, facility, and inventory values are synthetic. The generator's temperature and rainfall fields are not sourced from weather stations. Historical experiment metrics are recorded project results; refer to `docs/EXPERIMENTS.md` for their evidence and limitations.
+Encounter, outbreak, facility, and inventory values are synthetic. The generator's temperature and rainfall fields are not sourced from weather stations. Historical experiment metrics are recorded project results; refer to `docs/technical/EXPERIMENTS.md` for their evidence and limitations.
 
 Patient identifiers remain in internal Bronze and quarantine outputs. Restrict access to these paths. Clean Silver data contains a salted hash rather than the raw patient identifier. Public dashboard exports are aggregated; suppressing counts from one through four does not guarantee protection against inference from related totals or views.
 

@@ -10,12 +10,12 @@
 \subsection*{The decision problem}
 Health teams need to notice unusual disease activity early enough to investigate it and prepare staff, supplies, and services. Relevant information may come from different systems and arrive late or with inconsistent quality. A useful analytics workflow must therefore check incoming data, summarize trends, provide interpretable signals, and communicate limitations alongside recommendations.
 
-EpiScope demonstrates this workflow using synthetic encounter and facility data. It places records into Bronze, Silver, and Gold processing stages; produces outbreak signals and short-term forecasts; and prepares resource and calendar outputs for a D3.js dashboard. A separate demonstration generates a daily synthetic stock and bed-occupancy snapshot and processes it through Bronze, Silver, and Gold with replay protection. The snapshot is not live facility information and is not yet an input to the resource-allocation optimizer.
+EpiScope demonstrates this workflow using synthetic encounter and facility data. It places records into Bronze, Silver, and Gold processing stages; produces outbreak signals and short-term forecasts; and prepares resource and calendar outputs for a D3.js dashboard. A separate demonstration generates a daily synthetic stock and bed-occupancy snapshot and processes it through Bronze, Silver, and Gold with replay protection. The snapshot is synthetic facility information and the resource-allocation optimizer does not consume it.
 
 \subsection*{What the current evidence says}
 The latest saved synthetic evaluation reports detection sensitivity of 52.92\%, a false-positive rate of 4.37\%, and precision of 0.74\%. The low precision means that most alerts were false positives in the evaluated dataset. Such alerts would require substantial human review and should not be sent directly to field teams as confirmed events.
 
-The latest saved forecasting evaluation reports mean absolute error of 2.0182 and root mean squared error of 2.6986 across 8,960 district--disease--day observations from December 4--31, 2025. The forecast repeats a seven-day average through a fixed 28-day horizon. It has not been shown to outperform a seasonal baseline. These results are historical project outputs from synthetic data; they are not evidence of real-world outbreak performance or health impact.
+The latest saved forecasting evaluation reports mean absolute error of 2.0182 and root mean squared error of 2.6986 across 8,960 district-disease-day observations from December 4 to 31, 2025. The forecast repeats a seven-day average through a fixed 28-day horizon. It has not been shown to outperform a seasonal baseline. These results are historical project outputs from synthetic data; they are not evidence of real-world outbreak performance or health impact.
 
 \clearpage
 \subsection*{Recommended use and safeguards}

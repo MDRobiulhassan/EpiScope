@@ -62,7 +62,7 @@ These are recorded measurements and have not necessarily been recomputed during 
 
 The complete set of Silver-layer quality rules must be verified against the implementation. A documented rule inventory alone does not establish that each rule is implemented, tested, or triggered correctly.
 
-The incremental inventory feed is synthetic and runs as a parallel Bronze–Silver–Gold path. The current resource optimizer does not consume its Gold outputs. Replay protection is first-write-wins for `(snapshot_date, facility_id)`; corrected values for an existing key are ignored rather than merged. The new Colab demonstration must be run and its output recorded before claiming execution evidence.
+The incremental inventory feed is synthetic and runs as a parallel Bronze-Silver-Gold path. The current resource optimizer does not consume its Gold outputs. Replay protection is first-write-wins for `(snapshot_date, facility_id)`; corrected values for an existing key are ignored rather than merged. The new Colab demonstration must be run and its output recorded before claiming execution evidence.
 
 ## 5. Privacy and Small-Count Suppression
 

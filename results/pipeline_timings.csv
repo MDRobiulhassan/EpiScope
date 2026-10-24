@@ -1,12 +1,12 @@
 stage,runtime_minutes,provenance,source
-Bronze,5.16,historical_documented,docs/EXPERIMENTS.md
-Silver,12.83,historical_documented,docs/EXPERIMENTS.md
-Gold,3.57,historical_documented,docs/EXPERIMENTS.md
-Outbreak detection,1.47,historical_documented,docs/EXPERIMENTS.md
-Forecast generation,0.94,historical_documented,docs/EXPERIMENTS.md
-Resource allocation,0.59,historical_documented,docs/EXPERIMENTS.md
-Preparedness calendar,0.57,historical_documented,docs/EXPERIMENTS.md
-Public-data build,0.5,historical_documented,docs/EXPERIMENTS.md
-Dashboard export,0.66,historical_documented,docs/EXPERIMENTS.md
-Forecast evaluation,0.86,historical_documented,docs/EXPERIMENTS.md
-Detection evaluation,0.75,historical_documented,docs/EXPERIMENTS.md
+Bronze,5.16,historical_documented,docs/technical/EXPERIMENTS.md
+Silver,12.83,historical_documented,docs/technical/EXPERIMENTS.md
+Gold,3.57,historical_documented,docs/technical/EXPERIMENTS.md
+Outbreak detection,1.47,historical_documented,docs/technical/EXPERIMENTS.md
+Forecast generation,0.94,historical_documented,docs/technical/EXPERIMENTS.md
+Resource allocation,0.59,historical_documented,docs/technical/EXPERIMENTS.md
+Preparedness calendar,0.57,historical_documented,docs/technical/EXPERIMENTS.md
+Public-data build,0.5,historical_documented,docs/technical/EXPERIMENTS.md
+Dashboard export,0.66,historical_documented,docs/technical/EXPERIMENTS.md
+Forecast evaluation,0.86,historical_documented,docs/technical/EXPERIMENTS.md
+Detection evaluation,0.75,historical_documented,docs/technical/EXPERIMENTS.md

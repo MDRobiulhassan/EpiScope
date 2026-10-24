@@ -1,4 +1,4 @@
 scale,rows,gold_runtime_minutes,scope,provenance,source,sampling_note
-SF 0.25,6250000,1.55,"Gold stage only, not end-to-end",historical_documented,docs/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.
-SF 0.5,12500000,2.03,"Gold stage only, not end-to-end",historical_documented,docs/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.
-SF 1.0,24825210,3.45,"Gold stage only, not end-to-end",historical_documented,docs/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.
+SF 0.25,6250000,1.55,"Gold stage only, not end-to-end",historical_documented,docs/technical/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.
+SF 0.5,12500000,2.03,"Gold stage only, not end-to-end",historical_documented,docs/technical/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.
+SF 1.0,24825210,3.45,"Gold stage only, not end-to-end",historical_documented,docs/technical/EXPERIMENTS.md,Smaller datasets used row limits/prefix samples.

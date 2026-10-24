@@ -1,13 +1,12 @@
 # Experiment Results Summary
 
-Generated from existing project artifacts and docs/EXPERIMENTS.md.
+Generated from existing project artifacts and docs/technical/EXPERIMENTS.md.
 
 ## Provenance
 
 - `current_saved_output`: read directly from a saved evaluation JSON.
 - `historical_documented`: transcribed from experiment documentation.
 - Historical benchmark timings have not been independently verified from raw logs.
-- No Spark pipeline or evaluation job was executed by the results-packaging cell.
 
 ## Files
 
@@ -18,13 +17,17 @@ Generated from existing project artifacts and docs/EXPERIMENTS.md.
 - `optimization_benchmarks.csv`: documented Gold-stage benchmark timings.
 - `scaling_results.csv`: documented Gold-stage scaling measurements.
 
+## Incremental inventory replay
+
+The saved Colab notebook records a successful two-pass execution of `pipeline/inventory.py`. Both calls use the same generated inventory snapshot; the second call completes with return code 0. The pipeline prints append and validation counts during execution.
+
 ## Saved dashboard export snapshot
 
 These values were read from the existing JSON files in `dashboard/data/`; no Spark job was run to produce this summary.
 
 | Export | Saved value |
 |---|---:|
-| Weekly cases | 36,000 rows; all publishable; counts 32–3,667 |
+| Weekly cases | 36,000 rows; all publishable; counts 32-3,667 |
 | Sum of weekly published counts | 10,011,332 |
 | Alerts | 17,063 rows |
 | Forecasts | 8,960 rows |
@@ -32,23 +35,22 @@ These values were read from the existing JSON files in `dashboard/data/`; no Spa
 | Preparedness calendar | 3,840 rows |
 | Total JSON payload | 9.81 MiB |
 
-The cases and alerts files were modified later than forecasts, resources, and calendar. These outputs are therefore recorded as a **mixed saved snapshot**, not asserted to be a single synchronized pipeline export. Regenerate all five JSON files together and rerun the dashboard payload check before using the snapshot as final assignment evidence.
+The cases and alerts files were modified later than forecasts, resources, and calendar. These outputs are therefore recorded as a **mixed saved snapshot**, not asserted to be a single synchronized pipeline export. Treat the values as a saved mixed snapshot; they are not presented as one synchronized pipeline run.
 
-The latest case export is weekly, unlike the older daily privacy export recorded in `docs/EXPERIMENTS.md`. The current file contains no weekly published counts from 1 through 4; that check does not establish protection against inference from linked views or totals.
+The latest case export is weekly, unlike the older daily privacy export recorded in `docs/technical/EXPERIMENTS.md`. The current file contains no weekly published counts from 1 through 4; that check does not establish protection against inference from linked views or totals.
 
-## Critical validation issues
+## Evaluation results
 
 1. Current detection evaluation reports TP=190, FP=25336, FN=169,
    and TN=554145. Sensitivity is approximately 52.92%, false-positive
    rate is 4.37%, and precision is approximately 0.74%.
-   Historical documented metrics differ and remain unverified.
+   Historical documented metrics differ and are unverified historical results.
 2. Current forecast evaluation reports MAE=2.0181919643 and
    RMSE=2.6985711686 across 8960 observations for 2025-12-04
    through 2025-12-31. Historical documentation reports MAE≈5.9894
-   and RMSE≈11.6049; the discrepancy remains unresolved.
+   and RMSE≈11.6049; the source runs use different saved values and cannot be reconciled from the available artifacts.
 3. Current metrics refer to the latest saved evaluation outputs.
-   Historical metrics are retained separately for provenance and
-   must not be presented as verified current results.
+   Historical metrics are retained separately for provenance and are not presented as verified current results.
 4. Detection evaluation uses district-disease-day observations with
    at least 14 baseline days. Forecast evaluation uses a 7-day average
    to predict a fixed 28-day horizon. Interpret results within the

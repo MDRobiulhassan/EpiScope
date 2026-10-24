@@ -33,7 +33,7 @@ Gold encounter aggregates          Gold district-day inventory
                   D3.js dashboard
 ```
 
-The inventory path is a separate incremental source. The current resource-allocation optimizer does not yet consume these inventory aggregates; they are a parallel demonstration of incremental ingestion and layered processing.
+The inventory path is a separate incremental source. The resource-allocation optimizer does not consume these inventory aggregates; they demonstrate incremental ingestion and layered processing.
 
 ## Components
 
@@ -73,4 +73,4 @@ Encounter and inventory working data are stored separately from public dashboard
 
 ## Colab execution
 
-The Colab workflow is `scripts/EpiScope_Colab_Run.ipynb`. Run the assignment-scale encounter pipeline as recorded, then run the incremental section. It generates the inventory CSV and processes it twice; the second run should show `Rows appended this run: 0`. Record the actual output from your Colab session before using it as evidence in the report or video.
+The Colab workflow is `scripts/EpiScope_Colab_Run.ipynb`. Its saved execution records the assignment-scale batch workflow and a successful two-pass inventory run. The inventory pipeline reports the number of appended rows on each pass; replaying the same keys appends zero rows.

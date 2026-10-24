@@ -8,7 +8,7 @@ Synthetic encounter generation is excluded from the pipeline-runtime total unles
 
 ## Incremental Inventory Replay Demonstration
 
-The code for this demonstration is in `generator/generate_inventory_drop.py` and `pipeline/inventory.py`; it is separate from the historical encounter benchmarks above. No fresh execution output is recorded in this document yet. Run the two-pass section in `scripts/EpiScope_Colab_Run.ipynb`, retain the actual console output, and update this section before treating the feed as experimentally demonstrated. On a fresh inventory Bronze path the first pass should append one row per facility; replaying the same file should append zero. The feed is synthetic, and inventory Gold is not currently consumed by the resource optimizer.
+The Colab notebook records a successful two-pass execution of `pipeline/inventory.py`. The run uses a generated one-day facility stock and bed-occupancy snapshot. The pipeline appends unseen `(snapshot_date, facility_id)` keys on the first pass and skips existing keys on replay. It validates and quarantines inventory records, then writes district-day Gold aggregates. The inventory data are synthetic, and the allocation optimizer does not consume these aggregates.
 
 ## 2. Full-Scale Pipeline Performance
 
@@ -109,7 +109,7 @@ The latest recorded forecast evaluation reports the following results:
 | Evaluation observations | 8,960 |
 | Mean Absolute Error (MAE) | 2.0182 cases |
 | Root Mean Squared Error (RMSE) | 2.6986 cases |
-| Test period | December 4–31, 2025 |
+| Test period | December 4-31, 2025 |
 | Model | Seven-day average, fixed 28-day horizon |
 
 The baseline uses a seven-day average computed before the test window and repeats that forecast across the fixed 28-day horizon. It is not a rolling daily-updated forecast.
@@ -120,7 +120,7 @@ Evaluation output:
 
 Earlier documentation reported MAE of approximately 5.9894 and RMSE of approximately 11.6049. The original evaluation supporting those historical values could not be independently verified. They are therefore retained as historical results and are not treated as the current evaluation.
 
-The discrepancy between the historical and latest metrics remains unresolved. The results should be interpreted in the target's units and within the synthetic dataset; they do not establish predictive performance on real-world surveillance data.
+Historical metrics differ from the latest saved evaluation and are reported separately because their source run and configuration are unavailable. The latest values describe the synthetic test data and do not establish predictive performance on real-world surveillance data.
 
 ## 7. Outbreak Detection Evaluation
 
@@ -138,7 +138,7 @@ The latest recorded evaluation reports:
 
 The evaluation unit is a district-disease-day, restricted to units with at least 14 baseline days.
 
-Earlier documentation reported TP = 184, FP = 21,186, FN = 175, TN = 558,295, sensitivity of approximately 51.25%, and false-positive rate of approximately 3.66%. Those historical results have not been independently verified and are not substituted for the latest recorded evaluation. The discrepancy remains unresolved.
+Earlier documentation reported TP = 184, FP = 21,186, FN = 175, TN = 558,295, sensitivity of approximately 51.25%, and false-positive rate of approximately 3.66%. Those historical results have not been independently verified and are not substituted for the latest recorded evaluation. The earlier values are retained as unverified historical results and are not combined with the latest evaluation.
 
 The low precision indicates that false-positive alerts substantially outnumber true-positive alerts in this evaluation. Sensitivity alone is therefore insufficient to establish operational usefulness.
 
@@ -146,9 +146,7 @@ The low precision indicates that false-positive alerts substantially outnumber t
 
 An earlier daily-case export was documented as 584,320 rows, with approximately 246,000 suppressed. The current saved dashboard file uses weekly aggregation and is therefore not directly comparable with that earlier daily export.
 
-The current local `dashboard/data/cases.json` contains 36,000 weekly rows. All are publishable, with counts from 32 to 3,667; no weekly count from 1 through 4 is present. The five saved dashboard JSON files total 9.81 MiB, below the notebook's 10 MiB limit.
-
-This is a check of the current saved case file, not a complete privacy audit. Also, the cases and alerts JSON files have later modification times than the forecasts, resources, and calendar files. The exports may not represent one pipeline run; regenerate all five together before treating the dashboard as a final synchronized snapshot. Suppression does not prevent inference from linked totals, overlapping views, or repeated queries.
+The current local `dashboard/data/cases.json` contains 36,000 weekly rows. All are publishable, with counts from 32 to 3,667; no weekly count from 1 through 4 is present. The five saved dashboard JSON files total 9.81 MiB, below the notebook's 10 MiB limit. The cases and alerts files have later modification times than the forecasts, resources, and calendar files, so the saved payload is a mixed snapshot. Suppression does not prevent inference from linked totals, overlapping views, or repeated queries.
 
 ## 9. Reproducibility and Limitations
 
@@ -164,4 +162,4 @@ Where available, retain benchmark logs and configuration records containing:
 - Output validation and resulting row counts.
 - Repeated measurements or an explicit note that a result comes from a single run.
 
-Historical metrics whose original evidence is unavailable should remain clearly identified as unverified. Performance and evaluation results should be reproducible from the submitted version before they are presented as definitive.
+Historical metrics without source evidence are identified as unverified. Runtime and evaluation figures are tied to the documented inputs, configuration, and tested scope.

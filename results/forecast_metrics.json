@@ -17,7 +17,7 @@
     "test_end": "2025-12-31",
     "model": "7-day-average-fixed-28-day-horizon",
     "provenance": "historical_documented_not_independently_verified",
-    "source": "docs/EXPERIMENTS.md"
+    "source": "docs/technical/EXPERIMENTS.md"
   },
   "warning": "Current evaluation metrics differ substantially from historical documented results. Current values are from the latest saved evaluation output; historical values are retained for provenance and have not been reconciled."
 }

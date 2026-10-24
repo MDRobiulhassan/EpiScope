@@ -4,22 +4,23 @@
 
 EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, Department of Computer Science and Engineering, Premier University, Chattogram, Spring 2026**. It demonstrates a large-scale data-processing workflow for disease surveillance, outbreak detection, case forecasting, resource planning, and public-facing visualization using Apache Spark, PySpark, Parquet, Python, and D3.js v7.
 
-**Repository:** [mdrobiulhassan/EpiScore](https://github.com/mdrobiulhassan/EpiScore)
+**Repository:** [mdrobiulhassan/EpiScope](https://github.com/mdrobiulhassan/EpiScope)
 
 ## Project Documents
 
-- [IEEE report — PDF](docs/episcope_ieee_report.pdf) · [LaTeX source](docs/episcope_ieee_report.tex)
-- [Policy brief — PDF](docs/policy_brief.pdf) · [Markdown source](docs/policy_brief.md)
-- [Presentation slides — PowerPoint](docs/presentation.pptx) · [HTML version](docs/presentation.html) · [four-member script](docs/presentation_script.md)
+- [Documentation index](docs/README.md)
+- [IEEE report - PDF](docs/report/episcope_ieee_report.pdf) · [LaTeX source](docs/report/episcope_ieee_report.tex)
+- [Policy brief - PDF](docs/report/policy_brief.pdf) · [Markdown source](docs/report/policy_brief.md)
+- [Presentation slides - PowerPoint](docs/presentation/presentation.pptx) · [HTML version](docs/presentation/presentation.html) · [four-member script](docs/presentation/presentation_script.md)
 
 The IEEE report PDF is six pages, including the two-page policy-brief appendix. The standalone policy-brief PDF is two pages.
 
 ## Project Team
 
-- Md. Samin Osman — 0222220005101042
-- Robiul Hassan — 0222220005101043
-- Walid Talal — 0222220005101045
-- Md. Mahafujul Alam — 0222220005101066
+- Md. Samin Osman - 0222220005101042
+- Robiul Hassan - 0222220005101043
+- Walid Talal - 0222220005101045
+- Md. Mahafujul Alam - 0222220005101066
 
 **Important limitation:** Encounter records and injected outbreak labels are synthetic. The analytical results are experimental and do not establish effectiveness in real-world public-health surveillance. Weather-related fields must not be described as real weather-station observations unless independently verified.
 
@@ -85,7 +86,7 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `pipeline/bronze.py` | Bronze-layer ingestion |
 | `pipeline/silver.py` | Validation, cleaning, and quarantine |
 | `pipeline/gold.py` | Gold-layer aggregation |
-| `pipeline/inventory.py` | Idempotent Bronze–Silver–Gold processing for incremental inventory snapshots |
+| `pipeline/inventory.py` | Idempotent Bronze-Silver-Gold processing for incremental inventory snapshots |
 | `analytics/detection/` | Outbreak detection and evaluation |
 | `analytics/forecast/` | Forecast generation and evaluation |
 | `analytics/optimise/` | Resource allocation |
@@ -98,12 +99,12 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `requirements.txt` | Python dependency pins |
 | `AI_USAGE.md` | AI assistance disclosure |
 | `scripts/EpiScope_Colab_Run.ipynb` | Google Colab execution cells |
-| `docs/IMPLEMENTATION_MAP.md` | Assignment areas, implementation paths, and saved evidence |
-| `docs/REQUIREMENT_TRACEABILITY.md` | Assignment requirements mapped to implementation and repository evidence |
-| `docs/PRESENTATION_ROLES.md` | Four-member presentation speaking assignments |
-| `docs/presentation.html` | Browser-based presentation slides |
-| `docs/presentation.pptx` | Four-member PowerPoint presentation |
-| `docs/presentation_script.md` | Four-member speaking script |
+| `docs/technical/IMPLEMENTATION_MAP.md` | Assignment areas, implementation paths, and saved evidence |
+| `docs/technical/REQUIREMENT_TRACEABILITY.md` | Assignment requirements mapped to implementation and repository evidence |
+| `docs/presentation/PRESENTATION_ROLES.md` | Four-member presentation speaking assignments |
+| `docs/presentation/presentation.html` | Browser-based presentation slides |
+| `docs/presentation/presentation.pptx` | Four-member PowerPoint presentation |
+| `docs/presentation/presentation_script.md` | Four-member speaking script |
 
 ## Technology Stack
 
@@ -127,7 +128,7 @@ The recorded experiment processed **25,000,000 input rows**. The Silver-layer re
 
 The recorded pipeline and evaluation stages took approximately **27.40 minutes**, excluding encounter generation, which took approximately **7.17 minutes**.
 
-The measurements were collected in a constrained research environment using Spark local mode. Runtime will vary with hardware, memory, storage, Spark configuration, and workload. Refer to [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the individual stage timings, optimization experiments, and evaluation caveats.
+The measurements were collected in a constrained research environment using Spark local mode. Runtime will vary with hardware, memory, storage, Spark configuration, and workload. Refer to [`docs/technical/EXPERIMENTS.md`](docs/technical/EXPERIMENTS.md) for the individual stage timings, optimization experiments, and evaluation caveats.
 
 ## Detection Evaluation
 
@@ -143,7 +144,7 @@ The latest recorded detection evaluation reported:
 | False-positive rate | 4.37% |
 | Precision | 0.74% |
 
-The evaluation unit was district–disease–day, with at least 14 baseline days required.
+The evaluation unit was district-disease-day, with at least 14 baseline days required.
 
 The low precision indicates that many generated alerts were false positives relative to the synthetic evaluation labels. These results should be interpreted as prototype performance, not evidence of operational readiness.
 
@@ -156,7 +157,7 @@ The latest recorded forecast evaluation reported:
 | Evaluation observations | 8,960 |
 | Mean absolute error (MAE) | 2.0182 |
 | Root mean squared error (RMSE) | 2.6986 |
-| Test period | December 4–31, 2025 |
+| Test period | December 4-31, 2025 |
 | Forecast model | Seven-day-average fixed 28-day horizon |
 
 These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naïve baseline or validate performance on real-world outbreaks.
@@ -167,7 +168,7 @@ The repository currently contains these dashboard JSON files:
 
 | Export | Rows / value |
 |---|---:|
-| Weekly case records | 36,000 (all published; range 32–3,667) |
+| Weekly case records | 36,000 (all published; range 32-3,667) |
 | Sum of published weekly counts | 10,011,332 |
 | Outbreak-alert records | 17,063 |
 | Forecast records | 8,960 |
@@ -208,7 +209,7 @@ This serves the existing dashboard and JSON files. It does not regenerate encoun
 
 The hosted dashboard is available at:
 
-[https://mdrobiulhassan.github.io/EpiScore/dashboard/](https://mdrobiulhassan.github.io/EpiScore/dashboard/)
+[https://mdrobiulhassan.github.io/EpiScope/dashboard/](https://mdrobiulhassan.github.io/EpiScope/dashboard/)
 
 GitHub Pages serves the published static files. New pipeline outputs must be exported and published before they appear in the hosted dashboard.
 
@@ -218,21 +219,21 @@ The project contains separate scripts for data generation, processing, analytics
 
 For Google Colab, use [`scripts/EpiScope_Colab_Run.ipynb`](scripts/EpiScope_Colab_Run.ipynb). It contains the batch workflow and a separate incremental inventory-feed demonstration. `scripts/run_pipeline.py` is the batch encounter workflow; it does not process the incremental inventory feed. Run the notebook's incremental section after the batch run, then replay the same inventory snapshot to show that no duplicate facility/date keys are appended.
 
-The inventory feed is synthetic and currently demonstrates ingestion, validation, quarantine, and district-level Gold aggregation. It is not yet an input to the resource-allocation optimizer, and corrected values for an already ingested snapshot key are not merged.
+The inventory feed is synthetic and demonstrates ingestion, validation, quarantine, and district-level Gold aggregation. The optimizer does not consume this feed. Existing snapshot keys use first-write-wins behavior, so corrected values are not merged.
 
 ## Documentation
 
-- [Project proposal](docs/proposal.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Data dictionary](docs/DATA_DICTIONARY.md)
-- [Data quality and privacy](docs/DATA_QUALITY_AND_PRIVACY.md)
-- [Experiments and evaluation](docs/EXPERIMENTS.md)
-- [Limitations](docs/LIMITATIONS.md)
+- [Project proposal](docs/technical/proposal.md)
+- [Architecture](docs/technical/ARCHITECTURE.md)
+- [Data dictionary](docs/technical/DATA_DICTIONARY.md)
+- [Data quality and privacy](docs/technical/DATA_QUALITY_AND_PRIVACY.md)
+- [Experiments and evaluation](docs/technical/EXPERIMENTS.md)
+- [Limitations](docs/technical/LIMITATIONS.md)
 - [AI usage disclosure](AI_USAGE.md)
 
 ## Implementation Map
 
-The [implementation map](docs/IMPLEMENTATION_MAP.md) gives a concise project overview; [requirement traceability](docs/REQUIREMENT_TRACEABILITY.md) maps assignment areas to implementation and saved evidence.
+The [implementation map](docs/technical/IMPLEMENTATION_MAP.md) gives a concise project overview; [requirement traceability](docs/technical/REQUIREMENT_TRACEABILITY.md) maps assignment areas to implementation and saved evidence.
 
 ## Data Privacy and Research Limitations
 

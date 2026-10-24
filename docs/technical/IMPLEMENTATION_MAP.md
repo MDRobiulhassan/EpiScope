@@ -12,15 +12,15 @@ This map connects the assignment areas to the project code and the saved evidenc
 | Forecasting | `analytics/forecast/` | `results/forecast_metrics.json` contains the saved 28-day evaluation and historical metrics. |
 | Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Saved dashboard exports include district allocations and calendar rows. The optimizer does not use inventory-feed totals. |
 | Public-data serving and dashboard | `serving/`, `dashboard/` | Five JSON exports are stored in `dashboard/data/`; their saved modification times differ. |
-| Scaling and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/EXPERIMENTS.md` | `results/pipeline_timings.csv`, `results/scaling_results.csv`, and `results/optimization_benchmarks.csv` record documented measurements. |
-| Report and policy brief | `docs/episcope_ieee_report.tex`, `docs/policy_brief.tex` | PDFs are in `docs/episcope_ieee_report.pdf` and `docs/policy_brief.pdf`. |
-| Presentation | `docs/presentation.html`, `docs/presentation.pptx`, `docs/presentation_script.md` | Nine-slide presentation with speaking sections for all four named members. |
+| Scaling and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/technical/EXPERIMENTS.md` | `results/pipeline_timings.csv`, `results/scaling_results.csv`, and `results/optimization_benchmarks.csv` record documented measurements. |
+| Report and policy brief | `docs/report/episcope_ieee_report.tex`, `docs/report/policy_brief.tex` | PDFs are in `docs/report/episcope_ieee_report.pdf` and `docs/report/policy_brief.pdf`. |
+| Presentation | `docs/presentation/presentation.html`, `docs/presentation/presentation.pptx`, `docs/presentation/presentation_script.md` | Nine-slide presentation with speaking sections for all four named members. |
 
 ## Saved evaluation values
 
 The current detection evaluation reports 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives. Sensitivity is 52.92%, false-positive rate is 4.37%, and precision is 0.74%.
 
-The current forecast evaluation contains 8,960 observations for December 4–31, 2025. MAE is 2.0182 cases and RMSE is 2.6986 cases. The evaluated model repeats a seven-day average across a fixed 28-day horizon.
+The current forecast evaluation contains 8,960 observations for December 4-31, 2025. MAE is 2.0182 cases and RMSE is 2.6986 cases. The evaluated model repeats a seven-day average across a fixed 28-day horizon.
 
 The current dashboard files contain 36,000 weekly case rows, 17,063 alert rows, 8,960 forecasts, 64 allocations, and 3,840 preparedness-calendar rows. Their combined saved payload is 9.81 MiB. Because modification times differ, these exports are described as a saved mixed snapshot rather than a single synchronized run.
 

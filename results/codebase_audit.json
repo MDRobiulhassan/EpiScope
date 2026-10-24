@@ -4579,31 +4579,31 @@
       "type": ".parquet"
     },
     {
-      "path": "docs/ARCHITECTURE.md",
+      "path": "docs/technical/ARCHITECTURE.md",
       "bytes": 3409,
       "modified": "2026-10-22T18:18:46",
       "type": ".md"
     },
     {
-      "path": "docs/DATA_DICTIONARY.md",
+      "path": "docs/technical/DATA_DICTIONARY.md",
       "bytes": 3610,
       "modified": "2026-10-22T18:18:46",
       "type": ".md"
     },
     {
-      "path": "docs/DATA_QUALITY_AND_PRIVACY.md",
+      "path": "docs/technical/DATA_QUALITY_AND_PRIVACY.md",
       "bytes": 3099,
       "modified": "2026-10-22T18:18:46",
       "type": ".md"
     },
     {
-      "path": "docs/EXPERIMENTS.md",
+      "path": "docs/technical/EXPERIMENTS.md",
       "bytes": 4799,
       "modified": "2026-10-22T18:18:46",
       "type": ".md"
     },
     {
-      "path": "docs/LIMITATIONS.md",
+      "path": "docs/technical/LIMITATIONS.md",
       "bytes": 2688,
       "modified": "2026-10-22T18:18:46",
       "type": ".md"

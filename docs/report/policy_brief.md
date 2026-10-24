@@ -12,9 +12,9 @@
 
 Public-health teams need to identify unusual disease activity early enough to investigate it and prepare staff, supplies, and services. However, surveillance data can be delayed, inconsistent, difficult to combine, or hard to translate into practical decisions. A dashboard alone does not solve these problems. Effective surveillance support also requires a repeatable data pipeline, interpretable signals, evaluated forecasts, and a clear process for validating and acting on results.
 
-EpiScope is a prototype analytics pipeline designed to explore this workflow. It processes synthetic encounter records through Bronze, Silver, and Gold stages, applies data-quality checks, generates district–disease–day outbreak signals, produces short-term forecasts, and prepares resource-allocation and preparedness-calendar outputs. A browser dashboard presents selected results for review.
+EpiScope is a prototype analytics pipeline designed to explore this workflow. It processes synthetic encounter records through Bronze, Silver, and Gold stages, applies data-quality checks, generates district-disease-day outbreak signals, produces short-term forecasts, and prepares resource-allocation and preparedness-calendar outputs. A browser dashboard presents selected results for review.
 
-The project also includes a separate synthetic daily facility stock and bed-occupancy feed. It demonstrates incremental Bronze–Silver–Gold processing with replay protection, but it is not currently connected to the resource optimizer and does not represent live facility inventory.
+The project also includes a separate synthetic daily facility stock and bed-occupancy feed. It demonstrates incremental Bronze-Silver-Gold processing with replay protection, but the resource optimizer does not consume it and does not represent live facility inventory.
 
 **Policy message:** EpiScope is a prototype for testing surveillance and preparedness workflows, not a validated clinical or public-health warning system. Its outputs should be reviewed alongside local evidence and expert judgment.
 
@@ -22,7 +22,7 @@ The project also includes a separate synthetic daily facility stock and bed-occu
 
 - **Structured data processing:** Bronze, Silver, and Gold layers separate ingestion, cleaning, and analytical outputs, making the workflow easier to inspect and reproduce.
 - **Data-quality controls:** The Silver stage validates records and separates records that fail implemented checks for further review.
-- **Outbreak signals:** The detector identifies district–disease–day observations that meet its alerting criteria.
+- **Outbreak signals:** The detector identifies district-disease-day observations that meet its alerting criteria.
 - **Forecasting:** A seven-day-average baseline generates predictions for evaluation over a fixed 28-day horizon.
 - **Preparedness support:** Resource-allocation and calendar outputs demonstrate how analytical results might inform planning activities.
 - **Privacy-aware publication:** The documented serving policy suppresses exact case counts from 1 to 4, keeps zero counts visible, and publishes counts of 5 or more.
@@ -39,7 +39,7 @@ The latest saved evaluation outputs report the following results.
 | Forecast MAE | 2.0182 cases | Average absolute prediction error was approximately 2.02 cases per evaluated observation. |
 | Forecast RMSE | 2.6986 cases | Larger prediction errors receive greater weight, producing an error measure of approximately 2.70 cases. |
 
-The detection evaluation uses district–disease–day observations with at least 14 baseline days. The forecast evaluation covers 8,960 observations from December 4–31, 2025. Forecasting uses a simple baseline that repeats a seven-day average across the 28-day horizon; it does not update its predictions daily.
+The detection evaluation uses district-disease-day observations with at least 14 baseline days. The forecast evaluation covers 8,960 observations from December 4-31, 2025. Forecasting uses a simple baseline that repeats a seven-day average across the 28-day horizon; it does not update its predictions daily.
 
 These results require caution. Detection precision of 0.74% indicates that the current detector would create a substantial review burden if every alert were sent directly to field teams. Sensitivity of 52.92% also indicates that many positive observations were missed. Neither result supports autonomous decisions.
 

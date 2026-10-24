@@ -20,7 +20,7 @@
     "false_positive_rate_percent": 3.66,
     "precision_percent": 0.86,
     "provenance": "historical_documented_not_independently_verified",
-    "source": "docs/EXPERIMENTS.md"
+    "source": "docs/technical/EXPERIMENTS.md"
   },
   "warning": "The current evaluation is based on the saved evaluation output. Historical documented metrics are preserved separately and have not been independently reconciled with the current run."
 }

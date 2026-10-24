@@ -24,18 +24,18 @@ These results demonstrate count reconciliation for the recorded run. They do not
 
 ## Data-Quality Rules
 
-The Silver pipeline is responsible for applying data-quality checks before records are passed to downstream processing. The implemented rules should be documented using their actual field names, conditions, and failure behavior.
+The Silver pipeline is responsible for applying data-quality checks before records are passed to downstream processing. The rules below list their implemented conditions and failure behavior.
 
-The current source declares and applies the following 15 named checks. This list is based on `pipeline/silver.py`; rerun the Colab workflow to capture current counts.
+The source in `pipeline/silver.py` declares and applies the following 15 named checks.
 
 | Rule | Implemented check |
 |---|---|
 | DQ01 | Missing encounter ID |
 | DQ02 | Invalid encounter date |
-| DQ03 | Encounter date outside 2021–2025 |
+| DQ03 | Encounter date outside 2021-2025 |
 | DQ04 | Missing district |
 | DQ05 | Disease outside the configured categories |
-| DQ06 | Missing or out-of-range age (0–120) |
+| DQ06 | Missing or out-of-range age (0-120) |
 | DQ07 | Severity outside `mild`, `moderate`, `severe` |
 | DQ08 | Missing or out-of-range temperature (-20 to 60) |
 | DQ09 | Missing, negative, or over-1000 rainfall |
@@ -48,9 +48,9 @@ The current source declares and applies the following 15 named checks. This list
 
 The rule conditions can overlap: a record can fail multiple checks. The quality report's `failed_records` values count affected rows per rule, not unique quarantined rows, so adding rule counts can exceed the quarantine count.
 
-The separate incremental inventory path applies date/key/district checks, nonnegative stock and bed values, positive bed capacity, and a check that occupied beds do not exceed capacity. These checks are implemented in `pipeline/inventory.py`; the Colab run should be used to capture the observed clean/quarantine counts.
+The separate incremental inventory path applies date/key/district checks, nonnegative stock and bed values, positive bed capacity, and a check that occupied beds do not exceed capacity. These checks are implemented in `pipeline/inventory.py`, and the Colab workflow records a successful two-pass execution.
 
-For each rule, document its identifier, condition, affected fields, failure behavior, and supporting test or execution evidence. Clarify whether one record can fail multiple rules and whether quality metrics count rejected records, individual rule violations, or both.
+The validation rules may overlap: one record can fail multiple checks. Per-rule failure counts describe affected rows for each rule and are not additive unique quarantine totals.
 
 ## Privacy and Public-Data Suppression
 
@@ -90,4 +90,4 @@ Important checks include:
 - Searching all public JSON datasets for unintended exact small counts.
 - Confirming that dashboard changes do not bypass public-data preparation.
 
-Recorded results should be distinguished from tests that have not yet been executed. Passing a single boundary check is useful evidence, but it is not a complete data-quality or privacy audit.
+A passing boundary check is useful evidence, but it is only one part of data-quality and privacy assurance. The checks above describe the validation coverage expected for these data paths.

@@ -1,6 +1,6 @@
 {
   "provenance": "historical_documented_not_recomputed",
-  "source": "docs/DATA_QUALITY_AND_PRIVACY.md",
+  "source": "docs/technical/DATA_QUALITY_AND_PRIVACY.md",
   "input_rows": 25000000,
   "clean_rows": 24825210,
   "quarantined_rows": 174790,
