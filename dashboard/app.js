@@ -55,7 +55,7 @@ async function loadData() {
   equitySlider.on("input", render);
 
   d3.select("#status").text(
-    `Loaded ${data.cases.length.toLocaleString()} public daily records.`
+    `Loaded ${data.cases.length.toLocaleString()} public weekly records.`
   );
 
   render();

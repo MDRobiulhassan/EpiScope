@@ -8,7 +8,6 @@ from pyspark.sql import functions as F
 
 ROOT = Path(__file__).resolve().parents[1]
 GOLD = ROOT / "data" / "gold"
-PUBLIC = ROOT / "data" / "public"
 OUTPUT = ROOT / "dashboard" / "data"
 TEMP = ROOT / "data" / "dashboard_export_temp"
 
@@ -64,16 +63,23 @@ def main():
         .getOrCreate()
     )
 
-    # 1. Privacy-protected daily cases
-    cases = spark.read.parquet(str(PUBLIC / "daily_cases"))
+    # 1. Weekly public cases. Aggregate before suppression so multiple
+    # small daily counts can be safely published as a weekly total.
+    cases = spark.read.parquet(str(GOLD / "daily_cases"))
 
-    cases = (
+    weekly_cases = (
         cases
         .withColumn("week_start", F.date_trunc("week", "encounter_date").cast("date"))
         .groupBy("week_start", "district", "disease")
-        .agg(
-            F.sum("published_case_count").cast("long").alias("published_case_count"),
-            F.max(F.col("suppressed").cast("int")).cast("boolean").alias("suppressed"),
+        .agg(F.sum("case_count").cast("long").alias("case_count"))
+        .withColumn(
+            "suppressed",
+            (F.col("case_count") > 0) & (F.col("case_count") < 5),
+        )
+        .withColumn(
+            "published_case_count",
+            F.when(F.col("suppressed"), F.lit(None).cast("long"))
+            .otherwise(F.col("case_count")),
         )
         .select(
             F.col("week_start").cast("string").alias("date"),
@@ -84,7 +90,7 @@ def main():
         )
     )
 
-    export_json(cases, "cases")
+    export_json(weekly_cases, "cases")
 
     # 2. Outbreak alerts
     alerts_path = GOLD / "outbreak_alerts"
@@ -93,13 +99,13 @@ def main():
     alert_files = list(alerts_path.rglob("*.parquet"))
 
     if alert_files:
-      alerts = spark.read.parquet(str(alerts_path))
+        alerts = spark.read.parquet(str(alerts_path))
     else:
-      print("No alert Parquet files found; deriving alerts from outbreak scores.")
-    alerts = (
-        spark.read.parquet(str(scores_path))
-        .filter(F.col("is_outbreak_alert") == True)
-    )
+        print("No alert Parquet files found; deriving alerts from outbreak scores.")
+        alerts = (
+            spark.read.parquet(str(scores_path))
+            .filter(F.col("is_outbreak_alert") == True)
+        )
 
     alert_columns = alerts.columns
 

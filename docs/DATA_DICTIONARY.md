@@ -18,7 +18,7 @@
 | Gold inventory | `data/gold/daily_inventory_by_district/` | Daily district totals for stock and occupied/total beds, with a derived bed-occupancy rate. |
 | Gold encounter outputs | `data/gold/` | Aggregated encounter data used by the analytics modules. See each module for its exact schema. |
 | Public case data | `data/public/daily_cases/` | Aggregated public data prepared with the documented small-count suppression policy. |
-| Dashboard JSON | `dashboard/data/*.json` | Exported cases, alerts, forecasts, resources, and calendar data consumed by the dashboard. |
+| Dashboard JSON | `dashboard/data/*.json` | Exported cases, alerts, forecasts, resources, and calendar data consumed by the dashboard. Case counts are aggregated to district-disease-week before applying the 1-4 suppression rule. |
 
 ## Encounter fields
 
