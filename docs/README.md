@@ -3,8 +3,8 @@
 ## Submission files
 
 - [Report](report/EpiScope_Report.pdf)
-- [Policy brief](report/Policy_Brief.pdf)
-- [Presentation Slide](presentation/EpiScope_Presentation_Slide.pptx)
+- [Policy brief](report/policy_brief.pdf)
+- [Presentation Slide](report/EpiScope_Presentation_Slide.pptx)
 
 ## Technical documentation
 
@@ -14,7 +14,7 @@
 - [Experiments and evaluation](technical/EXPERIMENTS.md)
 - [Implementation map](technical/IMPLEMENTATION_MAP.md)
 - [Limitations](technical/LIMITATIONS.md)
-- [Project proposal](technical/Proposal.md)
+- [Project proposal](technical/proposal.md)
 - [Requirement traceability](technical/REQUIREMENT_TRACEABILITY.md)
 
 ## Results
