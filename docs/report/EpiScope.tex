@@ -1,0 +1,428 @@
+﻿\documentclass[conference]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{placeins}   % provides \FloatBarrier to keep floats inside their section
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+
+% Float tuning so wide figures are not pushed to the end of the document
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.8}
+\setcounter{dbltopnumber}{3}
+\setcounter{topnumber}{3}
+
+\title{EpiScope: A Big Data Analytics Pipeline for Synthetic Disease Surveillance, Outbreak Detection, and Preparedness Support}
+
+\author{
+\IEEEauthorblockN{Md. Samin Osman (0222220005101042) \\ Robiul Hassan (0222220005101043) \\ Walid Talal (0222220005101045) \\ Md. Mahafujul Alam (0222220005101066)}
+\IEEEauthorblockA{
+CSE 4345 -- Big Data Analytics, Spring 2026\\
+Department of Computer Science and Engineering\\
+Premier University, Chattogram, Bangladesh\\
+Group number: [confirm]\\
+Repository: \url{https://github.com/MDRobiulhassan/EpiScope}\\
+Final presentation video: \texttt{[PLACEHOLDER: insert final video URL]}\\
+Submission check: CEP specifies three group members; four authors are currently listed in project records. Confirm membership and group number before submission.
+}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Public-health analytics can require the processing of large encounter datasets, data-quality controls, trend analysis, and the preparation of information for operational planning. This paper presents EpiScope, a prototype big-data pipeline that demonstrates these tasks using synthetic disease-encounter data. The architecture uses Apache Spark for data transformations, Bronze, Silver, and Gold processing layers, Parquet analytical storage, baseline outbreak detection and forecasting, resource-allocation and preparedness-calendar modules, and a D3.js dashboard export path. In a documented 25-million-row run, 24,825,210 records were retained in the clean Silver output and 174,790 were quarantined, reconciling to the input count. Documented processing-stage timings total 27.40 minutes, excluding synthetic-data generation. The latest saved detection evaluation reports 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives, corresponding to 52.92\% sensitivity, 4.37\% false-positive rate, and 0.74\% precision. The latest saved 28-day forecast evaluation reports a mean absolute error of 2.0182 and a root mean squared error of 2.6986 across 8,960 district-disease-day observations. Results are limited to the synthetic dataset and current evaluation procedures. Historical metrics differ substantially from the latest saved evaluations; their original run configurations are unavailable. EpiScope is therefore presented as an educational and analytical prototype, not a validated public-health decision system.
+\end{abstract}
+
+\begin{IEEEkeywords}
+big data analytics, Apache Spark, data quality, disease surveillance, outbreak detection, forecasting, privacy-aware visualization
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Disease-surveillance workflows may involve large volumes of records from different sources and require reliable preparation before analytical results can be presented. A useful analytics prototype should demonstrate data ingestion, validation, aggregation, analytical processing, and the controlled publication of derived information.
+
+EpiScope was developed as a big-data analytics project to demonstrate such a workflow on synthetic encounter records. It combines layered data processing with baseline detection and forecasting, resource-allocation and preparedness-calendar outputs, and a browser dashboard. The project emphasizes an end-to-end data path and records limitations in the evaluation and privacy checks.
+
+The main contributions of this project are:
+\begin{itemize}
+    \item A Bronze, Silver, and Gold processing workflow for synthetic encounter data.
+    \item A documented large-input data-quality reconciliation and quarantine process.
+    \item Baseline outbreak-detection and fixed-horizon forecasting evaluations.
+    \item Experiments documenting pipeline timing, Gold-stage scaling, and Spark configuration comparisons.
+    \item A public-data preparation step that suppresses tested small case counts before dashboard export.
+\end{itemize}
+
+The paper does not claim clinical validity, real-world epidemiological accuracy, or formal privacy guarantees.
+
+\subsection{CEP Learning Attributes P1--P7}
+The brief expects evidence of distributed processing, columnar storage, data integration and quality, surveillance time-series analysis, optimization, visual design, and health-data privacy (P1). It emphasizes competing stakeholder needs and constraints (P2), justified and tested choices (P3), imperfect data including late, missing, duplicated, skewed, or artifactual reports (P4), combining written guidance and judgement (P5), stakeholder needs (P6), and end-to-end dependency awareness (P7). Spark, Parquet, validation, analytics, optimization, and dashboard components address parts of P1 and P7. Synthetic-only inputs, limited artifact simulation, modest evaluation, and incomplete stakeholder testing leave substantial evidence gaps. Resource constraints, interaction, innovation, societal consequences, and unfamiliar tasks (A1--A5) are discussed as context, not measured outcomes.
+
+\subsection{CEP Design Conflicts C1--C5}
+\begin{itemize}
+\item \textbf{C1, sensitivity versus specificity:} the detector threshold is a prototype choice; saved precision is low. No threshold study demonstrates an acceptable alert workload.
+\item \textbf{C2, geographic detail versus privacy:} district aggregates and suppression of counts 1--4 are used; complementary suppression and cross-view inference protection are not established.
+\item \textbf{C3, efficiency versus equity:} the optimizer applies a minimum district allocation, but does not use population denominators or demonstrate a measured efficiency--equity frontier.
+\item \textbf{C4, freshness versus cost and complexity:} daily inventory replay is separate from analytics; corrected snapshots are not merged and no cost study is recorded.
+\item \textbf{C5, accuracy versus interpretability:} transparent statistical baselines are used, but forecast accuracy and detector precision are limited; no validated model comparison resolves this conflict.
+\end{itemize}
+The CEP limits the main report to 15 pages, with appendices beyond that limit, and requires a two-page nontechnical director brief, agreed and signed contributions, and a half-page personal reflection from every member. Appendices B and C here remain drafts: the matrix is unsigned and reflections require each member's own review and completion.
+
+\section{System Architecture}
+
+EpiScope separates data preparation, analytics, and dashboard serving. Synthetic encounter records are ingested into the Bronze layer. The Silver stage validates records and separates accepted rows from quarantined rows. The Gold stage creates aggregated analytical datasets. Detection, forecasting, resource allocation, and preparedness-calendar modules consume analytical outputs. Public-data preparation is then applied before JSON datasets are exported to the D3.js dashboard.
+
+Apache Spark is used for data transformations, Parquet for processed analytical storage, and D3.js v7 for browser visualization \cite{spark,parquet,d3}. The project runs in a Google Colab environment with Spark in local mode for the recorded experiments. Consequently, measured runtimes depend on the runtime allocation, storage, partitioning, caching, and Spark configuration.
+
+\section{Data and Processing Method}
+
+\subsection{Synthetic Input}
+
+The encounter records and outbreak labels used in the recorded experiments are synthetic. The project includes a generator for creating encounter records at different scales. Weather-related fields, if present in a given generated schema, must likewise be treated as synthetic or derived unless their provenance is independently established. Results should not be interpreted as evidence of performance on hospital records, government surveillance data, or real weather observations.
+
+\subsection{Layered Processing}
+
+The pipeline uses three logical data layers:
+\begin{itemize}
+    \item \textbf{Bronze:} ingestion of source encounter records.
+    \item \textbf{Silver:} validation, cleaning, and quarantine of records that fail implemented checks.
+    \item \textbf{Gold:} aggregated datasets for downstream analytics and serving.
+\end{itemize}
+
+The Silver stage aims to preserve accounting between accepted and quarantined rows. Reconciliation demonstrates count consistency but does not independently prove that every validation rule is correct.
+
+\subsection{Incremental Inventory Input}
+
+The project includes a separate synthetic daily inventory feed with facility stock and bed-occupancy fields. The Colab workflow generates a one-day snapshot and processes it through Bronze, Silver, and Gold. Bronze appends only unseen \texttt{(snapshot\_date, facility\_id)} keys, so replaying the same snapshot should append zero rows. The first-write-wins key policy does not apply corrections to a previously ingested facility-day. This incremental path is currently a parallel demonstration; the resource-allocation optimizer does not consume its Gold output. The submitted Colab notebook records a successful two-pass execution of the inventory pipeline.
+
+\subsection{Analytics}
+
+The outbreak detector is a prototype evaluated at the district-disease-day level for observations with at least 14 baseline days. Forecasting uses a seven-day-average baseline computed before the test period and repeated as a fixed prediction across a 28-day horizon. This is not a rolling forecast that updates predictions every day.
+
+Resource allocation and preparedness-calendar components are included as analytical demonstrations; their outputs are not validated operational guidance.
+
+\subsection{Public Data and Privacy}
+
+A public-data preparation step precedes dashboard JSON export. The documented policy suppresses exact case counts from one through four. A recorded check of the public case export found no exposed values in that range in the tested output.
+
+This is a limited check, not a complete privacy audit: inference may still be possible through geographic and temporal combinations, totals, linked views, or repeated queries.
+
+\section{Experimental Setup}
+
+The recorded experiments were run in Google Colab using Spark in local mode. The documented full-scale processing input contained 25,000,000 rows. Synthetic-data generation is excluded from the reported 27.40-minute processing-stage total.
+
+Forecast evaluation used the test period from December 4 through December 31, 2025, with 8,960 district-disease-day observations. Detection metrics are taken from the latest saved evaluation output. Timing, optimization, scaling, and data-quality counts are documented historical measurements; raw timing logs were not available in the audited paths.
+
+\section{Results}
+
+% ------------------------------------------------------------------
+% Wide dashboard figures are defined at the start of the Results section.
+% In IEEEtran, figure* floats can only sit at the top of a page, so
+% declaring them early lets LaTeX place them at the top of the first
+% available page; the text below refers to them by label.
+% ------------------------------------------------------------------
+\begin{figure*}[!t]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth,height=0.26\textheight,keepaspectratio]{dashboard_case_trends.png}\\[1mm]
+  {\small (a) Weekly case trends}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth,height=0.26\textheight,keepaspectratio]{dashboard_district_comparison.png}\\[1mm]
+  {\small (b) District comparison}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}[t]{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth,height=0.26\textheight,keepaspectratio]{dashboard_outbreak_alerts.png}\\[1mm]
+  {\small (c) Outbreak alerts}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth,height=0.26\textheight,keepaspectratio]{dashboard_case_forecast.png}\\[1mm]
+  {\small (d) 28-day case forecast}
+\end{minipage}
+\caption{Dashboard views: (a) weekly published case counts, with counts from 1 through 4 suppressed; (b) district ranking by published case totals; (c) experimental alert table; and (d) experimental 28-day forecast. The dashboard uses synthetic data.}
+\label{fig:dashboard-views}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.85\textwidth,height=0.32\textheight,keepaspectratio]{dashboard_allocation_calendar.png}
+\caption{Illustrative resource allocation and historical preparedness calendar. The allocation view shows a 100-unit budget with a 1/64-unit minimum per district and remaining units weighted by forecast demand. Calendar rows summarize historical district-disease-month patterns.}
+\label{fig:dashboard-allocation-calendar}
+\end{figure*}
+
+\subsection{Data Quality}
+
+Table~\ref{tab:quality} summarizes the documented reconciliation for the 25-million-row run.
+
+\begin{table}[!t]
+\caption{Documented Silver-Stage Reconciliation}
+\label{tab:quality}
+\centering
+\begin{tabular}{lr}
+\toprule
+Measure & Rows \\
+\midrule
+Input & 25,000,000 \\
+Clean output & 24,825,210 \\
+Quarantined output & 174,790 \\
+Clean + quarantined & 25,000,000 \\
+Quarantine rate & 0.69916\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The clean and quarantined counts sum to the input count. These values were transcribed from the project's documentation and were not independently recounted during report preparation.
+
+\subsection{Pipeline Runtime}
+
+Table~\ref{tab:runtime} presents documented stage runtimes. The total is a sum of recorded stages, not an independent timing measurement.
+
+\begin{table}[!t]
+\caption{Documented Processing-Stage Runtime}
+\label{tab:runtime}
+\centering
+\begin{tabular}{lr}
+\toprule
+Stage & Runtime (min) \\
+\midrule
+Bronze & 5.16 \\
+Silver & 12.83 \\
+Gold & 3.57 \\
+Outbreak detection & 1.47 \\
+Forecast generation & 0.94 \\
+Resource allocation & 0.59 \\
+Preparedness calendar & 0.57 \\
+Public-data build & 0.50 \\
+Dashboard export & 0.66 \\
+Forecast evaluation & 0.86 \\
+Detection evaluation & 0.75 \\
+\midrule
+Total measured stages & 27.40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+% NOTE: the rows above add up to 27.90, not 27.40 (the 0.50 gap equals the
+% "Public-data build" row). Confirm against your records, then update the
+% abstract, this table, the paragraph below and the Conclusion together.
+
+The documented total is below the project's 45-minute target. Synthetic-data generation, recorded separately at approximately 7.17 minutes, is excluded. These measurements are environment-specific, and the raw timing logs were not found in the audited paths.
+
+\subsection{Outbreak Detection}
+
+Table~\ref{tab:detection} shows the latest saved detection evaluation.
+
+\begin{table}[!t]
+\caption{Latest Saved Outbreak-Detection Evaluation}
+\label{tab:detection}
+\centering
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+True positives (TP) & 190 \\
+False positives (FP) & 25,336 \\
+False negatives (FN) & 169 \\
+True negatives (TN) & 554,145 \\
+Sensitivity & 52.92\% \\
+False-positive rate & 4.37\% \\
+Precision & 0.74\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Sensitivity indicates that the detector identifies approximately half of the positive evaluation cases. However, precision of 0.74\% means that false-positive alerts greatly outnumber true-positive alerts. This substantially limits the usefulness of the current detector without review and further tuning. It must not be used for unreviewed operational decisions.
+
+\subsection{Forecasting}
+
+The latest saved forecast evaluation contains 8,960 observations for December 4 to 31, 2025. The seven-day-average fixed-horizon baseline achieved MAE \(=2.0182\) cases and RMSE \(=2.6986\) cases. MAE expresses the average absolute difference between predicted and actual counts; RMSE weights larger errors more heavily. These values describe only the current synthetic evaluation and depend on the evaluation target and calendar-completion procedure.
+
+Earlier project documentation reported MAE approximately 5.9894 and RMSE approximately 11.6049. Their source run and configuration are unavailable for independent verification, so these figures are identified as historical. The latest saved evaluation is reported separately as the current result.
+
+\subsection{Optimization and Scaling}
+
+Documented Gold-stage experiments report 4.91 minutes for AQE disabled with 200 shuffle partitions, compared with 3.45 minutes for AQE enabled with 32 partitions. The latter is approximately 29.7\% lower than the 4.91-minute baseline. Because these are historical single-run measurements without raw logs in the audited paths, they should be interpreted as indicative observations rather than a reliable general speedup.
+
+Gold-stage runtimes were documented as 1.55 minutes for 6.25 million rows, 2.03 minutes for 12.5 million rows, and 3.45 minutes for 24,825,210 clean rows. The smaller datasets were generated using prefix or row-limit samples and may not preserve the full dataset distribution. These measurements describe the Gold stage only, not end-to-end pipeline scaling.
+
+\subsection{Dashboard Export Snapshot}
+
+The saved dashboard files contain 36,000 weekly case rows, 17,063 alerts, 8,960 forecasts, 64 district allocations totaling 100 units, and 3,840 preparedness-calendar rows. The combined JSON payload is 9.81 MiB. The weekly case counts range from 32 to 3,667, with no values from 1 through 4 in this saved file. These counts were read from the local JSON exports. The cases and alerts files have later modification times than the forecast, resource, and calendar files, so the payload is a mixed saved snapshot rather than a synchronized pipeline export.
+
+\subsection{Dashboard Views and Interpretation}
+Figures~\ref{fig:dashboard-views} and~\ref{fig:dashboard-allocation-calendar} show the local dashboard at its default all-district, all-disease filters, using saved public JSON exports. They document the interface state and are not independent validation of the underlying analytics.
+
+The district panel (Fig.~\ref{fig:dashboard-views}b) ranks published case totals (the leading displayed district is Gazipur at 166,660); it is not a population-normalized risk comparison. Alert rows (Fig.~\ref{fig:dashboard-views}c) are experimental signals and must be considered alongside the saved evaluation's 0.74\% precision. The forecast (Fig.~\ref{fig:dashboard-views}d) is a simple 28-day baseline; interval coverage has not been measured. The allocation (Fig.~\ref{fig:dashboard-allocation-calendar}) does not account for current stock or population denominators. Calendar entries are planning prompts, not validated next-year recommendations. All captures are static views of saved public exports.
+
+\FloatBarrier
+
+\section{Discussion}
+
+The project demonstrates an integrated workflow that connects large-input processing, data-quality reconciliation, baseline analytics, and dashboard-oriented export. The documented Silver-stage reconciliation provides evidence of row accounting for the recorded run. The runtime records suggest that the pipeline stages fit within the stated processing target in the measured environment, although the absence of raw timing logs limits independent verification.
+
+The analytical results also show why evaluation metrics must be interpreted together. A sensitivity of 52.92\% may appear useful in isolation, but precision of 0.74\% indicates a high false-alert burden. Similarly, the forecast errors cannot establish real-world predictive utility because the evaluation data are synthetic and the baseline is intentionally simple. The difference between current and historical forecast metrics highlights the importance of experiment provenance and automated result capture.
+
+\section{Limitations and Future Work}
+
+The principal limitations are:
+\begin{itemize}
+    \item \textbf{Synthetic data:} Results do not establish performance on real surveillance data.
+    \item \textbf{Detection quality:} Very low precision and a substantial false-positive count require investigation of label construction, thresholds, class imbalance, and evaluation logic.
+    \item \textbf{Forecast baseline:} The fixed seven-day average does not adapt through the 28-day horizon and should be compared against additional baselines using a reproducible evaluation protocol.
+    \item \textbf{Historical discrepancies:} Older forecast and detection figures differ from current saved outputs and have not been reconciled.
+    \item \textbf{Benchmark evidence:} Historical runtime and optimization records lack raw logs in the audited paths, and the reported values may be affected by caching and environment variability.
+    \item \textbf{Privacy:} Suppressing small counts is not a formal privacy guarantee. All public exports and cross-view inference risks require further testing.
+    \item \textbf{Incremental inventory:} The synthetic daily feed demonstrates key-based replay protection, but the optimizer does not consume its outputs and corrected snapshots are not merged.
+    \item \textbf{Quality-rule evidence:} The distinct implemented Silver validation rules and their test evidence can be compared with the assignment rule count to document implementation coverage.
+\end{itemize}
+
+Future work should include reproducible experiment logging, repeated benchmark runs, a source-derived data-quality rule inventory, expanded public-output privacy tests, alternative forecasting baselines, and detector threshold analysis. Any application to real public-health decisions would require representative real data, domain-expert review, and appropriate governance.
+
+\section{Conclusion}
+
+EpiScope demonstrates a layered big-data pipeline for synthetic disease-surveillance analytics, including data cleaning and quarantine, aggregation, baseline detection and forecasting, and dashboard data preparation. The documented large-input run reconciles 25 million input rows and reports 27.40 minutes across measured processing and evaluation stages, excluding data generation. The latest saved evaluations report 52.92\% detection sensitivity but only 0.74\% precision, and forecast MAE/RMSE of 2.0182/2.6986 on a synthetic 28-day test period.
+
+These results are preliminary and have limitations in historical comparability and independent reproducibility. The system should be regarded as an educational prototype rather than a validated public-health decision-support tool.
+
+\begin{thebibliography}{00}
+
+\bibitem{spark}
+Apache Software Foundation, ``Apache Spark Documentation.''
+[Online]. Available: \url{https://spark.apache.org/docs/latest/}
+
+\bibitem{parquet}
+Apache Software Foundation, ``Apache Parquet Documentation.''
+[Online]. Available: \url{https://parquet.apache.org/docs/}
+
+\bibitem{d3}
+M. Bostock, V. Ogievetsky, and J. Heer, ``D$^3$: Data-Driven Documents,''
+\emph{IEEE Transactions on Visualization and Computer Graphics},
+vol. 17, no. 12, pp. 2301--2309, Dec. 2011,
+doi: 10.1109/TVCG.2011.185.
+
+\bibitem{ieee}
+IEEE, ``IEEE Reference Guide.'' [Online]. Available:
+\url{https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/}
+
+\end{thebibliography}
+
+% ==================================================================
+% Back matter: single column from here to the end of the document
+% ==================================================================
+\clearpage
+\onecolumn
+
+\section*{Evidence Status and Remaining Evaluation}
+The CEP\_EpiScope assignment PDF was reviewed. Its three-member group limit conflicts with the four repository-listed authors; group number and membership require instructor/team confirmation. The video URL is missing. Appendix B is unsigned, contribution shares are unconfirmed, each reflection needs member review, and Appendix A must be checked against the exact two-page requirement after rendering. Table~\ref{tab:evidence} summarizes repository evidence and remaining actions. Saved measurements are distinguished from independently reproduced experiments.
+
+\begin{table}[htbp]
+\caption{Evidence Status of Major Requirement Areas}
+\label{tab:evidence}
+\centering\small
+\begin{tabularx}{\textwidth}{p{3.0cm}X p{4.4cm}}
+\toprule
+Area & Evidence in this project & Status and remaining action \\
+\midrule
+Scale and runtime & Documented 25-million-row run and 27.40-minute measured-stage total; generation was timed separately & Recorded, not independently reproduced from raw logs. Full end-to-end scale-factor runs require confirmation. \\
+Quality and layers & Bronze/Silver/Gold code, 15 named Silver checks, documented row reconciliation & Implemented; counts are documentary evidence. Verify per-rule tests and rerun counts. \\
+Detection & Statistical detector and saved evaluation JSON & Implemented on synthetic labels; precision is 0.74\%. Required district-year false alerts and detection delay remain missing. \\
+Forecasting & Fixed 28-day seven-day-average baseline and saved errors & Evaluated on synthetic data; rolling-origin 52-week, seasonal-naive comparison, and interval coverage remain missing. \\
+Allocation & Integer linear-programming optimizer and saved allocations & Implemented with illustrative constraints. Matched-budget population-proportional comparison is not verified. \\
+Spark optimization & Documented AQE and partition-count timings & Historical single-run observations; raw logs and Spark UI screenshots are unavailable. \\
+Dashboard and privacy & Five D3 views, aggregated JSON exports, small-count suppression & Implemented; exports form a mixed snapshot. Linked-output disclosure testing remains incomplete. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\appendices
+% Uncomment once policy_brief.tex exists in the same folder:
+% \input{policy_brief.tex}
+
+\section*{Appendix B: Team Contribution Matrix}
+This evidence-based draft summarizes repository authorship records. Commit history is an incomplete proxy: it does not show uncommitted work, review, discussion, or tasks completed under another account. The team should review and correct this matrix together before submission.
+
+\begin{table}[htbp]
+\caption{Repository Evidence for Team Contributions}
+\centering\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{p{3.0cm}X p{4.0cm}p{2.0cm}}
+\toprule
+Member & Repository evidence observed & Work areas supported by that evidence & Share \\
+\midrule
+Md. Samin Osman (0222220005101042) & Commit \texttt{e79403c} by \texttt{samin0sm} changed generator, Silver validation, detection-threshold evaluation, forecasting, allocation, dashboard, tests, and run materials. & Data generation; quality; analytics; serving; tests and execution materials. & Team to confirm \\
+Robiul Hassan (0222220005101043) & Commits under \texttt{Robiul Hassan} and \texttt{MDRobiulHassan} (same recorded email) include pipeline and inventory work, dashboard-data updates, and documentation; examples: \texttt{c382d73}, \texttt{059501d}, \texttt{10fdd36}. & Pipeline and incremental feed; saved dashboard data; documentation and integration. & Team to confirm \\
+Md. Mahafujul Alam (0222220005101066) & Commit \texttt{67fe413} finalized four-member project materials, including presentation, report, documentation, and export materials. & Presentation and project-material finalization. & Team to confirm \\
+Walid Talal (0222220005101045) & Member-reported contribution: report writing and submission preparation. No report commit was present in the inspected history at this review. & Report drafting, evidence integration, and preparation of the PDF and LaTeX deliverables. & Team to confirm \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Percentages are intentionally not inferred. Enter the team-agreed shares and ensure they total 100\%. Commit evidence identifies repository changes only; it does not determine individual effort or ownership.
+
+\section*{Appendix C: Individual Reflection Starters}
+The first three entries are repository-grounded reflection starters. Walid's entry incorporates his member-reported role in preparing this report. Each member should review their entry, add their own experience and voice, and correct anything that does not match their work.
+\setlength{\parskip}{0.35em}
+
+\subsection*{Md. Samin Osman (0222220005101042)}
+Commit \texttt{e79403c} spans data generation, Silver validation, analytics, dashboard changes, tests, and execution materials. This work record highlights how connected a data product is: generated inputs, quality checks, analytical methods, and serving logic must agree. The saved results also show why implementation needs careful evaluation: the detector has low precision, and forecast history contains unreconciled metrics. The member should add the specific task completed, a personal challenge, and what they would change next time.
+
+\subsection*{Robiul Hassan (0222220005101043)}
+The inspected history records pipeline and inventory-feed changes, dashboard-data updates, and project documentation under this member's Git identity. The inventory path demonstrates replay protection and the limits of first-write-wins handling when a snapshot is corrected. The saved dashboard files further show why export freshness and provenance matter when outputs are viewed together. The member should add the specific work completed, a personal challenge, and what they learned from it.
+
+\subsection*{Md. Mahafujul Alam (0222220005101066)}
+Commit \texttt{67fe413} records finalization of the four-member presentation and project materials. Clear communication is part of a technical system: the report and presentation must distinguish implemented behavior from experimental evidence and limitations. EpiScope's prototype status and synthetic data make that distinction especially important for readers who may otherwise treat dashboard outputs as operational guidance. The member should add the materials personally prepared, a personal challenge, and a future improvement.
+
+\subsection*{Walid Talal (0222220005101045)}
+I am preparing the EpiScope report and submission files. This work has involved organizing project evidence and distinguishing implemented components from results that remain unverified. The report process has highlighted the importance of tracing technical claims to code and saved outputs, especially when current metrics differ from earlier documented values. It has also made clear that a useful report must describe limitations alongside the system design. Before submission, I should review this draft in my own voice, confirm the contribution share with the team, and add any personal challenge or learning I want to record.
+
+\clearpage
+\section*{Appendix D: CEP Requirement Traceability}
+Status is based on inspected source, saved artifacts, and the CEP specification. ``Not evidenced'' means this audit did not find sufficient implementation or test evidence; it does not prove that no work exists elsewhere. Close the gaps, capture reproducible evidence, or agree the scope with the instructor.
+
+\small
+\begin{longtable}{p{1.7cm}p{2.4cm}p{11.7cm}}
+\caption{Traceability to CEP requirement identifiers}\\
+\toprule CEP IDs & Status & Repository evidence and remaining gap \\
+\midrule\endfirsthead
+\toprule CEP IDs & Status & Repository evidence and remaining gap \\
+\midrule\endhead
+ING-1--7 & Partial / not met & Synthetic generator and layered batch pipeline exist; required real boundary, census and weather sources, full synthetic realism, deterministic hidden-drop contract, and comprehensive source metadata are not evidenced. \\
+DQ-1 & Implemented, coverage partial & Silver contains 15 named checks and quarantine reasons; rule-by-rule tests against the CEP contract are not established. \\
+DQ-2 & Partial & Quality report is generated, but not demonstrated as a per-load Gold artifact and dashboard view. \\
+DQ-3 & Not met & Complete Gold-to-Bronze batch traceability is not evidenced. \\
+DQ-4 & Partial & Encounter duplicate checks exist; cross-facility deduplication requirement is not verified. \\
+PRV-1 & Implemented in Silver & Direct patient identifier is hashed with externally supplied EPISCOPE\_HASH\_SALT before Silver output; age-band compliance requires confirmation. \\
+PRV-2 & Partial & Counts 1--4 are suppressed in public exports; complementary and subtraction/inference protection are unverified. \\
+PRV-3--4 & Not evidenced & Role-based access control, k-anonymity, or differential-privacy analysis is not implemented/evidenced. \\
+AN-1--3 & Partial / not met & A rolling baseline detector and saved metrics exist; required EARS/CUSUM/Farrington method, two-method comparison, district-year false alerts, delay, and threshold study are missing. \\
+AN-4--5 & Partial / not met & A fixed 28-day daily baseline and error metrics exist; weekly 1--4 week forecasts, weather lags, 52-week rolling-origin seasonal-naive comparison, and interval coverage are missing. \\
+AN-6 & Not met & No evidenced cases-to-beds/saline/test-kits demand conversion with uncertainty. \\
+AN-7--8 & Partial / not met & LP allocation prototype exists; stock, costs, population-proportional baseline, matched budgets, and measured equity-efficiency comparison are not established. \\
+AN-9 & Partial / not met & Historical monthly peak summaries exist; next-year division-level seasonal decomposition is not evidenced. \\
+AN-10 & Not implemented & SEIR scenario analysis is optional in CEP; not evidenced. \\
+VIS-1--4 & Partial & D3 v7 dashboard and five views exist, but required choropleth, brush/zoom series, seasonal heatmap, stock-aware allocation comparison, accessibility details and freshness are incomplete; aggregated exports total about 9.81 MiB. \\
+VIS-5--7 & Partial / not evidenced & Budget/threshold/equity controls are illustrative; accessibility/usability findings and mobile/playback behavior are not established. \\
+ENG-1 & Not met & README documents manual stages; one-command clean-clone rebuild with pinned dependencies is not evidenced. \\
+ENG-2 & Partial & Recorded full 25M run and Gold-only scale measurements exist; full end-to-end SF .25/.5/1 benchmark and hardware record are missing. \\
+ENG-3 & Partial & Historical AQE/partition timings are documented, but raw logs, repeated controlled comparisons, and Spark UI screenshot evidence are absent. \\
+ENG-4 & Partial & Some validation/contract tests exist; coverage of de-identification, optimizer, hidden incremental defects, and orchestrated retries is not established. \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\paragraph{Cover and submission actions.} Confirm group number and three-member eligibility; confirm listed authors; add the final video URL; obtain agreed contribution shares and signatures; and have each member complete and approve their half-page reflection.
+
+\end{document}
