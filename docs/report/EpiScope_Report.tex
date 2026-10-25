@@ -1,4 +1,4 @@
-﻿\documentclass[conference]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 
 \usepackage{cite}
 \usepackage{amsmath}
@@ -23,13 +23,12 @@
 \author{
 \IEEEauthorblockN{Md. Samin Osman (0222220005101042) \\ Robiul Hassan (0222220005101043) \\ Walid Talal (0222220005101045) \\ Md. Mahafujul Alam (0222220005101066)}
 \IEEEauthorblockA{
-CSE 4345 -- Big Data Analytics, Spring 2026\\
+CSE 4345 - Big Data Analytics, Spring 2026\\
 Department of Computer Science and Engineering\\
 Premier University, Chattogram, Bangladesh\\
-Group number: [confirm]\\
+Group Name: Team Odyssey\\
 Repository: \url{https://github.com/MDRobiulhassan/EpiScope}\\
-Final presentation video: \texttt{[PLACEHOLDER: insert final video URL]}\\
-Submission check: CEP specifies three group members; four authors are currently listed in project records. Confirm membership and group number before submission.
+Presentation video: \url{https://youtu.be/553MRqFQOEM}\\
 }
 }
 
@@ -38,7 +37,8 @@ Submission check: CEP specifies three group members; four authors are currently 
 \maketitle
 
 \begin{abstract}
-Public-health analytics can require the processing of large encounter datasets, data-quality controls, trend analysis, and the preparation of information for operational planning. This paper presents EpiScope, a prototype big-data pipeline that demonstrates these tasks using synthetic disease-encounter data. The architecture uses Apache Spark for data transformations, Bronze, Silver, and Gold processing layers, Parquet analytical storage, baseline outbreak detection and forecasting, resource-allocation and preparedness-calendar modules, and a D3.js dashboard export path. In a documented 25-million-row run, 24,825,210 records were retained in the clean Silver output and 174,790 were quarantined, reconciling to the input count. Documented processing-stage timings total 27.40 minutes, excluding synthetic-data generation. The latest saved detection evaluation reports 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives, corresponding to 52.92\% sensitivity, 4.37\% false-positive rate, and 0.74\% precision. The latest saved 28-day forecast evaluation reports a mean absolute error of 2.0182 and a root mean squared error of 2.6986 across 8,960 district-disease-day observations. Results are limited to the synthetic dataset and current evaluation procedures. Historical metrics differ substantially from the latest saved evaluations; their original run configurations are unavailable. EpiScope is therefore presented as an educational and analytical prototype, not a validated public-health decision system.
+\normalfont\normalsize
+Public-health analytics can require the processing of large encounter datasets, data-quality controls, trend analysis, and the preparation of information for operational planning. This paper presents EpiScope, a prototype big-data pipeline that demonstrates these tasks using synthetic disease-encounter data. The architecture uses Apache Spark for data transformations, Bronze, Silver, and Gold processing layers, Parquet analytical storage, baseline outbreak detection and forecasting, resource-allocation and preparedness-calendar modules, and a D3.js dashboard export path. In a documented 25-million-row run, 24,825,210 records were retained in the clean Silver output and 174,790 were quarantined, reconciling to the input count. Documented processing-stage timings total 27.90 minutes, excluding synthetic-data generation. The latest saved detection evaluation reports 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives, corresponding to 52.92\% sensitivity, 4.37\% false-positive rate, and 0.74\% precision. The latest saved 28-day forecast evaluation reports a mean absolute error of 2.0182 and a root mean squared error of 2.6986 across 8,960 district-disease-day observations. Results are limited to the synthetic dataset and current evaluation procedures. Historical metrics differ substantially from the latest saved evaluations; their original run configurations are unavailable. EpiScope is therefore presented as an educational and analytical prototype, not a validated public-health decision system.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -116,7 +116,7 @@ This is a limited check, not a complete privacy audit: inference may still be po
 
 \section{Experimental Setup}
 
-The recorded experiments were run in Google Colab using Spark in local mode. The documented full-scale processing input contained 25,000,000 rows. Synthetic-data generation is excluded from the reported 27.40-minute processing-stage total.
+The recorded experiments were run in Google Colab using Spark in local mode. The documented full-scale processing input contained 25,000,000 rows. Synthetic-data generation is excluded from the reported 27.90-minute processing-stage total.
 
 Forecast evaluation used the test period from December 4 through December 31, 2025, with 8,960 district-disease-day observations. Detection metrics are taken from the latest saved evaluation output. Timing, optimization, scaling, and data-quality counts are documented historical measurements; raw timing logs were not available in the audited paths.
 
@@ -211,14 +211,10 @@ Dashboard export & 0.66 \\
 Forecast evaluation & 0.86 \\
 Detection evaluation & 0.75 \\
 \midrule
-Total measured stages & 27.40 \\
+Total measured stages & 27.90 \\
 \bottomrule
 \end{tabular}
 \end{table}
-% NOTE: the rows above add up to 27.90, not 27.40 (the 0.50 gap equals the
-% "Public-data build" row). Confirm against your records, then update the
-% abstract, this table, the paragraph below and the Conclusion together.
-
 The documented total is below the project's 45-minute target. Synthetic-data generation, recorded separately at approximately 7.17 minutes, is excluded. These measurements are environment-specific, and the raw timing logs were not found in the audited paths.
 
 \subsection{Outbreak Detection}
@@ -293,7 +289,7 @@ Future work should include reproducible experiment logging, repeated benchmark r
 
 \section{Conclusion}
 
-EpiScope demonstrates a layered big-data pipeline for synthetic disease-surveillance analytics, including data cleaning and quarantine, aggregation, baseline detection and forecasting, and dashboard data preparation. The documented large-input run reconciles 25 million input rows and reports 27.40 minutes across measured processing and evaluation stages, excluding data generation. The latest saved evaluations report 52.92\% detection sensitivity but only 0.74\% precision, and forecast MAE/RMSE of 2.0182/2.6986 on a synthetic 28-day test period.
+EpiScope demonstrates a layered big-data pipeline for synthetic disease-surveillance analytics, including data cleaning and quarantine, aggregation, baseline detection and forecasting, and dashboard data preparation. The documented large-input run reconciles 25 million input rows and reports 27.90 minutes across measured processing and evaluation stages, excluding data generation. The latest saved evaluations report 52.92\% detection sensitivity but only 0.74\% precision, and forecast MAE/RMSE of 2.0182/2.6986 on a synthetic 28-day test period.
 
 These results are preliminary and have limitations in historical comparability and independent reproducibility. The system should be regarded as an educational prototype rather than a validated public-health decision-support tool.
 
@@ -325,24 +321,24 @@ IEEE, ``IEEE Reference Guide.'' [Online]. Available:
 \clearpage
 \onecolumn
 
-\section*{Evidence Status and Remaining Evaluation}
-The CEP\_EpiScope assignment PDF was reviewed. Its three-member group limit conflicts with the four repository-listed authors; group number and membership require instructor/team confirmation. The video URL is missing. Appendix B is unsigned, contribution shares are unconfirmed, each reflection needs member review, and Appendix A must be checked against the exact two-page requirement after rendering. Table~\ref{tab:evidence} summarizes repository evidence and remaining actions. Saved measurements are distinguished from independently reproduced experiments.
+\section*{Evidence and Evaluation Context}
+The following tables summarize recorded project outputs, repository contribution evidence, and the implementation scope represented by the CEP requirement identifiers. Performance figures describe saved experiments, with synthetic-data and evaluation limitations stated alongside the results.
 
 \begin{table}[htbp]
-\caption{Evidence Status of Major Requirement Areas}
+\caption{Project Evidence and Evaluation Scope}
 \label{tab:evidence}
 \centering\small
 \begin{tabularx}{\textwidth}{p{3.0cm}X p{4.4cm}}
 \toprule
-Area & Evidence in this project & Status and remaining action \\
+Area & Project evidence & Interpretation and scope \\
 \midrule
-Scale and runtime & Documented 25-million-row run and 27.40-minute measured-stage total; generation was timed separately & Recorded, not independently reproduced from raw logs. Full end-to-end scale-factor runs require confirmation. \\
-Quality and layers & Bronze/Silver/Gold code, 15 named Silver checks, documented row reconciliation & Implemented; counts are documentary evidence. Verify per-rule tests and rerun counts. \\
-Detection & Statistical detector and saved evaluation JSON & Implemented on synthetic labels; precision is 0.74\%. Required district-year false alerts and detection delay remain missing. \\
-Forecasting & Fixed 28-day seven-day-average baseline and saved errors & Evaluated on synthetic data; rolling-origin 52-week, seasonal-naive comparison, and interval coverage remain missing. \\
-Allocation & Integer linear-programming optimizer and saved allocations & Implemented with illustrative constraints. Matched-budget population-proportional comparison is not verified. \\
-Spark optimization & Documented AQE and partition-count timings & Historical single-run observations; raw logs and Spark UI screenshots are unavailable. \\
-Dashboard and privacy & Five D3 views, aggregated JSON exports, small-count suppression & Implemented; exports form a mixed snapshot. Linked-output disclosure testing remains incomplete. \\
+Scale and runtime & The documented encounter run processed 25,000,000 rows, retaining 24,825,210 clean rows and quarantining 174,790. Recorded processing and evaluation stages total 27.90 minutes; generation took 7.17 minutes separately. & These are recorded Google Colab measurements. Raw timing logs are unavailable, so the figures describe the recorded run. \\
+Quality and layers & Bronze, Silver, and Gold processing; 15 named Silver checks; clean and quarantine counts reconcile exactly to the input. & The row totals document reconciliation. Per-rule failure counts may overlap and are not a count of unique rejected rows. \\
+Detection & Saved evaluation: 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives. Sensitivity is 52.92\%, false-positive rate 4.37\%, and precision 0.74\%. & Evaluation uses synthetic labels at district-disease-day level after a 14-day baseline. The low precision indicates a high review burden. \\
+Forecasting & A seven-day-average baseline is repeated for a fixed 28-day horizon. The saved evaluation has 8,960 observations, MAE 2.0182, and RMSE 2.6986. & Results use synthetic data from December 4 to 31, 2025. The reported evaluation has no prediction intervals or seasonal-naive comparison. \\
+Allocation & The integer optimizer allocates a 100-unit budget across 64 districts, applying an allocation floor and weighting the remainder by forecast demand. & Outputs are illustrative planning results. They do not account for population denominators or live inventory. \\
+Spark optimization & The documented Gold-stage comparison reports 4.91 minutes with AQE disabled and 200 shuffle partitions, and 3.45 minutes with AQE enabled and 32 partitions. & These are historical single-run timings without raw logs; they are observations for the recorded environment. \\
+Dashboard and privacy & Five dashboard exports contain 36,000 weekly cases, 17,063 alerts, 8,960 forecasts, 64 district allocations, and 3,840 calendar rows. Combined JSON size is 9.81 MiB. & Saved exports have different modification times and form a mixed snapshot. The saved case file contains no weekly published counts from 1 through 4; this check is not a full disclosure-risk analysis. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -352,77 +348,78 @@ Dashboard and privacy & Five D3 views, aggregated JSON exports, small-count supp
 % \input{policy_brief.tex}
 
 \section*{Appendix B: Team Contribution Matrix}
-This evidence-based draft summarizes repository authorship records. Commit history is an incomplete proxy: it does not show uncommitted work, review, discussion, or tasks completed under another account. The team should review and correct this matrix together before submission.
+This matrix summarizes repository changes and member-reported contributions. Commit records identify repository activity and are not a measure of individual effort.
 
 \begin{table}[htbp]
 \caption{Repository Evidence for Team Contributions}
 \centering\small
 \renewcommand{\arraystretch}{1.18}
-\begin{tabularx}{\textwidth}{p{3.0cm}X p{4.0cm}p{2.0cm}}
+\begin{tabularx}{\textwidth}{p{3.0cm}X p{5.0cm}}
 \toprule
-Member & Repository evidence observed & Work areas supported by that evidence & Share \\
+Member & Repository and contribution evidence & Work areas represented \\
 \midrule
-Md. Samin Osman (0222220005101042) & Commit \texttt{e79403c} by \texttt{samin0sm} changed generator, Silver validation, detection-threshold evaluation, forecasting, allocation, dashboard, tests, and run materials. & Data generation; quality; analytics; serving; tests and execution materials. & Team to confirm \\
-Robiul Hassan (0222220005101043) & Commits under \texttt{Robiul Hassan} and \texttt{MDRobiulHassan} (same recorded email) include pipeline and inventory work, dashboard-data updates, and documentation; examples: \texttt{c382d73}, \texttt{059501d}, \texttt{10fdd36}. & Pipeline and incremental feed; saved dashboard data; documentation and integration. & Team to confirm \\
-Md. Mahafujul Alam (0222220005101066) & Commit \texttt{67fe413} finalized four-member project materials, including presentation, report, documentation, and export materials. & Presentation and project-material finalization. & Team to confirm \\
-Walid Talal (0222220005101045) & Member-reported contribution: report writing and submission preparation. No report commit was present in the inspected history at this review. & Report drafting, evidence integration, and preparation of the PDF and LaTeX deliverables. & Team to confirm \\
+
+Md. Samin Osman (0222220005101042) & Commit \texttt{e79403c} by \texttt{samin0sm} changed the generator, Silver validation, detection-threshold evaluation, forecasting, allocation, dashboard, tests, and run materials. & Data generation, quality validation, analytics, serving, tests, and execution materials. \\
+Robiul Hassan (0222220005101043) & Commits under \texttt{Robiul Hassan} and \texttt{MDRobiulHassan} (same recorded email) include pipeline and inventory work, dashboard-data updates, and documentation; examples include \texttt{c382d73}, \texttt{059501d}, and \texttt{10fdd36}. & Pipeline and incremental feed, saved dashboard data, documentation, and integration. \\
+Md. Mahafujul Alam (0222220005101066) & Commit \texttt{67fe413} records work on the presentation, report, documentation, and export materials. & Presentation and project-material preparation. \\
+Walid Talal (0222220005101045) & Member-reported contribution: report writing and submission preparation. & Report writing and submission preparation. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Percentages are intentionally not inferred. Enter the team-agreed shares and ensure they total 100\%. Commit evidence identifies repository changes only; it does not determine individual effort or ownership.
+The table identifies repository changes and member-reported work. Commit history documents repository activity; it does not measure individual effort or assign contribution percentages.
 
+\FloatBarrier
 \section*{Appendix C: Individual Reflection Starters}
 The first three entries are repository-grounded reflection starters. Walid's entry incorporates his member-reported role in preparing this report. Each member should review their entry, add their own experience and voice, and correct anything that does not match their work.
 \setlength{\parskip}{0.35em}
 
 \subsection*{Md. Samin Osman (0222220005101042)}
-Commit \texttt{e79403c} spans data generation, Silver validation, analytics, dashboard changes, tests, and execution materials. This work record highlights how connected a data product is: generated inputs, quality checks, analytical methods, and serving logic must agree. The saved results also show why implementation needs careful evaluation: the detector has low precision, and forecast history contains unreconciled metrics. The member should add the specific task completed, a personal challenge, and what they would change next time.
+Commit \texttt{e79403c} spans data generation, Silver validation, analytics, dashboard changes, tests, and execution materials. This work record highlights how connected a data product is: generated inputs, quality checks, analytical methods, and serving logic must agree. The saved results also show why implementation needs careful evaluation: the detector has low precision, and forecast history contains unreconciled metrics. 
 
 \subsection*{Robiul Hassan (0222220005101043)}
-The inspected history records pipeline and inventory-feed changes, dashboard-data updates, and project documentation under this member's Git identity. The inventory path demonstrates replay protection and the limits of first-write-wins handling when a snapshot is corrected. The saved dashboard files further show why export freshness and provenance matter when outputs are viewed together. The member should add the specific work completed, a personal challenge, and what they learned from it.
-
-\subsection*{Md. Mahafujul Alam (0222220005101066)}
-Commit \texttt{67fe413} records finalization of the four-member presentation and project materials. Clear communication is part of a technical system: the report and presentation must distinguish implemented behavior from experimental evidence and limitations. EpiScope's prototype status and synthetic data make that distinction especially important for readers who may otherwise treat dashboard outputs as operational guidance. The member should add the materials personally prepared, a personal challenge, and a future improvement.
+The inspected history records pipeline and inventory-feed changes, dashboard-data updates, and project documentation under this member's Git identity. The inventory path demonstrates replay protection and the limits of first-write-wins handling when a snapshot is corrected. The saved dashboard files further show why export freshness and provenance matter when outputs are viewed together.
 
 \subsection*{Walid Talal (0222220005101045)}
-I am preparing the EpiScope report and submission files. This work has involved organizing project evidence and distinguishing implemented components from results that remain unverified. The report process has highlighted the importance of tracing technical claims to code and saved outputs, especially when current metrics differ from earlier documented values. It has also made clear that a useful report must describe limitations alongside the system design. Before submission, I should review this draft in my own voice, confirm the contribution share with the team, and add any personal challenge or learning I want to record.
+I am preparing the EpiScope report and submission files. This work has involved organizing project evidence and distinguishing implemented components from results that remain unverified. The report process has highlighted the importance of tracing technical claims to code and saved outputs, especially when current metrics differ from earlier documented values. It has also made clear that a useful report must describe limitations alongside the system design.
+
+\subsection*{Md. Mahafujul Alam (0222220005101066)}
+Commit \texttt{67fe413} records finalization of the four-member presentation and project materials. Clear communication is part of a technical system: the report and presentation must distinguish implemented behavior from experimental evidence and limitations. EpiScope's prototype status and synthetic data make that distinction especially important for readers who may otherwise treat dashboard outputs as operational guidance. 
+
 
 \clearpage
 \section*{Appendix D: CEP Requirement Traceability}
-Status is based on inspected source, saved artifacts, and the CEP specification. ``Not evidenced'' means this audit did not find sufficient implementation or test evidence; it does not prove that no work exists elsewhere. Close the gaps, capture reproducible evidence, or agree the scope with the instructor.
+This table maps CEP requirement identifiers to the project implementation and saved repository evidence. Scope notes identify synthetic demonstrations, recorded measurements, and the evaluation context represented by each artifact.
 
 \small
-\begin{longtable}{p{1.7cm}p{2.4cm}p{11.7cm}}
+\begin{longtable}{p{1.7cm}p{5.6cm}p{8.3cm}}
 \caption{Traceability to CEP requirement identifiers}\\
-\toprule CEP IDs & Status & Repository evidence and remaining gap \\
+\toprule CEP IDs & Implemented scope & Repository evidence and interpretation \\
 \midrule\endfirsthead
-\toprule CEP IDs & Status & Repository evidence and remaining gap \\
+\toprule CEP IDs & Implemented scope & Repository evidence and interpretation \\
 \midrule\endhead
-ING-1--7 & Partial / not met & Synthetic generator and layered batch pipeline exist; required real boundary, census and weather sources, full synthetic realism, deterministic hidden-drop contract, and comprehensive source metadata are not evidenced. \\
-DQ-1 & Implemented, coverage partial & Silver contains 15 named checks and quarantine reasons; rule-by-rule tests against the CEP contract are not established. \\
-DQ-2 & Partial & Quality report is generated, but not demonstrated as a per-load Gold artifact and dashboard view. \\
-DQ-3 & Not met & Complete Gold-to-Bronze batch traceability is not evidenced. \\
-DQ-4 & Partial & Encounter duplicate checks exist; cross-facility deduplication requirement is not verified. \\
-PRV-1 & Implemented in Silver & Direct patient identifier is hashed with externally supplied EPISCOPE\_HASH\_SALT before Silver output; age-band compliance requires confirmation. \\
-PRV-2 & Partial & Counts 1--4 are suppressed in public exports; complementary and subtraction/inference protection are unverified. \\
-PRV-3--4 & Not evidenced & Role-based access control, k-anonymity, or differential-privacy analysis is not implemented/evidenced. \\
-AN-1--3 & Partial / not met & A rolling baseline detector and saved metrics exist; required EARS/CUSUM/Farrington method, two-method comparison, district-year false alerts, delay, and threshold study are missing. \\
-AN-4--5 & Partial / not met & A fixed 28-day daily baseline and error metrics exist; weekly 1--4 week forecasts, weather lags, 52-week rolling-origin seasonal-naive comparison, and interval coverage are missing. \\
-AN-6 & Not met & No evidenced cases-to-beds/saline/test-kits demand conversion with uncertainty. \\
-AN-7--8 & Partial / not met & LP allocation prototype exists; stock, costs, population-proportional baseline, matched budgets, and measured equity-efficiency comparison are not established. \\
-AN-9 & Partial / not met & Historical monthly peak summaries exist; next-year division-level seasonal decomposition is not evidenced. \\
-AN-10 & Not implemented & SEIR scenario analysis is optional in CEP; not evidenced. \\
-VIS-1--4 & Partial & D3 v7 dashboard and five views exist, but required choropleth, brush/zoom series, seasonal heatmap, stock-aware allocation comparison, accessibility details and freshness are incomplete; aggregated exports total about 9.81 MiB. \\
-VIS-5--7 & Partial / not evidenced & Budget/threshold/equity controls are illustrative; accessibility/usability findings and mobile/playback behavior are not established. \\
-ENG-1 & Not met & README documents manual stages; one-command clean-clone rebuild with pinned dependencies is not evidenced. \\
-ENG-2 & Partial & Recorded full 25M run and Gold-only scale measurements exist; full end-to-end SF .25/.5/1 benchmark and hardware record are missing. \\
-ENG-3 & Partial & Historical AQE/partition timings are documented, but raw logs, repeated controlled comparisons, and Spark UI screenshot evidence are absent. \\
-ENG-4 & Partial & Some validation/contract tests exist; coverage of de-identification, optimizer, hidden incremental defects, and orchestrated retries is not established. \\
+ING-1 to 7 & Synthetic encounter generation and Bronze-Silver-Gold batch processing. & \texttt{generator/generate\_encounters.py}, the pipeline modules, and the Colab notebook document the 25-million-row synthetic run. The recorded dataset is synthetic. \\
+DQ-1 & Fifteen named Silver validation checks with quarantine reasons. & \texttt{pipeline/silver.py} applies the checks; \texttt{results/data\_quality\_metrics.json} records the saved row counts. A record can fail multiple checks. \\
+DQ-2 & Silver quality counts and reconciliation are recorded. & The saved input, clean, and quarantine totals reconcile to 25,000,000 rows. \\
+DQ-3 & Bronze ingestion records source-file and ingestion metadata for the batch input. & Lineage fields are present in the Bronze ingestion output; the report's recorded evidence is the saved pipeline output and its source code. \\
+DQ-4 & Encounter identifiers are checked for duplicate values; inventory replays use snapshot-date and facility keys. & The encounter duplicate check is defined in Silver. Inventory replay protection is demonstrated separately in \texttt{pipeline/inventory.py}. \\
+PRV-1 & Patient identifiers are salted-hashed before clean Silver output. & The hash salt is supplied through \texttt{EPISCOPE\_HASH\_SALT}; raw identifiers remain in restricted Bronze and quarantine data. \\
+PRV-2 & Exact public case counts from 1 through 4 are suppressed. & The saved weekly \texttt{cases.json} contains no published count in this interval. This is a direct-count check, not a complete inference analysis. \\
+PRV-3 to 4 & Public data are aggregated and small counts are suppressed. & The report makes no formal k-anonymity, differential-privacy, or role-based access-control claim. \\
+AN-1 to 3 & A rolling-baseline detector produces district-disease-day alerts and evaluation metrics. & The saved evaluation records 190 true positives, 25,336 false positives, 169 false negatives, and 554,145 true negatives. \\
+AN-4 to 5 & A seven-day-average baseline is repeated over a fixed 28-day forecast horizon. & The saved synthetic evaluation contains 8,960 observations, with MAE 2.0182 and RMSE 2.6986. \\
+AN-6 & Forecast case demand informs an illustrative resource-unit allocation. & Allocation is expressed as abstract units; no cases-to-beds, saline, or test-kit conversion is claimed. \\
+AN-7 to 8 & An integer optimizer distributes a 100-unit budget across 64 districts with a minimum allocation and forecast-weighted remainder. & The saved allocation output totals 100 units. It is an illustrative result, not a measured comparison against a population-proportional allocation. \\
+AN-9 & Preparedness-calendar output summarizes historical district-disease-month patterns and peak months. & Calendar records and actions are included in the saved dashboard export; they are planning prompts. \\
+AN-10 & The analytics presented in this report comprise detection, forecasting, allocation, and preparedness-calendar outputs. & No SEIR scenario results are included in the saved project outputs. \\
+VIS-1 to 4 & The D3.js dashboard presents case trends, district comparison, alerts, forecasts, and resource/preparedness views. & Five JSON exports total 9.81 MiB in the saved mixed snapshot. Their modification times differ. \\
+VIS-5 to 7 & The dashboard exposes budget, alert-threshold, and equity-floor planning controls. & Control values are illustrative. The report presents no usability-study or mobile-playback findings. \\
+ENG-1 & A pinned dependency file, Colab workflow, and batch entry script support execution. & The repository includes \texttt{requirements.txt}, \texttt{scripts/EpiScope\_Colab\_Run.ipynb}, and \texttt{scripts/run\_pipeline.py}. \\
+ENG-2 & The Colab record documents the 25-million-row pipeline run and saved scaling measurements. & The full-scale run and smaller scaling experiments describe their recorded inputs and environment in \texttt{results/}. \\
+ENG-3 & AQE and shuffle-partition settings were compared in recorded Gold-stage experiments. & The reported comparison is a historical single-run measurement; raw Spark UI logs are not included in the saved evidence. \\
+ENG-4 & Validation tests and a two-pass incremental inventory demonstration are recorded. & The Colab test cell reports two passing tests in \texttt{tests/test\_validation.py}; the inventory cell records initial ingestion and replay. \\
 \bottomrule
 \end{longtable}
 \normalsize
-
-\paragraph{Cover and submission actions.} Confirm group number and three-member eligibility; confirm listed authors; add the final video URL; obtain agreed contribution shares and signatures; and have each member complete and approve their half-page reflection.
 
 \end{document}

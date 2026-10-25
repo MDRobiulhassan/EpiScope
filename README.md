@@ -1,4 +1,3 @@
-**Google Colab runner:** [scripts/EpiScope_Colab_Run.ipynb](scripts/EpiScope_Colab_Run.ipynb)
 
 # EpiScope: Public Health Surveillance and Preparedness Dashboard
 
@@ -6,14 +5,16 @@ EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, De
 
 **Repository:** [mdrobiulhassan/EpiScope](https://github.com/mdrobiulhassan/EpiScope)
 
+**Google Colab runner:** [scripts/EpiScope_Colab_Run.ipynb](scripts/EpiScope_Colab_Run.ipynb)
+
 ## Project Documents
 
 - [Documentation index](docs/README.md)
-- [IEEE report - PDF](docs/report/episcope_ieee_report.pdf) · [LaTeX source](docs/report/episcope_ieee_report.tex)
-- [Policy brief - PDF](docs/report/policy_brief.pdf) · [Markdown source](docs/report/policy_brief.md)
-- [Presentation slides - PowerPoint](docs/presentation/presentation.pptx) · [HTML version](docs/presentation/presentation.html) · [four-member script](docs/presentation/presentation_script.md)
+- [Report - PDF](docs/report/Episcope_Report.pdf)
+- [Policy brief - PDF](docs/report/Policy_Brief.pdf)
+- [Presentation slides](docs/presentation/EpiScope_Presentation_Slide.pptx)
 
-The IEEE report PDF is six pages, including the two-page policy-brief appendix. The standalone policy-brief PDF is two pages.
+The Final report PDF is six pages, including the two-page policy-brief appendix. The standalone policy-brief PDF is two pages.
 
 ## Project Team
 
