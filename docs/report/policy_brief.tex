@@ -1,11 +1,10 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{titlesec}
 
 \begin{document}
 
 \clearpage
-\section*{Appendix A: Policy Brief for Public-Health Decision Makers}
+\section*{Policy Brief for Public-Health Decision Makers}
 \subsection*{EpiScope: A research prototype for surveillance and preparedness}
 
 \noindent\textbf{Audience:} District health officials, surveillance teams, and emergency-preparedness planners.
@@ -18,9 +17,11 @@ Health teams need to notice unusual disease activity early enough to investigate
 EpiScope demonstrates this workflow using synthetic encounter and facility data. It places records into Bronze, Silver, and Gold processing stages; produces outbreak signals and short-term forecasts; and prepares resource and calendar outputs for a D3.js dashboard. A separate demonstration generates a daily synthetic stock and bed-occupancy snapshot and processes it through Bronze, Silver, and Gold with replay protection. The snapshot is synthetic facility information and the resource-allocation optimizer does not consume it.
 
 \subsection*{What the current evidence says}
-The latest saved synthetic evaluation reports detection sensitivity of 52.92\%, a false-positive rate of 4.37\%, and precision of 0.74\%. The low precision means that most alerts were false positives in the evaluated dataset. Such alerts would require substantial human review and should not be sent directly to field teams as confirmed events.
+The saved 25-million-row synthetic run records 24,825,210 accepted records and 174,790 quarantined records, which reconcile to the input. Documented processing-stage timings total 27.90 minutes, excluding data generation. These are historical Google Colab measurements; raw timing logs are unavailable for independent reproduction.
 
-The latest saved forecasting evaluation reports mean absolute error of 2.0182 and root mean squared error of 2.6986 across 8,960 district-disease-day observations from December 4 to 31, 2025. The forecast repeats a seven-day average through a fixed 28-day horizon. It has not been shown to outperform a seasonal baseline. These results are historical project outputs from synthetic data; they are not evidence of real-world outbreak performance or health impact.
+The saved synthetic detection evaluation reports 52.92\% sensitivity, a 4.37\% false-positive rate, and 0.74\% precision. Sensitivity is the share of labeled outbreak cases detected; the false-positive rate is the share of non-outbreak observations incorrectly flagged; precision is the share of alerts that match a labeled outbreak. Thus, most alerts in this evaluation were false positives and would require substantial human review. Alerts must not be sent to field teams as confirmed events.
+
+The saved forecasting evaluation reports a mean absolute error of 2.0182 cases and a root mean squared error of 2.6986 cases across 8,960 district-disease-day observations from December 4 to 31, 2025. These measures summarize the difference between predicted and recorded case counts; root mean squared error gives larger misses more weight. The forecast repeats a seven-day average through a fixed 28-day horizon and has not been shown to outperform a seasonal baseline. All figures are historical outputs from synthetic data, not evidence of real-world outbreak performance or health impact.
 
 \clearpage
 \subsection*{Recommended use and safeguards}
@@ -29,11 +30,11 @@ The latest saved forecasting evaluation reports mean absolute error of 2.0182 an
     \item \textbf{Improve alert quality before expanding use.} Test alternative thresholds on a held-out period. Review sensitivity, precision, false-positive rate, and alert volume together, and agree with district teams on an acceptable review workload.
     \item \textbf{Compare forecasts with simple alternatives.} Evaluate the seven-day-average method against a seasonal-naive baseline and report errors by disease, district, and time period. Identify where forecasts are unreliable.
     \item \textbf{Check practical constraints before allocating resources.} Validate stock, bed capacity, staff, transport, and local protocols. Current allocation and preparedness outputs are demonstrations based on illustrative assumptions, not validated operational instructions.
-    \item \textbf{Protect data and review disclosure risks.} Keep encounter-level identifiers restricted. The clean analytical dataset hashes patient IDs, and public case counts from one through four are suppressed. Suppression reduces direct exposure but does not guarantee anonymity; linked totals and views may still reveal small counts.
+    \item \textbf{Protect data and review disclosure risks.} Restrict access to encounter-level data. The Silver processing stage hashes patient IDs before producing clean records; identifiers in Bronze and quarantine data remain sensitive and require access controls. Public case counts from one through four are suppressed. Suppression reduces direct exposure but does not guarantee anonymity; linked totals and views may still reveal small counts.
 \end{enumerate}
 
 \subsection*{Conditions before operational use}
-The data in EpiScope are synthetic. Temperature and rainfall-like fields are generated values rather than verified weather-station observations. Synthetic data are useful for testing the processing path, but cannot establish how the system performs under real reporting delays, missing facility submissions, changing disease patterns, or local resource constraints.
+The data in EpiScope are synthetic. Encounter labels, facility snapshots, and temperature and rainfall values are generated rather than collected from health facilities or verified weather stations. Synthetic data are useful for testing the processing path, but cannot establish how the system performs under real reporting delays, missing facility submissions, changing disease patterns, or local resource constraints.
 
 Before any field use, the system would need representative and authorized data, independent epidemiological review, stronger detector precision, forecast comparison and calibration, a tested privacy and access-control plan, and a defined process for alert review and escalation. The incremental inventory demonstration would also need validated live sources, a policy for corrected or late snapshots, and integration with allocation logic before it could inform supply recommendations.
 

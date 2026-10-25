@@ -57,9 +57,9 @@ The project focuses on synthetic health-encounter records and supporting informa
 
 The analytical workflow covers the following areas:
 
-- **Data quality:** Validate records, separate invalid records into quarantine, and report reconciliation and data-quality measurements. Deduplication, incremental idempotency, and late-arrival handling must be verified against the implemented code and tests before being claimed as supported capabilities.
+- **Data quality:** The delivered Silver implementation declares 15 named encounter checks and separates invalid records into quarantine. The recorded batch counts reconcile, and the Colab notebook records a two-pass inventory replay. The current unit tests cover selected age and temperature boundaries, not every Silver rule. Inventory replay is first-write-wins; corrections to an existing `(snapshot_date, facility_id)` are not merged.
 - **Outbreak detection:** Generate district-disease-day signals using the implemented detection method. Evaluate performance against synthetic ground-truth labels without exposing those labels to the detector as input.
-- **Forecasting:** Evaluate the implemented seven-day-average fixed-horizon baseline over the documented 28-day test period. More extensive experiments, including multiple disease groups, one- to four-week horizons, lagged weather features, and seasonal-naïve comparisons, should be reported only where supported by completed implementations and reproducible results.
+- **Forecasting:** The delivered baseline repeats a seven-day average over a fixed 28-day horizon and has a saved synthetic evaluation. Additional disease-specific analysis, shorter forecast horizons, weather-lag features, and seasonal-naive comparisons are proposed extensions, not part of the reported evaluation.
 - **Resource estimation:** Demonstrate how predicted case counts may be translated into estimated resource demand using explicitly documented assumptions.
 - **Resource allocation:** Explore resource-allocation outputs and compare them with an appropriate baseline where the necessary implementation and evaluation evidence are available.
 - **Preparedness planning:** Generate preparedness-calendar outputs as an analytical demonstration, without treating them as validated operational recommendations.
@@ -70,15 +70,16 @@ All performance claims must correspond to identifiable outputs and reproducible 
 
 ## 5. Team Roles and Contributions
 
-Each team member should have a documented area of responsibility while contributing to integration, testing, documentation, and presentation. Final member names, student IDs, and agreed assignments must be included in the submission materials.
+The four-member team and documented project roles are:
 
-The project work is organized into the following areas:
+| Member | Student ID | Documented work areas |
+|---|---|---|
+| Md. Samin Osman | 0222220005101042 | Data generation, Silver validation, analytics, dashboard, tests, and execution materials. |
+| Robiul Hassan | 0222220005101043 | Pipeline and incremental inventory work, dashboard-data updates, documentation, and integration. |
+| Walid Talal | 0222220005101045 | Member-reported report writing and submission preparation. |
+| Md. Mahafujul Alam | 0222220005101066 | Presentation and project-material preparation. |
 
-- **Project coordination and architecture:** Integration, requirement traceability, design decisions, and release management.
-- **Data engineering:** Synthetic-data generation, ingestion, Spark transformations, data-quality handling, and lineage.
-- **Analytics:** Outbreak detection, forecast evaluation, resource-demand estimation, allocation analysis, and preparedness outputs.
-- **Dashboard and serving:** Public-data preparation, suppression checks, JSON export, D3.js visualization, and usability evaluation.
-- **Shared responsibilities:** Testing, documentation, code review, risk management, and presentation preparation.
+These work areas summarize repository and member-reported evidence; they do not assign effort percentages. Testing, documentation, integration, and presentation preparation were team-wide activities.
 
 The four-member presentation assigns Robiul Hassan (0222220005101043) the pipeline narrative, Md. Samin Osman (0222220005101042) evaluation and planning, Md. Mahafujul Alam (0222220005101066) the dashboard, and Walid Talal (0222220005101045) privacy, limitations, and recommendations. These assignments describe presentation sections.
 

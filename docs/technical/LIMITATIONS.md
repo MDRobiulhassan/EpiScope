@@ -6,7 +6,7 @@ EpiScope is an educational big-data analytics prototype evaluated primarily usin
 
 Synthetic data may not reproduce real disease prevalence, reporting delays, seasonality, demographic differences, missingness, geographic variation, or operational data-quality problems. Detection and forecasting results must therefore not be interpreted as evidence of clinical validity or operational readiness.
 
-Weather-related and other contextual fields should not be interpreted as verified real-world observations unless their provenance has been independently established.
+The generator creates temperature and rainfall values. They are synthetic contextual fields, not verified weather observations.
 
 ## 2. Outbreak Detection Performance
 
@@ -22,9 +22,7 @@ The latest saved detection evaluation reports:
 | False-positive rate (FPR) | 4.37% |
 | Precision | 0.74% |
 
-The evaluation unit is district-disease-day, with at least 14 baseline days required. The saved output is:
-
-`data/gold/detection_evaluation/part-00000-d8fdf23b-e479-43f4-8978-0cdc8bfaf662-c000.json`
+The evaluation unit is district-disease-day, with at least 14 baseline days required. The summarized metrics are stored in `results/detection_metrics.json`. Its source field records the generated Spark output path, but that part-file output is not included in the repository checkout.
 
 The results indicate a substantial false-positive burden. Precision of 0.74% means fewer than one in 100 predicted positives are true positives in this evaluation. Sensitivity of 52.92% also indicates that some positive observations are missed. The detector should therefore be treated as an experimental screening component, not a reliable real-world alerting system.
 
@@ -44,9 +42,7 @@ The latest saved forecast evaluation reports:
 | Test period | 2025-12-04 to 2025-12-31 |
 | Forecast method | 7-day average, fixed 28-day horizon |
 
-The saved output is:
-
-`data/gold/forecast_evaluation/overall/part-00000-278a3b6c-3c49-4ff5-b57b-7e60da834a78-c000.json`
+The summarized metrics are stored in `results/forecast_metrics.json`. Its source field records the generated Spark output path, but that part-file output is not included in the repository checkout.
 
 The method computes a seven-day average before the test window and repeats it across a fixed 28-day horizon. It is a simple baseline rather than a model that explicitly learns changing trends, seasonality, weather effects, or other external drivers. Accuracy may deteriorate when patterns change or when the method is applied outside the evaluated period and synthetic dataset.
 
@@ -60,13 +56,13 @@ Historical documentation records 25,000,000 input rows, 24,825,210 clean rows, a
 
 These are recorded measurements and have not necessarily been recomputed during the latest documentation update. Their validity depends on the pipeline version, input dataset, and execution that produced them.
 
-The complete set of Silver-layer quality rules must be verified against the implementation. A documented rule inventory alone does not establish that each rule is implemented, tested, or triggered correctly.
+The Silver source declares 15 named encounter validation checks. The repository contains two standalone Spark boundary tests for age and temperature; these do not provide rule-by-rule tests of the full Silver pipeline. A documented rule inventory and count reconciliation do not establish that every check behaves correctly across all input conditions.
 
-The incremental inventory feed is synthetic and runs as a parallel Bronze-Silver-Gold path. The current resource optimizer does not consume its Gold outputs. Replay protection is first-write-wins for `(snapshot_date, facility_id)`; corrected values for an existing key are ignored rather than merged. The new Colab demonstration must be run and its output recorded before claiming execution evidence.
+The incremental inventory feed is synthetic and runs as a parallel Bronze-Silver-Gold path. The saved Colab notebook records a successful two-pass replay demonstration. The current resource optimizer does not consume its Gold outputs. Replay protection is first-write-wins for `(snapshot_date, facility_id)`; corrected values for an existing key are ignored rather than merged.
 
 ## 5. Privacy and Small-Count Suppression
 
-The public-data preparation process is intended to suppress exact published counts from 1 through 4. A previous check of `cases.json` found no exact `published_case_count` values in this range, but this limited result does not establish that every public output is safe.
+The public-data preparation process suppresses exact published counts from 1 through 4. The current saved weekly `dashboard/data/cases.json` contains 36,000 rows with published counts from 32 to 3,667, so no value in the suppressed range appears in that file. This direct-count check does not establish that every public output is safe.
 
 Suppression must be evaluated across all published files and relevant derived fields, including boundary values of 1, 2, 3, 4, and 5. Counts may potentially be inferred from totals, differences, repeated releases, or related geographic and temporal dimensions.
 
@@ -74,7 +70,7 @@ Small-count suppression alone is not a formal privacy guarantee. EpiScope has no
 
 ## 6. Performance and Scalability
 
-Recorded experiments report approximately 27.40 minutes for the measured pipeline stages, including detection and forecast evaluation, on a 25-million-row input. Synthetic-data generation, recorded separately at approximately 7.17 minutes, is excluded from that total.
+Recorded experiments report approximately 27.90 minutes for the measured pipeline stages, including detection and forecast evaluation, on a 25-million-row input. Synthetic-data generation, recorded separately at approximately 7.17 minutes, is excluded from that total. Raw timing logs are not available in the audited repository paths, so the timings are documented observations rather than independently reproducible measurements.
 
 These runtimes depend on the execution environment, available resources, Spark configuration, and data layout. They are not guaranteed production runtimes.
 

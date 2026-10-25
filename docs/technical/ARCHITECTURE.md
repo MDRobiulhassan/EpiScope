@@ -7,33 +7,38 @@ EpiScope has two synthetic inputs: batch encounter records and a daily facility 
 ## Logical Data Flow
 
 ```text
-Batch encounter CSV                    Daily inventory CSV
-         |                                      |
-         v                                      v
-Bronze encounter Parquet              Bronze inventory Parquet
-         |                                      |
-         v                                      v
-Silver validation                    Silver validation
-   /          \                         /          \\
-Clean      Quarantine               Clean      Quarantine
-   |                                      |
-   v                                      v
-Gold encounter aggregates          Gold district-day inventory
-   |                                      |
-   +-------------- Analytics ------------+
-                         |
-                         v
-             Public-data preparation
-             and small-count suppression
-                         |
-                         v
-               Dashboard JSON export
-                         |
-                         v
-                  D3.js dashboard
+Batch encounter CSV
+        |
+        v
+Bronze encounter Parquet
+        |
+        v
+Silver validation
+   |-- clean records --> Gold encounter aggregates
+   `-- quarantine records (restricted)
+            |
+            v
+       Encounter analytics (detection, forecasting,
+       allocation, preparedness calendar)
+            |
+            v
+       Public-data preparation and small-count suppression
+            |
+            v
+       Dashboard JSON export --> D3.js dashboard
+
+Daily inventory CSV (separate path)
+        |
+        v
+Bronze inventory snapshots
+        |
+        v
+Silver validation
+   |-- clean records --> Gold district-day inventory aggregates
+   `-- quarantine records (restricted)
 ```
 
-The inventory path is a separate incremental source. The resource-allocation optimizer does not consume these inventory aggregates; they demonstrate incremental ingestion and layered processing.
+The inventory path ends at its Gold aggregates in the current implementation. It demonstrates incremental ingestion and layered processing; it does not feed the analytics or resource-allocation optimizer.
 
 ## Components
 

@@ -13,8 +13,9 @@ This map connects the assignment areas to the project code and the saved evidenc
 | Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Saved dashboard exports include district allocations and calendar rows. The optimizer does not use inventory-feed totals. |
 | Public-data serving and dashboard | `serving/`, `dashboard/` | Five JSON exports are stored in `dashboard/data/`; their saved modification times differ. |
 | Scaling and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/technical/EXPERIMENTS.md` | `results/pipeline_timings.csv`, `results/scaling_results.csv`, and `results/optimization_benchmarks.csv` record documented measurements. |
-| Report and policy brief | `docs/report/episcope_ieee_report.tex`, `docs/report/policy_brief.tex` | PDFs are in `docs/report/episcope_ieee_report.pdf` and `docs/report/policy_brief.pdf`. |
-| Presentation | `docs/presentation/presentation.html`, `docs/presentation/presentation.pptx`, `docs/presentation/presentation_script.md` | Nine-slide presentation with speaking sections for all four named members. |
+| Technical report | `docs/report/EpiScope_Report.tex` | PDF: `docs/report/EpiScope_Report.pdf`. |
+| Policy brief | `docs/report/policy_brief.tex` | PDF: `docs/report/policy_brief.pdf`. |
+| Presentation | `docs/report/EpiScope_Presentation_Slide.pptx` | PowerPoint slide deck for the four-member project team. |
 
 ## Saved evaluation values
 

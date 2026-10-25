@@ -73,7 +73,7 @@ The brief expects evidence of distributed processing, columnar storage, data int
 \item \textbf{C4, freshness versus cost and complexity:} daily inventory replay is separate from analytics; corrected snapshots are not merged and no cost study is recorded.
 \item \textbf{C5, accuracy versus interpretability:} transparent statistical baselines are used, but forecast accuracy and detector precision are limited; no validated model comparison resolves this conflict.
 \end{itemize}
-The CEP limits the main report to 15 pages, with appendices beyond that limit, and requires a two-page nontechnical director brief, agreed and signed contributions, and a half-page personal reflection from every member. Appendices B and C here remain drafts: the matrix is unsigned and reflections require each member's own review and completion.
+The report includes a project evidence summary, a four-member contribution matrix, member-specific learning reflections, and CEP requirement traceability in its appendices. The separate two-page policy brief accompanies the technical report as a standalone submission document.
 
 \section{System Architecture}
 
@@ -273,19 +273,15 @@ The analytical results also show why evaluation metrics must be interpreted toge
 
 \section{Limitations and Future Work}
 
-The principal limitations are:
-\begin{itemize}
-    \item \textbf{Synthetic data:} Results do not establish performance on real surveillance data.
-    \item \textbf{Detection quality:} Very low precision and a substantial false-positive count require investigation of label construction, thresholds, class imbalance, and evaluation logic.
-    \item \textbf{Forecast baseline:} The fixed seven-day average does not adapt through the 28-day horizon and should be compared against additional baselines using a reproducible evaluation protocol.
-    \item \textbf{Historical discrepancies:} Older forecast and detection figures differ from current saved outputs and have not been reconciled.
-    \item \textbf{Benchmark evidence:} Historical runtime and optimization records lack raw logs in the audited paths, and the reported values may be affected by caching and environment variability.
-    \item \textbf{Privacy:} Suppressing small counts is not a formal privacy guarantee. All public exports and cross-view inference risks require further testing.
-    \item \textbf{Incremental inventory:} The synthetic daily feed demonstrates key-based replay protection, but the optimizer does not consume its outputs and corrected snapshots are not merged.
-    \item \textbf{Quality-rule evidence:} The distinct implemented Silver validation rules and their test evidence can be compared with the assignment rule count to document implementation coverage.
-\end{itemize}
+The findings should be interpreted within the scope of the prototype and its saved experiments. Encounter records and evaluation labels are synthetic, so the reported results do not establish performance on real surveillance data or represent real disease incidence. The Spark runs were performed in local mode in Google Colab; their timings depend on the allocated runtime, storage behavior, partitioning, caching, and configuration. The 25-million-row reconciliation demonstrates that the recorded clean and quarantined counts sum to the input, but it does not by itself establish the correctness of every validation rule. Per-rule outcome counts and independent rule-level validation are not part of the reported reconciliation.
 
-Future work should include reproducible experiment logging, repeated benchmark runs, a source-derived data-quality rule inventory, expanded public-output privacy tests, alternative forecasting baselines, and detector threshold analysis. Any application to real public-health decisions would require representative real data, domain-expert review, and appropriate governance.
+The detection evaluation reports 52.92\% sensitivity and 0.74\% precision. The false-positive burden is therefore substantial, and the detector is not suitable for unreviewed alerting. Evaluation is based on the current synthetic labels and district-disease-day procedure; the saved metrics do not establish performance across districts, years, or real outbreak conditions. Forecast evaluation likewise uses synthetic observations and a fixed seven-day-average baseline repeated over 28 days. Its MAE and RMSE do not demonstrate performance against seasonal or operational forecasting alternatives, and prediction-interval coverage has not been evaluated. Earlier saved forecast metrics differ from the latest evaluation, and their original run configurations are unavailable, limiting direct comparison.
+
+Resource allocation is an illustrative optimization over abstract units. It does not incorporate facility-level stock, population denominators, transport constraints, or a measured comparison with a population-proportional baseline. The preparedness calendar summarizes historical synthetic patterns and should be treated as a planning aid rather than a validated forecast. The inventory feed is a separate synthetic demonstration: replay protection is keyed by facility and snapshot date, while corrected snapshots are not merged into prior records and the optimizer does not consume the inventory output.
+
+The public dashboard suppresses published case counts from one through four in the tested export. This direct-count check is not a formal privacy guarantee and does not rule out disclosure through linked time periods, geographic totals, repeated queries, or other combinations. The saved dashboard files also have different modification times, so their contents represent a mixed snapshot rather than one synchronized export. Finally, recorded runtime and configuration comparisons are historical measurements; the raw timing logs are unavailable in the audited paths, which limits independent reproduction.
+
+Further development should prioritize evaluation that addresses these limits: validate the pipeline against representative, appropriately governed data; record versioned inputs, configurations, and stage-level logs; report validation outcomes per rule; compare detection thresholds and methods using district-year false-alert rates and detection delay; and evaluate rolling forecasts against seasonal-naive and other suitable baselines, including interval coverage. Allocation experiments should incorporate population and stock constraints and compare alternatives under matched budgets. Privacy testing should examine linked outputs and query combinations, and the inventory path should define how corrected snapshots affect downstream allocations. These steps would provide stronger evidence before any use beyond education and research; domain and governance review would be necessary for real public-health application.
 
 \section{Conclusion}
 
@@ -344,10 +340,8 @@ Dashboard and privacy & Five dashboard exports contain 36,000 weekly cases, 17,0
 \end{table}
 
 \appendices
-% Uncomment once policy_brief.tex exists in the same folder:
-% \input{policy_brief.tex}
 
-\section*{Appendix B: Team Contribution Matrix}
+\section*{Appendix A: Team Contribution Matrix}
 This matrix summarizes repository changes and member-reported contributions. Commit records identify repository activity and are not a measure of individual effort.
 
 \begin{table}[htbp]
@@ -370,25 +364,25 @@ Walid Talal (0222220005101045) & Member-reported contribution: report writing an
 The table identifies repository changes and member-reported work. Commit history documents repository activity; it does not measure individual effort or assign contribution percentages.
 
 \FloatBarrier
-\section*{Appendix C: Individual Reflection Starters}
-The first three entries are repository-grounded reflection starters. Walid's entry incorporates his member-reported role in preparing this report. Each member should review their entry, add their own experience and voice, and correct anything that does not match their work.
+\section*{Appendix B: Individual Learning Reflections}
+These reflections connect each member's documented project role with lessons evident in the implementation and evaluation. Repository activity supports the contribution summaries; it is not a measure of effort.
 \setlength{\parskip}{0.35em}
 
 \subsection*{Md. Samin Osman (0222220005101042)}
-Commit \texttt{e79403c} spans data generation, Silver validation, analytics, dashboard changes, tests, and execution materials. This work record highlights how connected a data product is: generated inputs, quality checks, analytical methods, and serving logic must agree. The saved results also show why implementation needs careful evaluation: the detector has low precision, and forecast history contains unreconciled metrics. 
+The recorded work spans data generation, Silver validation, analytics, dashboard changes, tests, and execution materials. Together, these components show that a data product depends on agreement between its generated inputs, quality rules, analytical methods, and serving logic. The saved results also demonstrate why implementation must be paired with evaluation: the detector has low precision, and the forecast history contains metrics from different runs that cannot be directly reconciled. This project experience supports a practical lesson for future analytics work: retain the input and configuration for every experiment, and connect reported metrics to the code and dataset version that produced them.
 
 \subsection*{Robiul Hassan (0222220005101043)}
-The inspected history records pipeline and inventory-feed changes, dashboard-data updates, and project documentation under this member's Git identity. The inventory path demonstrates replay protection and the limits of first-write-wins handling when a snapshot is corrected. The saved dashboard files further show why export freshness and provenance matter when outputs are viewed together.
+The recorded work includes pipeline and inventory-feed changes, dashboard-data updates, and project documentation. The inventory path demonstrates the value of replay protection and also the limits of a first-write-wins policy when an earlier snapshot is corrected. The dashboard exports show a related integration concern: files produced at different times can form a mixed snapshot when viewed together. These implementation details highlight the need to define update behavior for incremental data and to make output freshness and provenance visible to users. Reliable analytics therefore depends on pipeline behavior and on clear communication of how and when each result was produced.
 
 \subsection*{Walid Talal (0222220005101045)}
-I am preparing the EpiScope report and submission files. This work has involved organizing project evidence and distinguishing implemented components from results that remain unverified. The report process has highlighted the importance of tracing technical claims to code and saved outputs, especially when current metrics differ from earlier documented values. It has also made clear that a useful report must describe limitations alongside the system design.
+The report and submission materials organize the project's implementation evidence and evaluation results. This work emphasizes the importance of distinguishing implemented components from claims supported by measured outputs. The differences between current and historical forecast metrics make that distinction especially important: a result is useful only when its evaluation period, method, and source artifacts are clear. Preparing the report also brings the system's limitations into view, including synthetic-only data, low detector precision, and the lack of a synchronized dashboard snapshot. Clear technical reporting should present these limitations alongside the design so readers can interpret the results at the right scope.
 
 \subsection*{Md. Mahafujul Alam (0222220005101066)}
-Commit \texttt{67fe413} records finalization of the four-member presentation and project materials. Clear communication is part of a technical system: the report and presentation must distinguish implemented behavior from experimental evidence and limitations. EpiScope's prototype status and synthetic data make that distinction especially important for readers who may otherwise treat dashboard outputs as operational guidance. 
+The recorded project-material work includes the four-member presentation and supporting documentation. Preparing these materials highlights that communication is part of a technical system: a report or presentation needs to distinguish implemented behavior from experimental evidence and explain the limits of each result. This is particularly important for EpiScope because its data are synthetic and its alerts, forecasts, allocation, and preparedness outputs are experimental. Presenting the prototype with that context helps readers understand the dashboard as an educational demonstration rather than operational guidance.
 
 
 \clearpage
-\section*{Appendix D: CEP Requirement Traceability}
+\section*{Appendix C: CEP Requirement Traceability}
 This table maps CEP requirement identifiers to the project implementation and saved repository evidence. Scope notes identify synthetic demonstrations, recorded measurements, and the evaluation context represented by each artifact.
 
 \small

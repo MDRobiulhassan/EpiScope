@@ -1,5 +1,7 @@
 # EpiScope Documentation
 
+This index links to the submitted project documents, technical references, and saved evaluation results. The technical report and policy brief are separate documents.
+
 ## Submission files
 
 - [Report](report/EpiScope_Report.pdf)

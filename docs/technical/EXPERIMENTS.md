@@ -27,9 +27,9 @@ The recorded experiment used 25,000,000 input encounter rows.
 | Dashboard export | 0.66 min |
 | Forecast evaluation | 0.86 min |
 | Detection evaluation | 0.75 min |
-| **Total measured stages** | **27.40 min** |
+| **Total measured stages** | **27.90 min** |
 
-The nine processing and serving stages took approximately 25.79 minutes. Including forecast and detection evaluation brings the total to approximately 27.40 minutes, below the 45-minute target.
+The nine processing and serving stages took approximately 26.29 minutes. Including forecast and detection evaluation brings the total to approximately 27.90 minutes, below the 45-minute target.
 
 The separate synthetic-data generation run took approximately 7.17 minutes and is excluded from the reported pipeline total.
 
@@ -114,9 +114,7 @@ The latest recorded forecast evaluation reports the following results:
 
 The baseline uses a seven-day average computed before the test window and repeats that forecast across the fixed 28-day horizon. It is not a rolling daily-updated forecast.
 
-Evaluation output:
-
-`data/gold/forecast_evaluation/overall/part-00000-278a3b6c-3c49-4ff5-b57b-7e60da834a78-c000.json`
+The summarized evaluation is stored in `results/forecast_metrics.json`. Its source field records the generated Spark output path; that part-file output is not included in the repository checkout.
 
 Earlier documentation reported MAE of approximately 5.9894 and RMSE of approximately 11.6049. The original evaluation supporting those historical values could not be independently verified. They are therefore retained as historical results and are not treated as the current evaluation.
 

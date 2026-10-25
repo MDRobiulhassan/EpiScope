@@ -50,13 +50,11 @@ The rule conditions can overlap: a record can fail multiple checks. The quality 
 
 The separate incremental inventory path applies date/key/district checks, nonnegative stock and bed values, positive bed capacity, and a check that occupied beds do not exceed capacity. These checks are implemented in `pipeline/inventory.py`, and the Colab workflow records a successful two-pass execution.
 
-The validation rules may overlap: one record can fail multiple checks. Per-rule failure counts describe affected rows for each rule and are not additive unique quarantine totals.
-
 ## Privacy and Public-Data Suppression
 
 `serving/build_public_data.py` prepares public-facing case data before it is exported for dashboard use.
 
-The recorded check of `dashboard/data/cases.json` found no exact published case counts between 1 and 4. The intended suppression policy hides exact counts in this range.
+The current saved weekly `dashboard/data/cases.json` contains 36,000 rows with published counts from 32 to 3,667. No exact count from 1 through 4 appears in that file. This direct-count check does not establish that every public output is safe.
 
 Suppression behavior must remain consistent across public-facing outputs. A suppressed value should not be exposed through an alternative field or be trivially recoverable from linked views, totals, or other published values.
 
@@ -76,11 +74,11 @@ The public-serving layer should:
 
 Count suppression alone does not establish compliance with any legal or regulatory privacy framework.
 
-## Validation and Regression Testing
+## Current Test Evidence and Recommended Coverage
 
-Data-quality and privacy controls should be tested whenever validation logic, data transformations, or dashboard exports change.
+The repository's `tests/test_validation.py` contains two Spark tests for age and temperature boundary conditions. These tests use standalone DataFrame filters; they do not exercise the full Silver pipeline or cover all 15 declared encounter rules. The saved Colab workflow records a successful two-pass inventory replay demonstration. These artifacts provide limited evidence and should not be read as complete rule-by-rule or privacy test coverage.
 
-Important checks include:
+For future changes to validation, transformations, or dashboard exports, recommended regression coverage includes:
 
 - Confirming that clean and quarantined row counts reconcile with the input.
 - Testing distinct implemented quality rules against valid and invalid examples.
@@ -90,4 +88,4 @@ Important checks include:
 - Searching all public JSON datasets for unintended exact small counts.
 - Confirming that dashboard changes do not bypass public-data preparation.
 
-A passing boundary check is useful evidence, but it is only one part of data-quality and privacy assurance. The checks above describe the validation coverage expected for these data paths.
+A passing boundary check is useful evidence, but it is only one part of data-quality and privacy assurance. The recommended checks above describe useful additional coverage; they are not a claim that every item has been implemented or run.

@@ -14,7 +14,7 @@ EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, De
 - [Policy brief - PDF](docs/report/policy_brief.pdf)
 - [Presentation slides](docs/report/EpiScope_Presentation_Slide.pptx)
 
-The Final report PDF is six pages, including the two-page policy-brief appendix. The standalone policy-brief PDF is two pages.
+The technical report and policy brief are separate documents. The policy brief is provided as a standalone PDF.
 
 ## Project Team
 
@@ -76,6 +76,8 @@ Synthetic Encounter Generation
              D3.js v7 Dashboard
 ```
 
+The daily facility inventory feed follows a separate Bronze-Silver-Gold path. Its Gold aggregates do not feed the resource-allocation optimizer.
+
 The diagram summarizes the overall workflow. Individual scripts may have additional input dependencies; consult their implementations for exact execution order.
 
 ## Repository Structure
@@ -96,16 +98,15 @@ The diagram summarizes the overall workflow. Individual scripts may have additio
 | `dashboard/` | D3.js dashboard and exported JSON datasets |
 | `scripts/` | Spark diagnostics and utilities |
 | `tests/` | Automated tests |
-| `docs/` | Architecture, data, experiment, and limitation documentation |
+| `docs/` | Technical documentation, report, policy brief, and presentation deck |
 | `requirements.txt` | Python dependency pins |
 | `AI_USAGE.md` | AI assistance disclosure |
 | `scripts/EpiScope_Colab_Run.ipynb` | Google Colab execution cells |
 | `docs/technical/IMPLEMENTATION_MAP.md` | Assignment areas, implementation paths, and saved evidence |
 | `docs/technical/REQUIREMENT_TRACEABILITY.md` | Assignment requirements mapped to implementation and repository evidence |
-| `docs/presentation/PRESENTATION_ROLES.md` | Four-member presentation speaking assignments |
-| `docs/presentation/presentation.html` | Browser-based presentation slides |
-| `docs/presentation/presentation.pptx` | Four-member PowerPoint presentation |
-| `docs/presentation/presentation_script.md` | Four-member speaking script |
+| `docs/report/EpiScope_Report.tex` | Technical report source |
+| `docs/report/policy_brief.tex` | Standalone policy brief source |
+| `docs/report/EpiScope_Presentation_Slide.pptx` | Four-member presentation slide deck |
 
 ## Technology Stack
 
@@ -127,7 +128,7 @@ The recorded experiment processed **25,000,000 input rows**. The Silver-layer re
 | Quarantined rows | 174,790 |
 | Quarantine rate | 0.69916% |
 
-The recorded pipeline and evaluation stages took approximately **27.40 minutes**, excluding encounter generation, which took approximately **7.17 minutes**.
+The recorded pipeline and evaluation stages took approximately **27.90 minutes**, excluding encounter generation, which took approximately **7.17 minutes**.
 
 The measurements were collected in a constrained research environment using Spark local mode. Runtime will vary with hardware, memory, storage, Spark configuration, and workload. Refer to [`docs/technical/EXPERIMENTS.md`](docs/technical/EXPERIMENTS.md) for the individual stage timings, optimization experiments, and evaluation caveats.
 
@@ -161,7 +162,7 @@ The latest recorded forecast evaluation reported:
 | Test period | December 4-31, 2025 |
 | Forecast model | Seven-day-average fixed 28-day horizon |
 
-These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naïve baseline or validate performance on real-world outbreaks.
+These metrics describe the recorded evaluation only. They do not establish superiority over a seasonal-naive baseline or validate performance on real-world outbreaks.
 
 ## Saved Dashboard Export Snapshot
 

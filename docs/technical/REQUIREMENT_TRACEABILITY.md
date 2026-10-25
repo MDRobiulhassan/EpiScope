@@ -15,8 +15,9 @@ This document maps the assignment areas to the EpiScope implementation and the e
 | Allocation and preparedness | `analytics/optimise/`, `analytics/calendar/` | Produces illustrative resource and calendar outputs. The optimizer uses forecast demand and does not consume the incremental inventory feed. |
 | Dashboard and serving | `serving/`, `dashboard/` | Five saved JSON exports are in `dashboard/data/`. Their modification times differ; the saved values are a mixed snapshot rather than one synchronized export run. |
 | Scalability and Spark experiments | `scripts/EpiScope_Colab_Run.ipynb`, `docs/technical/EXPERIMENTS.md` | Historical timing, scaling, and optimization measurements are stored under `results/`. They describe the documented environment and procedures. |
-| Report and policy brief | `docs/report/episcope_ieee_report.tex`, `docs/report/policy_brief.tex`, `docs/report/policy_brief.md` | The report PDF is six pages and includes the two-page policy brief appendix. A standalone two-page policy brief PDF is also included. |
-| Presentation | `docs/presentation/presentation.html`, `docs/presentation/presentation.pptx`, `docs/presentation/presentation_script.md` | Nine-slide presentation and a speaking script with sections assigned to the four listed members. |
+| Technical report | `docs/report/EpiScope_Report.tex` | `docs/report/EpiScope_Report.pdf`. The technical report and policy brief are separate documents. |
+| Policy brief | `docs/report/policy_brief.tex` | Standalone PDF: `docs/report/policy_brief.pdf`. |
+| Presentation | `docs/report/EpiScope_Presentation_Slide.pptx` | PowerPoint slide deck for the four-member project team. |
 
 ## Saved evaluation results
 

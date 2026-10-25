@@ -2,41 +2,31 @@
 
 ## Project
 
-EpiScope: Big Data Analytics for Disease Surveillance
+EpiScope: Public Health Surveillance and Preparedness Dashboard
 
-## AI Tools Used
+## AI tools
 
-ChatGPT was used as an AI-assisted development, troubleshooting, and documentation tool during the project.
+ChatGPT and Codex were used as AI-assisted development, troubleshooting, analysis, and writing tools. The specific model version was not consistently recorded.
 
-## Areas of Assistance
+## Assistance provided
 
-- Troubleshooting Python, PySpark, and data-pipeline execution issues.
-- Reviewing Spark configuration options and planning performance experiments.
-- Interpreting recorded runtime measurements, scaling experiments, and evaluation metrics.
-- Assisting with code review, validation procedures, and technical documentation.
-- Organizing report sections and explaining architectural decisions, evaluation results, and system limitations.
-- Refining project documentation for clarity, consistency, and technical accuracy.
-- Preparing a synthetic daily inventory-feed generator and its idempotent Spark ingestion/validation/aggregation path.
-- Preparing assignment documentation, a four-member speaking plan, slide content, and a presentation script.
+AI assistance was used to:
 
-## Representative Prompts
+- Diagnose Python, PySpark, Spark, and Colab workflow issues and explain execution errors.
+- Draft and revise code for synthetic data generation and the incremental inventory ingestion path.
+- Review pipeline behavior, data-quality checks, dashboard exports, privacy controls, and experiment results.
+- Summarize saved runtime and evaluation metrics and identify inconsistencies across documentation.
+- Draft and edit the technical report, policy brief, proposal, technical documentation, and both README files.
+- Prepare and revise presentation material and speaking assignments for the four-member team.
 
-- Review the assignment PDF against the repository without installing or running the project.
-- Add a Colab-runnable incremental input demonstration and correct related documentation.
-- Prepare presentation slides and a balanced speaking script for the four listed team members.
+Representative requests included reviewing the assignment and repository, troubleshooting the Colab workflow, checking incremental replay behavior, explaining dashboard controls, and reconciling report and documentation claims with saved project evidence.
 
-## Human Responsibility and Verification
+## Data and verification
 
-The project author is responsible for the submitted implementation, experimental methodology, interpretation of results, and final conclusions. AI-assisted code and documentation must be reviewed for correctness and consistency with the actual implementation.
+The encounter, outbreak-label, and inventory data described in EpiScope are synthetic. Reported measurements are drawn from saved project outputs and documentation; AI-generated explanations or estimates are not experimental measurements. Runtime and model results remain specific to the documented synthetic inputs and evaluation procedures.
 
-Reported benchmark figures and evaluation metrics should be traceable to recorded experiment outputs. AI-generated estimates must not be presented as measured results. Implementation details and claimed capabilities should be verified against the final repository and its tests.
+AI assistance does not constitute independent verification. The team is responsible for reviewing AI-assisted code and writing against the source implementation, saved outputs, assignment requirements, and course policy. The repository documents the limits of current validation, including the limited scope of unit tests and the absence of raw timing logs for independent reproduction.
 
-## Data and Evaluation Limitations
+## Responsibility and academic integrity
 
-The encounter records and injected outbreak labels used in this project are synthetic. The detection and forecasting components are research prototypes evaluated on synthetic data; their measured performance does not establish effectiveness in real-world public-health surveillance.
-
-Weather-related fields must not be described as observations from real weather stations unless their provenance has been independently verified. Conclusions should remain within the scope of the available data and completed experiments.
-
-## Integrity Statement
-
-AI assistance supported development, troubleshooting, analysis, and technical writing. The project author is responsible for understanding and verifying the submitted work and ensuring compliance with the course's AI-use policy. Any AI-assisted code or text retained in the submission should be reviewed for accuracy, appropriate attribution where required, and consistency with the final implementation and experimental evidence.
+All four team members are responsible for understanding and verifying the submitted work and for ensuring that the disclosure and use of AI comply with the course policy. Each member should review project descriptions or reflections attributed to them for accuracy. AI assistance is disclosed here; it does not replace the team's responsibility for the implementation, analysis, conclusions, or final submitted materials.
