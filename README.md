@@ -13,6 +13,7 @@ EpiScope is a Big Data Analytics research prototype developed for **CSE 4345, De
 - [Report - PDF](docs/report/EpiScope_Report.pdf)
 - [Policy brief - PDF](docs/report/policy_brief.pdf)
 - [Presentation slides](docs/report/EpiScope_Presentation_Slide.pptx)
+- [Presentation video](https://youtu.be/553MRqFQOEM)
 
 The technical report and policy brief are separate documents. The policy brief is provided as a standalone PDF.
 

@@ -7,6 +7,7 @@ This index links to the submitted project documents, technical references, and s
 - [Report](report/EpiScope_Report.pdf)
 - [Policy brief](report/policy_brief.pdf)
 - [Presentation Slide](report/EpiScope_Presentation_Slide.pptx)
+- [Presentation video](https://youtu.be/553MRqFQOEM)
 
 ## Technical documentation
 
